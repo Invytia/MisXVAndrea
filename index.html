@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis XV Años - Andrea | Party Rock Neon</title>
-    <!-- Fuentes: Montserrat (Lectura), Righteous (Titulares Neón), Permanent Marker (Toque rebelde 2010s), Share Tech Mono (LED) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Permanent+Marker&family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Mis XV Años - Andrea | Neon Party Rock</title>
+    <!-- Fuentes: Montserrat (Cuerpo), Righteous (Neón limpio), Permanent Marker (Rebelde), Audiowide (Tecno/EDM) -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:ital,wght@0,400;0,700;0,900;1,500&family=Permanent+Marker&family=Righteous&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Party Rock 2010s */
-            --bg-base: #070707;
-            --neon-blue: #00f3ff;
-            --neon-green: #39ff14;
+            /* Paleta Party Rock EDM 2010s */
+            --bg-deep: #050505;
+            --neon-cyan: #00f3ff;
+            --neon-lime: #39ff14;
             --neon-yellow: #eaff00;
             --neon-purple: #b026ff;
-            /* Rosa/Fucsia estrictamente reservado para Andrea */
+            --neon-orange: #ff5e00;
+            /* Rosa Exclusivo para Andrea */
             --neon-pink: #ff007f;
             
-            --text-main: #ffffff;
-            --text-muted: #888888;
+            --glass-bg: rgba(15, 15, 15, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,252 +27,266 @@
         body, html {
             width: 100%;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-main);
+            background-color: var(--bg-deep);
+            color: #ffffff;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* --- TEXTURAS Y FONDOS PARTY ROCK --- */
-        .bg-pattern {
-            /* Patrón de puntos (Halftone) típico de flyers de antro */
-            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
-            background-size: 20px 20px;
+        /* --- FONDOS Y LUCES DE CLUB (ANIMACIONES AVANZADAS) --- */
+        .ambient-lights {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0; pointer-events: none; overflow: hidden;
+        }
+        .light-blob {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            opacity: 0.5; animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+        .blob-1 { width: 300px; height: 300px; background: var(--neon-purple); top: -10%; left: -10%; }
+        .blob-2 { width: 400px; height: 400px; background: var(--neon-cyan); bottom: -20%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 250px; height: 250px; background: rgba(57, 255, 20, 0.3); top: 40%; left: 50%; animation-delay: -10s; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 150px) scale(1.2); }
         }
 
-        .party-stripes {
-            /* Franjas diagonales icónicas de los 2010s */
-            background: repeating-linear-gradient(
-                -45deg,
-                #000,
-                #000 15px,
-                var(--neon-yellow) 15px,
-                var(--neon-yellow) 30px
-            );
-            height: 15px; width: 100%;
-            box-shadow: 0 0 15px rgba(234, 255, 0, 0.4);
+        /* Patrón de puntos sobre el fondo */
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 15px 15px; z-index: 1; pointer-events: none;
         }
 
-        .party-stripes-green {
-            background: repeating-linear-gradient(
-                45deg,
-                #000, #000 10px,
-                var(--neon-green) 10px, var(--neon-green) 20px
-            );
-            height: 10px; width: 100%;
-        }
-
-        /* --- CLASES DE TEXTO NEÓN (NÚCLEO BLANCO + RESPLANDOR) --- */
-        .neon-text-pink {
+        /* --- TIPOGRAFÍA 3D Y NEÓN --- */
+        .title-3d-pink {
             font-family: 'Permanent Marker', cursive;
-            color: #fff;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink), 0 0 80px var(--neon-pink);
+            font-size: 85px; line-height: 1.1; color: #fff;
+            transform: rotate(-3deg) translateY(-10px);
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px var(--neon-pink),
+                0 0 20px var(--neon-pink),
+                0 0 40px var(--neon-pink),
+                4px 4px 0px rgba(255, 0, 127, 0.5),
+                8px 8px 0px rgba(0, 0, 0, 0.8);
+            animation: pulse3D 2s infinite alternate;
         }
-        .neon-text-blue {
-            font-family: 'Righteous', cursive;
-            color: #fff;
-            text-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
-        }
-        .neon-text-green {
-            font-family: 'Righteous', cursive;
-            color: #fff;
-            text-shadow: 0 0 5px var(--neon-green), 0 0 15px var(--neon-green), 0 0 30px var(--neon-green);
+        @keyframes pulse3D {
+            0% { transform: rotate(-3deg) translateY(-10px) scale(1); text-shadow: 0 0 10px var(--neon-pink), 4px 4px 0px rgba(255,0,127,0.5); }
+            100% { transform: rotate(-3deg) translateY(-10px) scale(1.02); text-shadow: 0 0 30px var(--neon-pink), 0 0 50px var(--neon-pink), 6px 6px 0px rgba(255,0,127,0.7); }
         }
 
-        /* --- ANIMACIONES --- */
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.4; }
+        .header-neon {
+            font-family: 'Righteous', cursive; font-size: 40px; text-transform: uppercase;
+            text-align: center; margin-bottom: 20px; letter-spacing: 2px;
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .flicker-slow { animation: flicker 4s infinite alternate; }
-        .flicker-fast { animation: flicker 1.5s infinite alternate; }
+        .text-cyan { color: #fff; text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan); }
+        .text-lime { color: #fff; text-shadow: 0 0 10px var(--neon-lime), 0 0 20px var(--neon-lime); }
+        .text-yellow { color: #fff; text-shadow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow); }
 
-        /* --- BOTÓN DE MÚSICA --- */
-        .sticky-music-btn {
-            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
-            background-color: #000; border: 3px solid var(--neon-blue);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 0 20px var(--neon-blue); z-index: 2000; cursor: pointer;
-            opacity: 0; visibility: hidden; transform: scale(0.8); transition: all 0.3s;
+        /* --- MARQUESINA (TICKER TAPE) --- */
+        .ticker-wrap {
+            width: 100%; height: 40px; background: var(--neon-yellow);
+            overflow: hidden; display: flex; align-items: center;
+            box-shadow: 0 0 20px rgba(234, 255, 0, 0.4);
+            transform: rotate(-2deg) scale(1.05); margin: 30px 0; z-index: 10; position: relative;
         }
-        body.content-active .sticky-music-btn { opacity: 1; visibility: visible; transform: scale(1); }
-        .sticky-music-btn:hover { background-color: var(--neon-blue); box-shadow: 0 0 35px var(--neon-blue); }
-        .sticky-music-btn svg { width: 26px; height: 26px; fill: var(--neon-blue); transition: all 0.3s; }
-        .sticky-music-btn:hover svg { fill: #000; }
+        .ticker-track {
+            display: flex; white-space: nowrap; animation: ticker 15s linear infinite;
+        }
+        .ticker-item {
+            font-family: 'Audiowide', cursive; font-size: 20px; color: #000;
+            padding: 0 30px; text-transform: uppercase; font-weight: 900;
+        }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- PANTALLA INICIAL (PUERTA DEL CLUB) --- */
+        /* --- PANTALLA INICIAL (SCANNER VIP) --- */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #050505;
-            background-image: 
-                linear-gradient(rgba(255, 0, 127, 0.05) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(255, 0, 127, 0.05) 2px, transparent 2px);
-            background-size: 40px 40px;
-            z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.8s ease, visibility 0.8s; cursor: pointer;
+            background: #000; z-index: 9999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; transition: all 0.8s ease;
+            cursor: pointer; overflow: hidden;
         }
-        #envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        .club-door-box {
-            border: 4px solid var(--neon-purple);
-            padding: 40px; text-align: center; border-radius: 15px;
-            background: rgba(0,0,0,0.8); box-shadow: 0 0 40px rgba(176, 38, 255, 0.3), inset 0 0 20px rgba(176, 38, 255, 0.3);
-            position: relative; overflow: hidden;
+        #envelope-screen.fade-out { opacity: 0; transform: scale(1.5); pointer-events: none; }
+        
+        .vip-badge-container {
+            position: relative; width: 280px; height: 400px;
+            perspective: 1000px;
+        }
+        .vip-badge {
+            width: 100%; height: 100%; position: absolute;
+            background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(5,5,5,0.9) 100%);
+            border: 3px solid var(--neon-cyan); border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.2);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: transform 0.3s;
         }
-        .club-door-box:hover { transform: scale(1.03); }
-        
-        .env-tag { font-family: 'Righteous', sans-serif; font-size: 20px; color: var(--neon-blue); letter-spacing: 5px; margin-bottom: -10px; text-transform: uppercase; }
-        .env-title { font-size: 90px; margin: 10px 0 20px 0; line-height: 1; transform: rotate(-3deg); }
-        .btn-enter {
-            background: transparent; color: var(--neon-yellow);
-            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 16px;
-            text-transform: uppercase; letter-spacing: 4px; border: 2px dashed var(--neon-yellow);
-            padding: 15px 30px; margin-top: 10px; display: inline-block;
-            animation: flicker 2s infinite; text-shadow: 0 0 10px var(--neon-yellow);
+        .vip-badge:hover { transform: translateY(-10px) rotateY(10deg); box-shadow: 0 0 50px rgba(0, 243, 255, 0.6); }
+        .badge-hole { width: 60px; height: 15px; background: #000; border-radius: 10px; margin-top: -30px; margin-bottom: 30px; border: 2px solid #333; }
+        .badge-tap {
+            margin-top: 30px; font-family: 'Audiowide', cursive; color: var(--neon-lime);
+            animation: flicker 1.5s infinite; letter-spacing: 2px; text-transform: uppercase;
         }
+
+        /* --- BOTÓN DE MÚSICA (DISCO) --- */
+        .sticky-music-btn {
+            position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px;
+            background: #111; border: 2px solid var(--neon-cyan); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 0 15px var(--neon-cyan); z-index: 2000; cursor: pointer;
+            opacity: 0; visibility: hidden; transition: all 0.4s; overflow: hidden;
+        }
+        body.content-active .sticky-music-btn { opacity: 1; visibility: visible; }
+        .sticky-music-btn::before {
+            content: ''; position: absolute; width: 100%; height: 100%;
+            background: conic-gradient(from 0deg, transparent, var(--neon-cyan), transparent);
+            animation: spin 3s linear infinite; opacity: 0.3;
+        }
+        .sticky-music-btn svg { width: 24px; height: 24px; fill: var(--neon-cyan); z-index: 2; position: relative; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
         /* --- CONTENIDO PRINCIPAL --- */
         #main-invitation {
             display: none; width: 100%; flex-direction: column; align-items: center;
-            opacity: 0; animation: fadeInMain 1s forwards;
+            position: relative; z-index: 5; opacity: 0; animation: fadeIn 1s forwards;
         }
         body.content-active #main-invitation { display: flex; }
-        @keyframes fadeInMain { to { opacity: 1; } }
+        @keyframes fadeIn { to { opacity: 1; } }
 
-        .section-block {
-            width: 100%; max-width: 500px; padding: 60px 20px;
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-            position: relative;
+        .section-wrapper {
+            width: 100%; max-width: 550px; padding: 60px 20px;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* --- ANIMACIONES ON-SCROLL --- */
-        .anim-element { opacity: 0; transform: scale(0.95) translateY(20px); transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .anim-element.in-view { opacity: 1; transform: scale(1) translateY(0); }
-        .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
+        /* --- EFECTO GLASSMORPHISM (TARJETAS VIP) --- */
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            padding: 40px 25px; width: 100%; text-align: center; margin-top: 30px;
+            position: relative; overflow: hidden;
+        }
+        /* Borde luminoso animado interno */
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            animation: scanline 4s infinite linear;
+        }
+        @keyframes scanline { 100% { left: 200%; } }
 
-        /* --- ESTILOS DE COMPONENTES --- */
-        .hero-title { font-size: 85px; line-height: 1; margin: 20px 0; transform: rotate(-2deg); }
+        /* --- BOTONES CON GLITCH Y SHINE --- */
+        .btn-glitch {
+            position: relative; display: inline-block; padding: 18px 40px;
+            font-family: 'Audiowide', cursive; font-size: 16px; color: #000;
+            background: var(--neon-lime); text-transform: uppercase; text-decoration: none;
+            border-radius: 5px; border: none; cursor: pointer; overflow: hidden;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.4); transition: all 0.3s; margin-top: 25px;
+        }
+        .btn-glitch::after {
+            content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: skewX(-20deg); transition: 0.5s;
+        }
+        .btn-glitch:hover { box-shadow: 0 0 30px var(--neon-lime); transform: scale(1.05); }
+        .btn-glitch:hover::after { left: 150%; }
         
-        .quote-box {
-            background: rgba(255,255,255,0.03); border: 2px solid #333;
-            border-left: 5px solid var(--neon-pink); padding: 25px; margin: 20px 0;
-            font-size: 17px; font-weight: 600; line-height: 1.6; border-radius: 8px;
+        .btn-cyan { background: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.4); }
+        .btn-cyan:hover { box-shadow: 0 0 30px var(--neon-cyan); }
+        .btn-purple { background: var(--neon-purple); color: #fff; box-shadow: 0 0 20px rgba(176, 38, 255, 0.4); }
+        .btn-purple:hover { box-shadow: 0 0 30px var(--neon-purple); }
+
+        /* --- CUENTA REGRESIVA BOMB/DJ --- */
+        .timer-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; margin-top: 25px;
+        }
+        .timer-block {
+            background: rgba(0,0,0,0.8); border: 1px solid var(--neon-cyan);
+            border-radius: 8px; padding: 15px 5px; display: flex; flex-direction: column; align-items: center;
+            box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+        .timer-num { font-family: 'Audiowide', cursive; font-size: 28px; color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
+        .timer-txt { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; color: var(--neon-cyan); text-transform: uppercase; margin-top: 5px; }
+
+        /* --- MAPAS INTERACTIVOS --- */
+        .map-container {
+            width: 100%; height: 250px; border-radius: 12px; margin-top: 20px;
+            border: 2px solid #333; overflow: hidden; position: relative;
+        }
+        .map-container iframe { width: 100%; height: 100%; border: none; filter: invert(100%) hue-rotate(180deg) brightness(80%) contrast(150%); }
+        .map-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 243, 255, 0.1) 2px, rgba(0, 243, 255, 0.1) 4px);
         }
 
-        /* Botones de Acción (estilo Flyer) */
-        .btn-flyer {
-            display: inline-block; padding: 18px 35px; margin-top: 25px;
-            font-family: 'Righteous', cursive; font-size: 18px; letter-spacing: 2px;
-            text-transform: uppercase; text-decoration: none;
-            color: #000; background-color: var(--neon-green);
-            border: none; border-radius: 5px;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
-            transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden;
+        /* --- EL TICKET VIP (SUPER REALISTA) --- */
+        .ultimate-ticket {
+            width: 100%; background: radial-gradient(circle at 100% 50%, transparent 15px, #fff 16px) top right,
+                                radial-gradient(circle at 0 50%, transparent 15px, #fff 16px) top left;
+            background-size: 51% 100%; background-repeat: no-repeat;
+            border-radius: 10px; padding: 30px; position: relative; margin-top: 40px;
+            filter: drop-shadow(0 0 25px rgba(255,255,255,0.3)); color: #000; text-align: left;
         }
-        .btn-flyer:hover {
-            background-color: #fff; color: #000;
-            box-shadow: 0 0 30px #fff; transform: translateY(-3px);
-        }
-        .btn-flyer.blue { background-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 243, 255, 0.6); }
-
-        /* --- CUENTA REGRESIVA ESTILO LED --- */
-        .countdown-container {
-            display: flex; justify-content: center; gap: 15px; width: 100%; margin: 30px 0;
-        }
-        .led-box {
-            background: #050505; border: 2px solid #222;
-            padding: 15px 10px; border-radius: 8px; width: 80px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,1);
-            position: relative;
-        }
-        .led-box::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 30px; height: 3px; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue);
-        }
-        .led-num {
-            font-family: 'Share Tech Mono', monospace; font-size: 38px; color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue); line-height: 1;
-        }
-        .led-label {
-            font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 900;
-            color: #666; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px;
-        }
-
-        /* --- TARJETAS DE INFORMACIÓN --- */
-        .info-card {
-            background: #111; width: 100%; padding: 35px 25px; margin-top: 25px;
-            border: 2px solid var(--neon-purple); border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(176, 38, 255, 0.1);
-            position: relative;
-        }
-        .info-title { font-family: 'Righteous', cursive; font-size: 30px; margin-bottom: 15px; text-transform: uppercase; }
-        .names-list { font-size: 20px; font-weight: 800; margin-bottom: 5px; color: #fff; }
+        .ticket-header-txt { font-family: 'Audiowide', cursive; font-size: 18px; color: var(--neon-pink); border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 20px; }
+        .ticket-owner { font-family: 'Permanent Marker', cursive; font-size: 30px; line-height: 1.1; margin-bottom: 5px; text-transform: uppercase; }
+        .ticket-row { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .ticket-label { font-size: 10px; font-weight: 900; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .ticket-value { font-family: 'Audiowide', cursive; font-size: 45px; font-weight: bold; }
         
-        .map-wrapper {
-            width: 100%; height: 260px; border-radius: 8px; overflow: hidden;
-            border: 3px solid var(--neon-blue); margin-top: 20px;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        .hologram-seal {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: conic-gradient(#f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+            display: flex; justify-content: center; align-items: center;
+            animation: spin 4s linear infinite; box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
-        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg); }
+        .hologram-inner { width: 40px; height: 40px; background: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat'; font-weight: 900; font-size: 10px; }
+        
+        .barcode-img { width: 100%; height: 45px; background: repeating-linear-gradient(90deg, #000, #000 2px, transparent 2px, transparent 5px, #000 5px, #000 9px, transparent 9px, transparent 11px); margin-top: 20px; }
 
         /* --- DRESS CODE ALERT --- */
-        .alert-box {
-            border: 3px dashed var(--neon-pink); background: rgba(255, 0, 127, 0.05);
-            padding: 25px; border-radius: 10px; margin-top: 25px;
+        .zebra-box {
+            background: repeating-linear-gradient(-45deg, #111, #111 10px, #222 10px, #222 20px);
+            border: 3px dashed var(--neon-pink); border-radius: 15px; padding: 25px; margin-top: 30px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);
         }
 
-        /* --- TICKET VIP CON CÓDIGO DE BARRAS --- */
-        .vip-ticket {
-            background: #fff; color: #000; width: 100%;
-            border-radius: 10px; padding: 0; overflow: hidden;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-            margin: 30px 0; position: relative;
-        }
-        .ticket-header {
-            background: var(--neon-yellow); color: #000;
-            padding: 15px; font-family: 'Righteous', cursive; font-size: 24px; text-transform: uppercase;
-        }
-        .ticket-body { padding: 30px 20px; }
-        .ticket-name { font-family: 'Permanent Marker', cursive; font-size: 32px; color: #000; line-height: 1.1; margin-bottom: 15px; }
-        .ticket-pases-num { font-family: 'Share Tech Mono', monospace; font-size: 70px; font-weight: bold; line-height: 1; }
-        .barcode {
-            height: 50px; width: 100%; margin-top: 20px;
-            background: repeating-linear-gradient(
-                90deg,
-                #000, #000 3px, transparent 3px, transparent 6px,
-                #000 6px, #000 10px, transparent 10px, transparent 12px
-            );
-        }
-        
         /* --- FORMULARIOS --- */
-        .form-input {
-            width: 100%; padding: 18px; background: rgba(0,0,0,0.5); border: 2px solid #444;
-            border-radius: 8px; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 15px;
-            font-weight: 600; margin-bottom: 15px; outline: none; transition: all 0.3s;
+        .form-group { width: 100%; margin-bottom: 15px; position: relative; }
+        .form-control {
+            width: 100%; padding: 18px 20px; background: rgba(0,0,0,0.7);
+            border: 2px solid #333; border-radius: 8px; color: #fff; font-family: 'Montserrat', sans-serif;
+            font-size: 15px; outline: none; transition: all 0.3s;
         }
-        .form-input:focus { border-color: var(--neon-green); box-shadow: 0 0 15px rgba(57, 255, 20, 0.3); }
-        .form-input:disabled { color: var(--neon-yellow); font-weight: 900; text-align: center; border-color: var(--neon-yellow); }
-        select.form-input { appearance: none; cursor: pointer; }
-        select.form-input option { background: #111; color: #fff; }
-        textarea.form-input { resize: vertical; min-height: 120px; }
+        .form-control:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }
+        .form-control:disabled { color: var(--neon-yellow); font-weight: 800; border-color: var(--neon-yellow); background: rgba(234, 255, 0, 0.1); }
+        select.form-control { appearance: none; cursor: pointer; }
+        select.form-control option { background: #000; color: #fff; }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+
+        /* Animaciones On-Scroll */
+        .anim-hide { opacity: 0; transform: translateY(40px) scale(0.95); transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .anim-show { opacity: 1; transform: translateY(0) scale(1); }
 
         @media (max-width: 480px) {
-            .env-title { font-size: 75px; }
-            .hero-title { font-size: 70px; }
-            .led-box { width: 65px; padding: 10px 5px; }
-            .led-num { font-size: 30px; }
+            .title-3d-pink { font-size: 70px; }
+            .header-neon { font-size: 32px; }
+            .timer-num { font-size: 22px; }
+            .glass-card { padding: 30px 20px; }
+            .ultimate-ticket { padding: 20px; }
         }
+        @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
     </style>
 </head>
-<body class="bg-pattern">
+<body>
 
-    <!-- AUDIO OCULTO -->
+    <!-- FONDOS Y LUCES -->
+    <div class="ambient-lights">
+        <div class="light-blob blob-1"></div>
+        <div class="light-blob blob-2"></div>
+        <div class="light-blob blob-3"></div>
+    </div>
+    <div class="bg-overlay"></div>
+
+    <!-- AUDIO -->
     <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
     <!-- BOTÓN DE MÚSICA -->
@@ -280,209 +295,197 @@
         <svg id="music-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
 
-    <!-- PANTALLA INICIAL (PUERTA DEL CLUB) -->
+    <!-- PANTALLA INICIAL ESCÁNER VIP -->
     <div id="envelope-screen" onclick="openEnvelope()">
-        <div class="club-door-box flicker-slow">
-            <div class="env-tag">Mis XV Años</div>
-            <h1 class="env-title neon-text-pink flicker-fast">Andrea</h1>
-            <div class="btn-enter">Tocar para entrar</div>
+        <div class="vip-badge-container">
+            <div class="vip-badge">
+                <div class="badge-hole"></div>
+                <div style="font-family: 'Montserrat'; font-weight: 900; letter-spacing: 4px; color: var(--neon-cyan);">MIS XV AÑOS</div>
+                <h1 class="title-3d-pink" style="margin: 20px 0; font-size: 60px;">Andrea</h1>
+                <div class="badge-tap">ESCANEAR PARA ENTRAR</div>
+            </div>
         </div>
     </div>
 
     <!-- CONTENIDO PRINCIPAL -->
     <main id="main-invitation">
         
-        <!-- HEADER STRIPE -->
-        <div class="party-stripes"></div>
-
-        <!-- HERO SECTION -->
-        <section class="section-block">
-            <div class="anim-element delay-1">
-                <div class="neon-text-blue" style="font-size: 20px; letter-spacing: 4px; text-transform: uppercase;">Mis XV Años</div>
-                <h1 class="hero-title neon-text-pink">Andrea</h1>
+        <!-- Ticker Tape -->
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <div class="ticker-item">PARTY ROCK EDITION ★ NEON VIBES ★</div>
+                <div class="ticker-item">PARTY ROCK EDITION ★ NEON VIBES ★</div>
+                <div class="ticker-item">PARTY ROCK EDITION ★ NEON VIBES ★</div>
+                <div class="ticker-item">PARTY ROCK EDITION ★ NEON VIBES ★</div>
             </div>
+        </div>
+
+        <div class="section-wrapper">
             
-            <div class="quote-box anim-element delay-2">
-                "Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan.<br>
-                <span class="neon-text-green" style="font-size: 22px; display: block; margin-top: 10px;">¡No faltes y festeja conmigo!</span>"
+            <!-- HERO -->
+            <div class="anim-hide" style="text-align: center; margin-bottom: 20px; z-index: 2;">
+                <div style="font-family: 'Audiowide'; color: var(--neon-cyan); font-size: 18px; letter-spacing: 5px;">EST. 2026</div>
+                <h1 class="title-3d-pink" style="margin-top: 10px;">Andrea</h1>
+                <div style="background: rgba(255, 0, 127, 0.1); border-left: 4px solid var(--neon-pink); padding: 20px; margin-top: 30px; border-radius: 0 10px 10px 0;">
+                    <p style="font-size: 17px; font-weight: 700; line-height: 1.6; font-style: italic;">
+                        "Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan. <span style="color: var(--neon-cyan);">¡No faltes y festeja conmigo!</span>"
+                    </p>
+                </div>
             </div>
 
             <!-- CUENTA REGRESIVA -->
-            <div class="countdown-container anim-element delay-3">
-                <div class="led-box"><div class="led-num" id="cd-days">00</div><div class="led-label">Días</div></div>
-                <div class="led-box"><div class="led-num" id="cd-hours">00</div><div class="led-label">Hrs</div></div>
-                <div class="led-box"><div class="led-num" id="cd-mins">00</div><div class="led-label">Min</div></div>
-                <div class="led-box"><div class="led-num" id="cd-secs">00</div><div class="led-label">Seg</div></div>
-            </div>
-            
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="btn-flyer blue anim-element delay-3">Agendar Fecha</a>
-        </section>
-
-        <div class="party-stripes-green"></div>
-
-        <!-- FAMILIA -->
-        <section class="section-block">
-            <div class="info-card anim-element delay-1" style="border-color: var(--neon-green); box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);">
-                <div class="neon-text-green" style="font-size: 16px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Mis Padres</div>
-                <div class="names-list">Aida Del Carmen Vázquez</div>
-                <div class="names-list">Julio Daniel Gómez</div>
-                
-                <hr style="border: 1px solid #333; margin: 25px 0;">
-                
-                <div class="neon-text-green" style="font-size: 16px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Mis Padrinos</div>
-                <div class="names-list">Gabriela Hernández</div>
-                <div class="names-list">Jesús Rosas</div>
-            </div>
-        </section>
-
-        <!-- UBICACIONES -->
-        <section class="section-block">
-            <h1 class="info-title neon-text-blue anim-element delay-1">Ubicaciones</h1>
-            
-            <!-- Ceremonia -->
-            <div class="info-card anim-element delay-2">
-                <div style="font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px;">Ceremonia Religiosa</div>
-                <div class="neon-text-blue" style="font-size: 35px; margin: 5px 0;">1:00 PM</div>
-                <p style="font-size: 18px; font-weight: 600;">Parroquia de Cristo Rey</p>
-                
-                <div class="map-wrapper">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="glass-card anim-hide" style="border-color: var(--neon-cyan);">
+                <div style="font-family: 'Audiowide'; font-size: 14px; color: var(--neon-cyan); letter-spacing: 3px;">SYSTEM DETONATION IN:</div>
+                <div class="timer-grid">
+                    <div class="timer-block"><div class="timer-num" id="cd-days">00</div><div class="timer-txt">Días</div></div>
+                    <div class="timer-block"><div class="timer-num" id="cd-hours">00</div><div class="timer-txt">Hrs</div></div>
+                    <div class="timer-block"><div class="timer-num" id="cd-mins">00</div><div class="timer-txt">Min</div></div>
+                    <div class="timer-block"><div class="timer-num" id="cd-secs">00</div><div class="timer-txt">Seg</div></div>
                 </div>
-                <a href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic" target="_blank" class="btn-flyer blue">Abrir GPS</a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="btn-glitch btn-cyan">Agendar Fecha</a>
             </div>
 
-            <!-- Recepción -->
-            <div class="info-card anim-element delay-3" style="border-color: var(--neon-yellow);">
-                <div style="font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px;">La Fiesta</div>
-                <div class="neon-text-yellow" style="font-size: 35px; margin: 5px 0;">3:00 PM</div>
-                <p style="font-size: 18px; font-weight: 600;">Salón Quinta Santa Rosa</p>
+            <!-- FAMILIA -->
+            <div class="glass-card anim-hide" style="border-color: var(--neon-lime);">
+                <div style="font-family: 'Audiowide'; font-size: 12px; color: var(--neon-lime); letter-spacing: 3px; margin-bottom: 10px;">PRESENTADO POR MIS PADRES</div>
+                <div style="font-size: 22px; font-weight: 900; margin-bottom: 5px;">Aida Del Carmen Vázquez</div>
+                <div style="font-size: 22px; font-weight: 900;">Julio Daniel Gómez</div>
                 
-                <div class="map-wrapper" style="border-color: var(--neon-yellow);">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <a href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic" target="_blank" class="btn-flyer" style="background: var(--neon-yellow); box-shadow: 0 0 20px rgba(234, 255, 0, 0.4);">Abrir GPS</a>
-            </div>
-        </section>
-
-        <div class="party-stripes"></div>
-
-        <!-- DRESS CODE -->
-        <section class="section-block">
-            <h1 class="info-title neon-text-purple anim-element delay-1">Dress Code</h1>
-            <div class="info-card anim-element delay-2" style="border-color: var(--neon-purple); padding: 30px 20px;">
-                <p style="font-family: 'Righteous', cursive; font-size: 26px; color: #fff;">
-                    Temática 2010’s Neon <br><span class="neon-text-green" style="font-size: 32px;">PARTY ROCK</span>
-                </p>
-                <p style="margin-top: 15px; font-size: 16px; font-weight: 600;">
-                    ¡Ven listo para brillar en la oscuridad! Usa colores neón, estampados locos y mucha actitud.
-                </p>
-                <div class="alert-box">
-                    <strong class="neon-text-pink" style="font-family: 'Montserrat', sans-serif; font-size: 20px;">⚠️ REGLA DE ORO ⚠️</strong><br><br>
-                    <span style="font-weight: 800; color: #fff;">El color fucsia o rosa quedará reservado EXCLUSIVAMENTE para la quinceañera.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- REGALOS -->
-        <section class="section-block">
-            <h1 class="info-title neon-text-yellow anim-element delay-1">Regalos</h1>
-            <!-- Icono Neón -->
-            <svg class="anim-element delay-2" viewBox="0 0 24 24" style="width: 80px; height: 80px; fill: none; stroke: var(--neon-yellow); stroke-width: 1.5; filter: drop-shadow(0 0 10px var(--neon-yellow)); margin-bottom: 10px;">
-                <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="3" y="5" width="18" height="14" rx="2" stroke-linecap="round"/>
-            </svg>
-            <h2 class="neon-text-yellow anim-element delay-2" style="font-size: 28px; margin-bottom: 15px;">Lluvia de Sobres</h2>
-            <p class="anim-element delay-3" style="font-size: 18px; font-weight: 600; line-height: 1.6; max-width: 450px;">
-                El mejor regalo es tu presencia. Si deseas tener un detalle adicional, contaremos con un buzón en el evento para lluvia de sobres.
-            </p>
-        </section>
-
-        <!-- PLAYLIST & GALERÍA -->
-        <section class="section-block">
-            <!-- Playlist -->
-            <div style="width: 100%; margin-bottom: 50px;">
-                <h1 class="info-title neon-text-green anim-element delay-1">Playlist</h1>
-                <p class="anim-element delay-2" style="font-size: 16px; font-weight: 600; margin-bottom: 20px;">
-                    ¡Ayúdame a armar la playlist perfecta de los 2010s!
-                </p>
-                <div class="anim-element delay-3" style="width: 100%; border: 3px solid var(--neon-green); border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);">
-                    <iframe data-testid="embed-iframe" style="background: #000;" src="https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                </div>
-                <a href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2" target="_blank" class="btn-flyer anim-element delay-3">Agregar Canciones</a>
+                <hr style="border: 1px solid rgba(255,255,255,0.1); margin: 25px 0;">
+                
+                <div style="font-family: 'Audiowide'; font-size: 12px; color: var(--neon-lime); letter-spacing: 3px; margin-bottom: 10px;">Y MIS PADRINOS</div>
+                <div style="font-size: 22px; font-weight: 900; margin-bottom: 5px;">Gabriela Hernández</div>
+                <div style="font-size: 22px; font-weight: 900;">Jesús Rosas</div>
             </div>
 
-            <!-- Galería -->
-            <div style="width: 100%;">
-                <h1 class="info-title neon-text-blue anim-element delay-1">Galería en Vivo</h1>
-                <p class="anim-element delay-2" style="font-size: 16px; font-weight: 600; margin-bottom: 20px;">
-                    Captura la magia de la noche y comparte tus fotos en nuestra carpeta digital.
-                </p>
-                <a href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing" target="_blank" class="btn-flyer blue anim-element delay-3">Subir mis Fotos</a>
-            </div>
-        </section>
-
-        <!-- BOLETO VIP & RSVP -->
-        <section class="section-block">
-            <h1 class="info-title neon-text-pink anim-element delay-1" style="font-size: 40px;">Acceso VIP</h1>
-            
-            <!-- TICKET DE CONCIERTO -->
-            <div id="pases-section" class="vip-ticket anim-element delay-2" style="display: none;">
-                <div class="ticket-header">Ticket Oficial</div>
-                <div class="ticket-body">
-                    <div style="font-weight: 900; color: #666; text-transform: uppercase; margin-bottom: 5px;">Invitado:</div>
-                    <div id="ticket-name" class="ticket-name">Invitado VIP</div>
-                    
-                    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px;">
-                        <div>
-                            <div style="font-weight: 900; color: #666; text-transform: uppercase;">Pases válidos:</div>
-                            <div id="ticket-count" class="ticket-pases-num">0</div>
-                        </div>
-                        <div style="text-align: right;">
-                            <div style="font-weight: 900; font-size: 10px; background: #000; color: var(--neon-yellow); padding: 5px 10px; display: inline-block;">VIP ACCESS</div>
-                        </div>
+            <!-- UBICACIONES -->
+            <div class="glass-card anim-hide" style="padding-top: 50px;">
+                <h2 class="header-neon text-cyan">Locations</h2>
+                
+                <div style="text-align: left; margin-top: 30px;">
+                    <div style="font-family: 'Audiowide'; color: var(--neon-cyan);">01 // CEREMONIA</div>
+                    <div style="font-size: 30px; font-weight: 900; margin: 5px 0;">1:00 PM</div>
+                    <p style="font-weight: 600;">Parroquia de Cristo Rey</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="map-overlay"></div>
                     </div>
-                    <div class="barcode"></div>
-                    <p style="font-size: 11px; font-weight: 800; color: #888; margin-top: 10px; text-transform: uppercase;">Muestra este pase en la entrada</p>
+                    <div style="text-align: center;"><a href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic" target="_blank" class="btn-glitch btn-cyan">Ruta GPS</a></div>
+                </div>
+
+                <hr style="border: 1px solid rgba(255,255,255,0.1); margin: 40px 0;">
+
+                <div style="text-align: left;">
+                    <div style="font-family: 'Audiowide'; color: var(--neon-yellow);">02 // LA FIESTA</div>
+                    <div style="font-size: 30px; font-weight: 900; margin: 5px 0;">3:00 PM</div>
+                    <p style="font-weight: 600;">Salón Quinta Santa Rosa</p>
+                    <div class="map-container" style="border-color: var(--neon-yellow);">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="map-overlay"></div>
+                    </div>
+                    <div style="text-align: center;"><a href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic" target="_blank" class="btn-glitch" style="background: var(--neon-yellow);">Ruta GPS</a></div>
                 </div>
             </div>
 
-            <!-- FORMULARIO RSVP -->
-            <div class="info-card anim-element delay-3" style="border-color: var(--neon-blue); margin-top: 40px;">
-                <h2 class="neon-text-blue" style="font-size: 24px; margin-bottom: 25px; text-transform: uppercase;">Confirmar Asistencia</h2>
+            <!-- DRESS CODE -->
+            <div class="glass-card anim-hide" style="border-color: var(--neon-purple);">
+                <h2 class="header-neon text-lime" style="font-size: 32px;">Dress Code</h2>
+                <div style="font-family: 'Audiowide'; font-size: 26px; color: #fff;">2010's NEON</div>
+                <div style="font-family: 'Permanent Marker'; font-size: 40px; color: var(--neon-purple); line-height: 1; transform: rotate(-2deg); margin: 10px 0;">Party Rock</div>
                 
-                <input type="text" id="rsvp-name" class="form-input" placeholder="Tu nombre y apellido">
-                
-                <select id="rsvp-status" class="form-input">
-                    <option value="" disabled selected>¿Nos acompañarás?</option>
-                    <option value="yes">¡Ahí estaré list@ para la fiesta!</option>
-                    <option value="no">No podré asistir</option>
-                </select>
-                
-                <select id="rsvp-guests" class="form-input" style="display: none;">
-                    <option value="" disabled selected>¿Cuántas personas asisten?</option>
-                </select>
-                
-                <button onclick="sendRSVP()" class="btn-flyer blue" style="width: 100%;">Enviar Confirmación</button>
-            </div>
-        </section>
+                <p style="font-size: 16px; font-weight: 600; margin-top: 15px;">
+                    ¡Ven listo para brillar en la oscuridad! Estampados locos, colores vibrantes y mucha actitud.
+                </p>
 
-        <!-- MURO DE DESEOS -->
-        <section class="section-block" style="margin-bottom: 60px;">
-            <h1 class="info-title neon-text-green anim-element delay-1">Mensajes</h1>
-            <div class="info-card anim-element delay-2" style="border-color: var(--neon-green);">
-                <h2 class="neon-text-green" style="font-size: 24px; margin-bottom: 25px; text-transform: uppercase;">Muro de Deseos</h2>
-                
-                <input type="text" id="wish-name" class="form-input" placeholder="De parte de...">
-                <textarea id="wish-message" class="form-input" placeholder="Escribe tus buenos deseos para Andrea..."></textarea>
-                
-                <button onclick="sendWish()" class="btn-flyer" style="width: 100%;">Enviar Mensaje</button>
+                <div class="zebra-box">
+                    <div style="font-family: 'Audiowide'; font-size: 20px; color: var(--neon-pink); margin-bottom: 10px; animation: flicker 2s infinite;">⚠️ ATENCIÓN ⚠️</div>
+                    <p style="font-weight: 900; font-size: 15px;">El color FUCSIA / ROSA es de uso exclusivo para la quinceañera. Favor de evitarlo en tu outfit.</p>
+                </div>
             </div>
-            
-            <div style="margin-top: 60px; text-transform: uppercase; font-size: 16px; letter-spacing: 5px; font-weight: 900; color: #555;">
-                ¡Nos vemos en la pista!
-            </div>
-        </section>
 
+            <!-- REGALOS -->
+            <div class="glass-card anim-hide" style="border-color: var(--neon-yellow);">
+                <svg viewBox="0 0 24 24" style="width: 70px; height: 70px; fill: none; stroke: var(--neon-yellow); stroke-width: 1.5; filter: drop-shadow(0 0 10px var(--neon-yellow)); margin-bottom: 15px;">
+                    <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke-linecap="round"/>
+                </svg>
+                <h2 class="header-neon text-yellow" style="font-size: 28px;">Lluvia de Sobres</h2>
+                <p style="font-size: 16px; font-weight: 600; line-height: 1.6;">
+                    El mejor regalo es tu presencia. Si deseas tener un detalle adicional, contaremos con un buzón VIP en la recepción para lluvia de sobres.
+                </p>
+            </div>
+
+            <!-- PLAYLIST & GALERÍA -->
+            <div class="glass-card anim-hide">
+                <h2 class="header-neon text-lime">Playlist</h2>
+                <p style="font-weight: 600; margin-bottom: 25px;">Agrega tus hits favoritos de los 2010s a la lista oficial.</p>
+                
+                <div style="width: 100%; border: 3px solid var(--neon-lime); border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);">
+                    <iframe data-testid="embed-iframe" style="background: #000;" src="https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a" width="100%" height="352" frameBorder="0" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <a href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2" target="_blank" class="btn-glitch" style="margin-bottom: 40px;">Hacer Collab</a>
+
+                <hr style="border: 1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+
+                <h2 class="header-neon text-cyan">Galería Digital</h2>
+                <p style="font-weight: 600; margin-bottom: 25px;">Sube todas tus fotos y videos a nuestra carpeta compartida.</p>
+                <a href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing" target="_blank" class="btn-glitch btn-cyan" style="margin-top: 0;">Subir Fotos</a>
+            </div>
+
+            <!-- EL TICKET VIP (SE MUESTRA SÓLO SI HAY PASES) -->
+            <div id="pases-section" class="ultimate-ticket anim-hide" style="display: none;">
+                <div class="ticket-header-txt">/// VIP ACCESS TICKET</div>
+                <div class="ticket-label">TITULAR DEL PASE:</div>
+                <div id="ticket-name" class="ticket-owner">Invitado VIP</div>
+                
+                <div class="ticket-row">
+                    <div>
+                        <div class="ticket-label">PASES ASIGNADOS:</div>
+                        <div id="ticket-count" class="ticket-value">0</div>
+                    </div>
+                    <div class="hologram-seal">
+                        <div class="hologram-inner">VALID</div>
+                    </div>
+                </div>
+                <div class="barcode-img"></div>
+                <div style="font-family: 'Audiowide'; font-size: 9px; text-align: center; margin-top: 10px; color: #666;">SCAN AT DOOR - DO NOT DUPLICATE</div>
+            </div>
+
+            <!-- RSVP -->
+            <div class="glass-card anim-hide" style="border-color: var(--neon-cyan);">
+                <h2 class="header-neon text-cyan" style="font-size: 32px;">RSVP</h2>
+                <p style="font-weight: 600; margin-bottom: 25px;">Confirma tu asistencia y asegura tu lugar en la pista.</p>
+                
+                <div class="form-group"><input type="text" id="rsvp-name" class="form-control" placeholder="Nombre completo"></div>
+                
+                <div class="form-group">
+                    <select id="rsvp-status" class="form-control">
+                        <option value="" disabled selected>¿Estás list@ para el descontrol?</option>
+                        <option value="yes">¡Obvio! Ahí estaré</option>
+                        <option value="no">Me la pierdo :(</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <select id="rsvp-guests" class="form-control" style="display: none;">
+                        <option value="" disabled selected>¿Cuántos asisten?</option>
+                    </select>
+                </div>
+                
+                <button onclick="sendRSVP()" class="btn-glitch btn-cyan" style="width: 100%;">Enviar Confirmación</button>
+            </div>
+
+            <!-- MURO DE DESEOS -->
+            <div class="glass-card anim-hide" style="border-color: var(--neon-pink); margin-bottom: 50px;">
+                <h2 class="header-neon" style="color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); font-size: 28px;">Muro de Deseos</h2>
+                
+                <div class="form-group"><input type="text" id="wish-name" class="form-control" placeholder="De parte de..."></div>
+                <div class="form-group"><textarea id="wish-message" class="form-control" placeholder="Escribe un mensaje cool para Andrea..."></textarea></div>
+                
+                <button onclick="sendWish()" class="btn-glitch" style="background: var(--neon-pink); box-shadow: 0 0 20px rgba(255,0,127,0.5); width: 100%; color: #fff;">Dejar Mensaje</button>
+            </div>
+
+        </div>
     </main>
 
     <script>
@@ -505,15 +508,15 @@
             isMusicPlaying = !isMusicPlaying;
         }
 
-        // --- APERTURA DE LA INVITACIÓN ---
+        // --- ENTRADA AL CLUB (ESCANEO VIP) ---
         function openEnvelope() {
             const screen = document.getElementById('envelope-screen');
             if (screen.classList.contains('fade-out')) return; 
 
+            // Zoom y fade out
             screen.classList.add('fade-out');
             document.body.classList.add('content-active');
             
-            // Iniciar música
             setTimeout(() => {
                 if (bgMusic) {
                     const playPromise = bgMusic.play();
@@ -522,8 +525,7 @@
                             isMusicPlaying = true;
                             playIcon.style.display = 'none';
                             pauseIcon.style.display = 'block';
-                        }).catch(error => {
-                            console.log("Autoplay bloqueado:", error);
+                        }).catch(e => {
                             isMusicPlaying = false;
                             playIcon.style.display = 'block';
                             pauseIcon.style.display = 'none';
@@ -533,20 +535,19 @@
             }, 600);
         }
 
-        // --- OBSERVER PARA ANIMACIONES ON-SCROLL ---
+        // --- INTERSECTION OBSERVER (Animar al scrollear) ---
         document.addEventListener("DOMContentLoaded", () => {
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
+                        entry.target.classList.add('anim-show');
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.anim-element').forEach(el => observer.observe(el));
-            
+            document.querySelectorAll('.anim-hide').forEach(el => observer.observe(el));
             startCountdown();
         });
 
@@ -578,26 +579,21 @@
             }, 1000);
         }
 
-        // --- LÓGICA VIP POR URL (Sin BD dura) ---
+        // --- LÓGICA VIP (LECTURA DE URL) ---
         let pasesAsignados = 0;
         let nombreInvitado = "Invitado VIP";
         const urlParams = new URLSearchParams(window.location.search);
-        const wpNumber = "522711803147"; // Tu número
+        const wpNumber = "522711803147"; 
 
-        // Lee los parámetros de la URL: ?n=Nombre&pases=3
         let paramPases = urlParams.get('p') || urlParams.get('pases');
         let paramNombre = urlParams.get('n') || urlParams.get('nombre');
 
-        if (paramPases && !isNaN(paramPases)) {
-            pasesAsignados = parseInt(paramPases);
-        }
-        if (paramNombre) {
-            nombreInvitado = decodeURIComponent(paramNombre);
-        }
+        if (paramPases && !isNaN(paramPases)) pasesAsignados = parseInt(paramPases);
+        if (paramNombre) nombreInvitado = decodeURIComponent(paramNombre);
 
         const inputName = document.getElementById("rsvp-name");
         
-        // Mostrar Ticket y setear form si hay pases en la URL
+        // Renderizado del Ticket Realista
         if (pasesAsignados > 0) {
             document.getElementById('pases-section').style.display = 'block';
             document.getElementById('ticket-count').innerText = pasesAsignados;
@@ -609,7 +605,6 @@
             }
         }
 
-        // Lógica del select de invitados
         const rsvpStatus = document.getElementById("rsvp-status");
         const rsvpGuests = document.getElementById("rsvp-guests");
 
@@ -617,7 +612,7 @@
             if(e.target.value === 'yes') {
                 if(pasesAsignados > 0) {
                     rsvpGuests.style.display = 'block';
-                    rsvpGuests.innerHTML = '<option value="" disabled selected>¿Cuántas personas asisten?</option>';
+                    rsvpGuests.innerHTML = '<option value="" disabled selected>¿Cuántos asisten?</option>';
                     for(let i = 1; i <= pasesAsignados; i++) {
                         rsvpGuests.innerHTML += `<option value="${i}">${i} persona${i > 1 ? 's' : ''}</option>`;
                     }
@@ -628,14 +623,14 @@
             }
         });
 
-        // --- ENVÍO WHATSAPP RSVP ---
+        // --- ENVÍO A WHATSAPP ---
         function sendRSVP() {
             const name = document.getElementById("rsvp-name").value.trim();
             const status = document.getElementById("rsvp-status").value;
             const guests = document.getElementById("rsvp-guests").value;
             
             if (name === "" || status === "") {
-                alert("Por favor, selecciona una opción de asistencia.");
+                alert("Selecciona una opción de asistencia para continuar.");
                 return;
             }
             if (status === "yes" && pasesAsignados > 0 && guests === "") {
@@ -646,14 +641,13 @@
             let message = "";
             if (status === "yes") {
                 let extraTxt = guests ? ` Seremos ${guests} persona(s) en total.` : "";
-                message = encodeURIComponent(`¡Hola! Soy ${name}. Sí, confirmo con gusto mi asistencia a los XV años de Andrea (Party Rock).${extraTxt} 🎉`);
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Confirmo mi asistencia a los XV de Andrea (Neon Party).${extraTxt} 🚀`);
             } else {
-                message = encodeURIComponent(`¡Hola! Soy ${name}. Lamentablemente no me será posible asistir a los XV años de Andrea. Agradezco mucho la invitación.`);
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Lamentablemente no podré asistir a los XV de Andrea. Agradezco mucho la invitación.`);
             }
             window.open(`https://wa.me/${wpNumber}?text=${message}`, '_blank');
         }
 
-        // --- ENVÍO WHATSAPP DESEOS ---
         function sendWish() {
             const name = document.getElementById("wish-name").value.trim();
             const wish = document.getElementById("wish-message").value.trim();
