@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Andrea | Neon Party Rock</title>
+    <!-- Fuentes estilo 2010s y Neon -->
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Montserrat:wght@400;600;800&family=Permanent+Marker&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Paleta Neon Party 2010s */
+            --bg-dark: #0d0d0d;
+            --neon-pink: #ff00a0;
+            --neon-blue: #00ffff;
+            --neon-green: #39ff14;
+            --neon-yellow: #ccff00;
+            --neon-purple: #9d00ff;
+            --text-light: #ffffff;
+            --text-gray: #b3b3b3;
+            
+            --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- REPRODUCTOR DE MÚSICA (STICKY) --- */
+        .sticky-music-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px;
+            background-color: var(--bg-dark); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 0 15px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            z-index: 2000; cursor: pointer; opacity: 0; visibility: hidden;
+            transform: translateY(20px) scale(0.9); transition: all 0.6s var(--transition-smooth);
+            outline: none;
+        }
+        body.content-active .sticky-music-btn { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        .sticky-music-btn:hover { transform: scale(1.1); box-shadow: 0 0 25px var(--neon-pink), inset 0 0 15px var(--neon-pink); border-color: var(--neon-pink); }
+        .sticky-music-btn svg { width: 24px; height: 24px; fill: #fff; }
+
+        /* --- SOBRE NEON (ENTRADA AL CLUB) --- */
+        #envelope-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #050505; 
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s;
+        }
+
+        #envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .envelope-text-container {
+            text-align: center; margin-bottom: 40px;
+            animation: pulse-neon 2s infinite alternate;
+        }
+
+        .env-tag {
+            font-family: 'Orbitron', sans-serif; font-size: 16px; letter-spacing: 5px;
+            color: var(--neon-blue); font-weight: 700; text-transform: uppercase;
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .env-title {
+            font-family: 'Permanent Marker', cursive; font-size: 80px;
+            color: var(--neon-pink); line-height: 1.2; margin-top: 10px;
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            transform: rotate(-5deg);
+        }
+
+        /* Sobre rediseñado a un ticket de entrada VIP Neon */
+        .envelope-wrapper {
+            position: relative; cursor: pointer; transition: transform 0.6s var(--transition-smooth);
+            z-index: 10;
+        }
+        .envelope-wrapper:hover { transform: translateY(-8px) scale(1.05); }
+
+        .vip-pass {
+            width: 300px; padding: 40px 20px;
+            background: #111; border: 2px solid var(--neon-green);
+            border-radius: 10px; text-align: center;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.4), inset 0 0 15px rgba(57, 255, 20, 0.2);
+            position: relative; overflow: hidden;
+        }
+        
+        .vip-pass::before {
+            content: 'PARTY ROCK'; position: absolute; font-family: 'Righteous', cursive;
+            font-size: 60px; color: rgba(255,255,255,0.03); top: 20%; left: -10%; transform: rotate(-30deg);
+        }
+
+        .tap-text {
+            font-family: 'Orbitron', sans-serif; font-size: 14px;
+            color: var(--neon-yellow); text-shadow: 0 0 5px var(--neon-yellow);
+            animation: blink 1.5s infinite; text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        @keyframes pulse-neon { 0% { transform: scale(1); } 100% { transform: scale(1.03); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes floatShape { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(180deg); } 100% { transform: translateY(0) rotate(360deg); } }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        #main-invitation {
+            display: none; width: 100%; flex-direction: column; align-items: center;
+            opacity: 0; animation: fadeInMain 2s forwards 0.3s;
+            background: url('data:image/svg+xml;utf8,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+        body.content-active #main-invitation { display: flex; }
+        @keyframes fadeInMain { to { opacity: 1; } }
+
+        /* Animaciones On-Scroll */
+        .anim-element { opacity: 0; transition: all 1s var(--transition-smooth); position: relative; z-index: 2; }
+        .anim-fade-up { transform: translateY(40px); }
+        .anim-fade-up.in-view { opacity: 1; transform: translateY(0); }
+        .anim-zoom { transform: scale(0.9); }
+        .anim-zoom.in-view { opacity: 1; transform: scale(1); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.25s; }
+        .delay-3 { transition-delay: 0.4s; }
+        .delay-4 { transition-delay: 0.55s; }
+
+        .section-block {
+            width: 100%; padding: 80px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            position: relative; overflow: hidden; border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        /* Formas Neon de fondo */
+        .neon-shape {
+            position: absolute; border: 2px solid; border-radius: 50%;
+            pointer-events: none; opacity: 0.4; z-index: 0;
+            animation: floatShape 10s linear infinite;
+        }
+        .shape-blue { border-color: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); width: 80px; height: 80px; }
+        .shape-pink { border-color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); width: 50px; height: 50px; border-radius: 0; transform: rotate(45deg); }
+        .shape-green { border-color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green); width: 100px; height: 100px; border-radius: 10px; }
+
+        /* Tipografías */
+        .title-main {
+            font-family: 'Righteous', cursive; font-size: 20px; letter-spacing: 5px;
+            color: var(--neon-blue); text-transform: uppercase; margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0,255,255,0.5);
+        }
+
+        .name-hero {
+            font-family: 'Permanent Marker', cursive; font-size: 85px;
+            color: var(--neon-pink); line-height: 1.1; margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            transform: rotate(-3deg);
+        }
+
+        .quote-text {
+            font-family: 'Montserrat', sans-serif; font-size: 18px;
+            line-height: 1.6; color: var(--text-light); font-weight: 600;
+            max-width: 500px; padding: 20px; margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05); border-left: 4px solid var(--neon-yellow);
+            border-right: 4px solid var(--neon-blue); border-radius: 8px;
+        }
+
+        .section-title {
+            font-family: 'Righteous', cursive; font-size: 40px;
+            color: var(--text-light); margin-bottom: 15px; text-transform: uppercase;
+            text-shadow: 2px 2px 0px var(--neon-purple), -2px -2px 0px var(--neon-blue);
+        }
+        
+        .subtitle {
+            font-family: 'Orbitron', sans-serif; color: var(--neon-green);
+            font-size: 14px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px;
+        }
+
+        /* Marcos de fotos con estilo Neon */
+        .photo-frame {
+            width: 100%; max-width: 350px; margin: 30px auto;
+            position: relative; z-index: 2; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 0 20px var(--neon-blue);
+            border: 3px solid var(--neon-blue);
+        }
+        .photo-frame img { width: 100%; display: block; filter: contrast(1.1) saturate(1.2); transition: transform 0.5s; }
+        .photo-frame:hover img { transform: scale(1.05); }
+        .photo-frame.pink { border-color: var(--neon-pink); box-shadow: 0 0 20px var(--neon-pink); }
+        .photo-frame.green { border-color: var(--neon-green); box-shadow: 0 0 20px var(--neon-green); }
+
+        /* Botones Neon */
+        .btn-neon {
+            display: inline-block; background-color: transparent; color: #fff;
+            padding: 15px 30px; font-family: 'Orbitron', sans-serif; font-size: 14px;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            text-decoration: none; border: 2px solid var(--neon-green); border-radius: 30px;
+            cursor: pointer; transition: all 0.3s ease; margin-top: 25px;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3), inset 0 0 5px rgba(57, 255, 20, 0.3);
+        }
+        .btn-neon:hover {
+            background-color: var(--neon-green); color: #000;
+            box-shadow: 0 0 20px var(--neon-green), inset 0 0 10px var(--neon-green);
+        }
+        .btn-neon.pink { border-color: var(--neon-pink); box-shadow: 0 0 10px rgba(255, 0, 160, 0.3), inset 0 0 5px rgba(255, 0, 160, 0.3); }
+        .btn-neon.pink:hover { background-color: var(--neon-pink); color: #fff; box-shadow: 0 0 20px var(--neon-pink); }
+        .btn-neon.blue { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), inset 0 0 5px rgba(0, 255, 255, 0.3); }
+        .btn-neon.blue:hover { background-color: var(--neon-blue); color: #000; box-shadow: 0 0 20px var(--neon-blue); }
+
+        /* --- CONTADOR REGRESIVO NEON --- */
+        .countdown-wrapper {
+            display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;
+        }
+        .time-box {
+            background: rgba(255, 255, 255, 0.05); border: 2px solid var(--neon-yellow);
+            border-radius: 10px; width: 80px; height: 80px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+        }
+        .time-num { font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700; color: #fff; text-shadow: 0 0 5px var(--neon-yellow); }
+        .time-label { font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase; color: var(--text-gray); margin-top: 5px; font-weight: 600; }
+
+        /* Mapas */
+        .map-box {
+            width: 100%; max-width: 500px; height: 250px; margin: 25px auto;
+            border-radius: 10px; overflow: hidden; position: relative; z-index: 4;
+            border: 2px solid var(--neon-blue); box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        }
+        .map-box iframe { width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg) contrast(1.2); }
+
+        /* Paleta de Colores Dress Code */
+        .color-palette { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
+        .color-item { display: flex; flex-direction: column; align-items: center; width: 70px; }
+        .color-circle {
+            width: 45px; height: 45px; border-radius: 50%; margin-bottom: 10px;
+            box-shadow: 0 0 10px currentColor; border: 2px solid #fff;
+        }
+        .color-name { font-size: 10px; color: #ccc; text-transform: uppercase; text-align: center; font-weight: 600; }
+        
+        .no-pink-rule {
+            display: inline-block; padding: 15px; margin-top: 25px;
+            border: 2px dashed var(--neon-pink); color: #fff; font-weight: 700;
+            background: rgba(255,0,160,0.1); border-radius: 10px; text-transform: uppercase;
+        }
+
+        /* Información Textual */
+        .info-data { font-family: 'Righteous', cursive; font-size: 28px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
+
+        /* Lluvia de sobres */
+        .envelope-icon {
+            font-size: 60px; color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green); margin: 20px 0;
+        }
+
+        /* Formularios RSVP */
+        .form-group { width: 100%; max-width: 400px; margin: 0 auto 20px auto; position: relative; z-index: 4; }
+        .input-line {
+            width: 100%; padding: 15px 20px; background: rgba(255,255,255,0.05); border: 2px solid #333;
+            border-radius: 8px; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 14px;
+            outline: none; text-align: center; transition: all 0.3s;
+        }
+        .input-line:focus { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,255,255,0.3); }
+        .input-line::placeholder { color: #888; }
+        textarea.input-line { resize: vertical; min-height: 100px; }
+        select.input-line { appearance: none; text-align-last: center; cursor: pointer; }
+        select.input-line option { background: #111; color: #fff; }
+
+        /* Responsive Móvil */
+        @media (max-width: 400px) {
+            .name-hero { font-size: 65px; }
+            .section-title { font-size: 32px; }
+            .section-block { padding: 60px 15px; }
+            .time-box { width: 65px; height: 65px; }
+            .time-num { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO OCULTO -->
+    <audio id="bg-music" src="assets/song.mp3" loop></audio>
+
+    <!-- BOTÓN STICKY DE MÚSICA -->
+    <button id="music-btn" class="sticky-music-btn" onclick="toggleMusic()" aria-label="Controlar música">
+        <svg id="music-icon-play" style="display:none;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="music-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <!-- PANTALLA INICIAL TICKET NEON -->
+    <div id="envelope-screen">
+        <div class="envelope-text-container">
+            <div class="env-tag">Mis XV Años</div>
+            <h1 class="env-title">Andrea</h1>
+        </div>
+
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="vip-pass">
+                <div class="tap-text">Toca para entrar</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="main-invitation">
+        
+        <!-- Portada -->
+        <section class="section-block">
+            <div class="neon-shape shape-blue" style="top: 10%; left: 10%;"></div>
+            <div class="neon-shape shape-pink" style="bottom: 20%; right: 5%; animation-duration: 8s;"></div>
+
+            <div class="anim-element anim-fade-up delay-1">
+                <div class="title-main">Mis XV Años</div>
+                <h1 class="name-hero">Andrea</h1>
+                
+                <div class="quote-text">
+                    "Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan. <br><span style="color: var(--neon-yellow);">¡No faltes y festeja conmigo mis XV!</span>"
+                </div>
+            </div>
+
+            <!-- Puedes poner aquí una foto, asegúrate de tener una imagen en assets o quitar este div si no la tienes -->
+            <div class="anim-element anim-fade-up delay-4 photo-frame pink">
+                <img src="assets/1.jpg" alt="Andrea" onerror="this.style.display='none'">
+            </div>
+        </section>
+
+        <!-- Contador y Fecha -->
+        <section class="section-block">
+            <div class="neon-shape shape-green" style="top: 30%; right: -10%;"></div>
+
+            <div class="anim-element anim-fade-up delay-1 subtitle">Save The Date</div>
+            <div class="anim-element anim-fade-up delay-2 section-title" style="color: var(--neon-yellow); text-shadow: none;">10 / 10 / 2026</div>
+            <div class="anim-element anim-fade-up delay-3" style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">10 de Octubre de 2026</div>
+
+            <div class="anim-element anim-zoom delay-4 countdown-wrapper">
+                <div class="time-box">
+                    <div class="time-num" id="days">00</div>
+                    <div class="time-label">Días</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-num" id="hours">00</div>
+                    <div class="time-label">Horas</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-num" id="minutes">00</div>
+                    <div class="time-label">Min</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-num" id="seconds">00</div>
+                    <div class="time-label">Seg</div>
+                </div>
+            </div>
+
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="anim-element anim-fade-up delay-4 btn-neon">Agendar Evento</a>
+        </section>
+
+        <!-- Familia -->
+        <section class="section-block">
+            <div class="neon-shape shape-blue" style="bottom: 10%; left: 5%; width: 120px; height: 120px;"></div>
+
+            <div class="anim-element anim-fade-up delay-1" style="position: relative; z-index: 4;">
+                <div class="subtitle">Con el amor de mis padres</div>
+                <div class="info-data">Aida Del Carmen Vázquez</div>
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--neon-pink); margin: 10px 0;">&</div>
+                <div class="info-data">Julio Daniel Gómez</div>
+                
+                <div style="width: 50px; height: 3px; background-color: var(--neon-blue); margin: 30px auto; box-shadow: 0 0 10px var(--neon-blue);"></div>
+                
+                <div class="subtitle">Mis Padrinos</div>
+                <div class="info-data" style="font-size: 22px;">Gabriela Hernández</div>
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 16px; color: var(--neon-green); margin: 10px 0;">&</div>
+                <div class="info-data" style="font-size: 22px;">Jesús Rosas</div>
+            </div>
+        </section>
+
+        <!-- Ubicaciones -->
+        <section class="section-block">
+            <div class="neon-shape shape-pink" style="top: 15%; right: 10%; width: 60px; height: 60px;"></div>
+            
+            <div class="anim-element anim-fade-up delay-1 section-title">Ubicaciones</div>
+            
+            <!-- Ceremonia -->
+            <div style="margin-top: 40px;">
+                <div class="anim-element anim-fade-up delay-2 subtitle" style="color: var(--neon-blue);">Ceremonia - 1:00 p.m.</div>
+                <div class="anim-element anim-fade-up delay-3 info-data">Parroquia de Cristo Rey</div>
+                
+                <div class="anim-element anim-zoom delay-4 map-box" style="border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,255,255,0.3);">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic" target="_blank" class="anim-element anim-fade-up delay-4 btn-neon blue">Ver Mapa</a>
+            </div>
+
+            <div style="height: 60px;"></div>
+
+            <!-- Recepción -->
+            <div>
+                <div class="anim-element anim-fade-up delay-1 subtitle" style="color: var(--neon-green);">Recepción - 3:00 p.m.</div>
+                <div class="anim-element anim-fade-up delay-2 info-data">Salón Quinta Santa Rosa</div>
+                
+                <div class="anim-element anim-zoom delay-3 map-box" style="border-color: var(--neon-green); box-shadow: 0 0 15px rgba(57,255,20,0.3);">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic" target="_blank" class="anim-element anim-fade-up delay-4 btn-neon">Ver Mapa</a>
+            </div>
+        </section>
+
+        <!-- Dress Code -->
+        <section class="section-block">
+            <div class="anim-element anim-fade-up delay-1 subtitle">Dress Code</div>
+            <div class="anim-element anim-fade-up delay-2 section-title" style="color: var(--neon-blue); text-shadow: 0 0 15px var(--neon-blue);">2010’s Neon Party Rock</div>
+            
+            <p class="anim-element anim-fade-up delay-3" style="font-size: 18px; margin-top: 20px; max-width: 500px;">
+                ¡Ven listo para brillar en la oscuridad! Usa colores neón, estampados locos y mucha actitud de fiesta.
+            </p>
+            
+            <div class="anim-element anim-zoom delay-4 color-palette">
+                <div class="color-item"><div class="color-circle" style="background-color: #39ff14; color: #39ff14;"></div><div class="color-name">Verde Neón</div></div>
+                <div class="color-item"><div class="color-circle" style="background-color: #00ffff; color: #00ffff;"></div><div class="color-name">Cyan</div></div>
+                <div class="color-item"><div class="color-circle" style="background-color: #ccff00; color: #ccff00;"></div><div class="color-name">Amarillo Neón</div></div>
+                <div class="color-item"><div class="color-circle" style="background-color: #ff6600; color: #ff6600;"></div><div class="color-name">Naranja Neón</div></div>
+                <div class="color-item"><div class="color-circle" style="background-color: #ffffff; color: #ffffff;"></div><div class="color-name">Blanco</div></div>
+            </div>
+
+            <div class="anim-element anim-fade-up delay-4 no-pink-rule">
+                ⚠️ Importante ⚠️<br>
+                <span style="color: var(--neon-pink); font-size: 18px; text-shadow: 0 0 5px var(--neon-pink);">El fucsia / rosa quedará reservado EXCLUSIVAMENTE para la quinceañera.</span>
+            </div>
+        </section>
+
+        <!-- Mesa de Regalos -->
+        <section class="section-block">
+            <div class="neon-shape shape-green" style="bottom: 10%; left: -5%;"></div>
+
+            <div class="anim-element anim-fade-up delay-1 subtitle">Mesa de Regalos</div>
+            <div class="anim-element anim-fade-up delay-2 section-title">Lluvia de Sobres</div>
+            
+            <div class="anim-element anim-zoom delay-3 envelope-icon">
+                ✉️
+            </div>
+            
+            <p class="anim-element anim-fade-up delay-4" style="font-size: 18px; max-width: 500px; line-height: 1.6;">
+                El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional conmigo, la tradición de "Lluvia de Sobres" es la opción ideal (en la recepción habrá un buzón para depositarlo).
+            </p>
+        </section>
+
+        <!-- Playlist y Galería -->
+        <section class="section-block">
+            <!-- Spotify -->
+            <div style="width: 100%; max-width: 500px; margin-bottom: 60px;">
+                <div class="anim-element anim-fade-up delay-1 subtitle" style="color: var(--neon-pink);">Party Playlist</div>
+                <div class="anim-element anim-fade-up delay-2 section-title">Nuestra Música</div>
+                <p class="anim-element anim-fade-up delay-3" style="margin-bottom: 25px;">Agrega tus rolas favoritas para que no paremos de bailar.</p>
+                
+                <div class="anim-element anim-zoom delay-4" style="margin-bottom: 20px;">
+                    <iframe data-testid="embed-iframe" style="border-radius:12px; box-shadow: 0 0 15px rgba(255,0,160,0.3);" src="https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+                <a href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2" target="_blank" class="anim-element anim-fade-up delay-4 btn-neon pink">Agregar Canciones</a>
+            </div>
+
+            <!-- Galería -->
+            <div style="width: 100%; max-width: 500px;">
+                <div class="anim-element anim-fade-up delay-1 subtitle" style="color: var(--neon-blue);">Recuerdos VIP</div>
+                <div class="anim-element anim-fade-up delay-2 section-title">Galería en Vivo</div>
+                <p class="anim-element anim-fade-up delay-3" style="margin-bottom: 25px;">Sube todas las fotos y videos locos de la noche a nuestra carpeta compartida.</p>
+                
+                <a href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing" target="_blank" class="anim-element anim-fade-up delay-4 btn-neon blue">Subir mis Fotos</a>
+            </div>
+        </section>
+
+        <!-- RSVP y Pases -->
+        <section class="section-block">
+            
+            <!-- Pases Dinámicos -->
+            <div id="pases-section" style="display: none; width: 100%; margin-bottom: 50px;">
+                <div class="anim-element anim-fade-up delay-1 subtitle" style="color: var(--neon-yellow);">VIP Access</div>
+                <div class="anim-element anim-zoom delay-2" style="background: #111; border: 2px solid var(--neon-yellow); border-radius: 10px; padding: 30px 20px; max-width: 400px; margin: 0 auto; box-shadow: 0 0 20px rgba(204,255,0,0.2);">
+                    <div id="ticket-name" style="font-family: 'Righteous', cursive; font-size: 24px; color: #fff; margin-bottom: 15px; text-transform: uppercase;">Invitado Especial</div>
+                    <div style="font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Pases Asignados</div>
+                    <div id="ticket-count" style="font-family: 'Orbitron', sans-serif; font-size: 60px; font-weight: 700; color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow);">0</div>
+                </div>
+            </div>
+
+            <!-- Formulario RSVP -->
+            <div class="anim-element anim-fade-up delay-1 subtitle">RSVP</div>
+            <div class="anim-element anim-fade-up delay-2 section-title">Confirmar Asistencia</div>
+            <p class="anim-element anim-fade-up delay-3" style="margin-bottom: 30px;">Asegura tu lugar en la fiesta del año.</p>
+            
+            <div class="anim-element anim-fade-up delay-4 form-group">
+                <input type="text" id="rsvp-name" class="input-line" placeholder="Tu nombre y apellido">
+            </div>
+            <div class="anim-element anim-fade-up delay-4 form-group">
+                <select id="rsvp-status" class="input-line">
+                    <option value="" disabled selected>¿Estás listo para rockear?</option>
+                    <option value="yes">¡Ahí estaré sin falta!</option>
+                    <option value="no">No podré asistir :(</option>
+                </select>
+            </div>
+            <div class="anim-element anim-fade-up delay-4 form-group">
+                <select id="rsvp-guests" class="input-line" style="display: none;">
+                    <option value="" disabled selected>¿Cuántas personas asisten?</option>
+                </select>
+            </div>
+            
+            <button onclick="sendRSVP()" class="anim-element anim-fade-up delay-4 btn-neon">Confirmar por WhatsApp</button>
+
+            <!-- Muro de Deseos -->
+            <div class="anim-element anim-fade-up delay-1 subtitle" style="margin-top: 70px; color: var(--neon-pink);">Shoutouts</div>
+            <div class="anim-element anim-fade-up delay-2 section-title">Muro de los Deseos</div>
+            
+            <div class="anim-element anim-fade-up delay-3 form-group" style="margin-top: 25px;">
+                <input type="text" id="wish-name" class="input-line" placeholder="De parte de...">
+            </div>
+            <div class="anim-element anim-fade-up delay-4 form-group">
+                <textarea id="wish-message" class="input-line" placeholder="Déjale un mensaje increíble a Andrea..."></textarea>
+            </div>
+            <button onclick="sendWish()" class="anim-element anim-fade-up delay-4 btn-neon pink">Enviar Mensaje</button>
+            
+        </section>
+
+    </main>
+
+    <script>
+        // --- CONTROL DE AUDIO ---
+        let isMusicPlaying = false;
+        const bgMusic = document.getElementById('bg-music');
+        const playIcon = document.getElementById('music-icon-play');
+        const pauseIcon = document.getElementById('music-icon-pause');
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            } else {
+                bgMusic.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // --- ANIMACIÓN INICIAL DEL SOBRE NEON ---
+        function openEnvelope() {
+            const wrapper = document.querySelector('.envelope-wrapper');
+            const screen = document.getElementById('envelope-screen');
+            wrapper.style.transform = "scale(1.2)";
+            wrapper.style.opacity = "0";
+            
+            setTimeout(() => {
+                screen.classList.add('fade-out');
+                document.body.classList.add('content-active');
+                
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }).catch(e => {
+                    console.log("El navegador bloqueó el autoplay de audio.");
+                    isMusicPlaying = false;
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                });
+            }, 600);
+        }
+
+        // --- INTERSECTION OBSERVER (Animaciones On-Scroll) ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.anim-element').forEach(el => observer.observe(el));
+        });
+
+        // --- CONTADOR REGRESIVO ---
+        const countDownDate = new Date("Oct 10, 2026 13:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distanceAquí tienes el código completo, reescrito desde cero en cuanto a diseño para adaptarlo a una estética **2010's Neon Party Rock**, pero conservando y mejorando todas las funcionalidades que pediste (pases VIP, RSVP, música, animaciones) e integrando la cuenta regresiva.
+
+He reemplazado los tonos pastel y fuentes clásicas por fondos oscuros, tipografías llamativas y efectos de neón brillante. El color fucsia/rosa se ha omitido de la paleta principal para respetarlo como el color exclusivo de Andrea.
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Andrea (Neon Party)</title>
+    <!-- Fuentes para temática Party Rock y legibilidad -->
+    <link href="[https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Righteous&display=swap](https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Righteous&display=swap)" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta 2010s Neon Party Rock (Excluyendo Rosa/Fucsia) */
+            --bg-dark: #0a0a0a;
+            --bg-panel: #141414;
+            --neon-blue: #00f3ff;
+            --neon-green: #39ff14;
+            --neon-yellow: #eaff00;
+            --neon-purple: #9d00ff;
+            --text-light: #ffffff;
+            --text-muted: #aaaaaa;
+            
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- UTILIDADES NEÓN --- */
+        .glow-text-blue { text-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue); color: var(--neon-blue); }
+        .glow-text-green { text-shadow: 0 0 5px var(--neon-green), 0 0 15px var(--neon-green); color: var(--neon-green); }
+        .glow-text-yellow { text-shadow: 0 0 5px var(--neon-yellow), 0 0 15px var(--neon-yellow); color: var(--neon-yellow); }
+        .glow-text-purple { text-shadow: 0 0 5px var(--neon-purple), 0 0 15px var(--neon-purple); color: var(--neon-purple); }
+        
+        .title-neon {
+            font-family: 'Righteous', cursive;
+            font-size: 55px;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- BOTÓN DE MÚSICA STICKY --- */
+        .sticky-music-btn {
+            position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px;
+            background-color: var(--bg-dark); border: 2px solid var(--neon-green);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 0 15px var(--neon-green); z-index: 2000; cursor: pointer;
+            opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.9);
+            transition: var(--transition); outline: none;
+        }
+        body.content-active .sticky-music-btn { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        .sticky-music-btn:hover { background-color: var(--neon-green); box-shadow: 0 0 25px var(--neon-green); }
+        .sticky-music-btn svg { width: 22px; height: 22px; fill: var(--neon-green); transition: var(--transition); }
+        .sticky-music-btn:hover svg { fill: var(--bg-dark); }
+
+        /* --- PANTALLA INICIAL (SOBRE NEÓN) --- */
+        #envelope-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 100%);
+            z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease-in-out, visibility 1s;
+        }
+        #envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .env-title { font-size: 70px; margin-bottom: 30px; animation: pulseGlow 2s infinite alternate; }
+        
+        .envelope-wrapper {
+            position: relative; cursor: pointer; transition: transform 0.3s;
+            width: 300px; height: 200px; background: #000;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5), inset 0 0 20px rgba(0, 243, 255, 0.3);
+            display: flex; justify-content: center; align-items: center;
+            border-radius: 10px;
+        }
+        .envelope-wrapper:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--neon-blue), inset 0 0 30px var(--neon-blue); }
+        .envelope-text { font-family: 'Righteous', cursive; font-size: 24px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 3px; }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); }
+            100% { text-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple); }
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        #main-invitation {
+            display: none; width: 100%; flex-direction: column; align-items: center;
+            opacity: 0; animation: fadeInMain 1.5s forwards 0.3s;
+            background: url('data:image/svg+xml;utf8,<svg width="40" height="40" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path d="M0 0h40v40H0z" fill="%230a0a0a"/><path d="M0 39.5h40M39.5 0v40" stroke="%23ffffff" stroke-opacity="0.05" stroke-width="1"/></svg>');
+        }
+        body.content-active #main-invitation { display: flex; }
+        @keyframes fadeInMain { to { opacity: 1; } }
+
+        .section-block {
+            width: 100%; max-width: 600px; padding: 60px 20px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+
+        /* --- ANIMACIONES ON-SCROLL --- */
+        .anim-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .anim-element.in-view { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
+
+        /* --- ESTILOS DE TEXTO --- */
+        .message-text { font-size: 18px; line-height: 1.6; color: var(--text-light); font-weight: 600; margin: 20px 0; }
+        .subtitle { font-family: 'Righteous', cursive; font-size: 22px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .names-text { font-size: 20px; font-weight: 800; color: var(--text-light); margin-bottom: 5px; }
+
+        /* --- BOTONES NEÓN --- */
+        .btn-neon {
+            display: inline-block; padding: 15px 30px; font-family: 'Righteous', cursive;
+            font-size: 16px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+            color: var(--bg-dark); background-color: var(--neon-green);
+            border: 2px solid var(--neon-green); border-radius: 5px;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+            transition: var(--transition); cursor: pointer; margin-top: 20px;
+        }
+        .btn-neon:hover {
+            background-color: transparent; color: var(--neon-green);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.8), inset 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+        .btn-neon.blue { background-color: var(--neon-blue); border-color: var(--neon-blue); color: var(--bg-dark); box-shadow: 0 0 15px rgba(0, 243, 255, 0.5); }
+        .btn-neon.blue:hover { background-color: transparent; color: var(--neon-blue); box-shadow: 0 0 25px rgba(0, 243, 255, 0.8), inset 0 0 10px rgba(0, 243, 255, 0.5); }
+
+        /* --- CUENTA REGRESIVA --- */
+        .countdown-wrapper { display: flex; justify-content: center; gap: 15px; margin: 30px 0; width: 100%; }
+        .time-box {
+            background: var(--bg-panel); border: 1px solid var(--neon-yellow);
+            padding: 15px 10px; border-radius: 8px; min-width: 75px;
+            box-shadow: 0 0 10px rgba(234, 255, 0, 0.2);
+        }
+        .time-box span { display: block; font-family: 'Righteous', cursive; font-size: 30px; color: var(--neon-yellow); }
+        .time-box p { font-size: 10px; font-weight: 800; margin-top: 5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- MAPAS Y TARJETAS --- */
+        .neon-card {
+            background: var(--bg-panel); border: 1px solid var(--neon-purple);
+            border-radius: 10px; padding: 30px 20px; width: 100%; margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(157, 0, 255, 0.15);
+        }
+        .map-box {
+            width: 100%; height: 250px; border-radius: 8px; overflow: hidden;
+            border: 2px solid var(--neon-blue); margin-top: 20px;
+        }
+        .map-box iframe { width: 100%; height: 100%; border: none; filter: grayscale(80%) contrast(120%); } /* Filtro oscuro para mapas */
+
+        /* --- DRESS CODE --- */
+        .dress-code-box {
+            border-left: 4px solid var(--neon-green); padding-left: 20px; text-align: left; margin: 30px 0;
+        }
+
+        /* --- FORMULARIOS --- */
+        .input-line {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid #333;
+            border-radius: 5px; color: var(--text-light); font-family: 'Montserrat', sans-serif;
+            font-size: 14px; margin-bottom: 15px; outline: none; transition: var(--transition);
+        }
+        .input-line:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
+        .input-line:disabled { color: var(--neon-green); background: rgba(0,0,0,0.5); font-weight: 800; text-align: center; }
+        textarea.input-line { resize: vertical; min-height: 100px; }
+        select.input-line { appearance: none; cursor: pointer; }
+        select.input-line option { background: var(--bg-dark); color: #fff; }
+
+        /* --- BOLETO VIP --- */
+        .ticket-card {
+            background: repeating-linear-gradient(45deg, #0a0a0a, #0a0a0a 10px, #111 10px, #111 20px);
+            border: 2px dashed var(--neon-yellow); padding: 40px 20px; margin: 30px auto; border-radius: 10px; position: relative;
+        }
+        .ticket-count { font-family: 'Righteous', cursive; font-size: 80px; color: var(--neon-yellow); line-height: 1; margin: 10px 0; text-shadow: 0 0 20px rgba(234, 255, 0, 0.5); }
+
+        @media (max-width: 480px) {
+            .title-neon { font-size: 45px; }
+            .env-title { font-size: 50px; }
+            .countdown-wrapper { gap: 10px; }
+            .time-box { min-width: 65px; padding: 10px; }
+            .time-box span { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO OCULTO -->
+    <audio id="bg-music" src="assets/song.mp3" loop></audio>
+
+    <!-- BOTÓN STICKY DE MÚSICA -->
+    <button id="music-btn" class="sticky-music-btn" onclick="toggleMusic()" aria-label="Controlar música">
+        <svg id="music-icon-play" style="display:none;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="music-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <!-- PANTALLA INICIAL DEL SOBRE NEÓN -->
+    <div id="envelope-screen">
+        <h1 class="env-title glow-text-purple title-neon">Andrea</h1>
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <div class="envelope-text">Entrar a<br>la fiesta</div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="main-invitation">
+        
+        <!-- INTRO & CUENTA REGRESIVA -->
+        <section class="section-block">
+            <h2 class="subtitle anim-element delay-1 glow-text-blue">Mis XV Años</h2>
+            <h1 class="title-neon anim-element delay-2 glow-text-purple">ANDREA</h1>
+            
+            <p class="message-text anim-element delay-3">
+                "Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan. ¡No faltes y festeja conmigo mis XV!"
+            </p>
+
+            <div class="countdown-wrapper anim-element delay-3">
+                <div class="time-box"><span id="cd-days">00</span><p>Días</p></div>
+                <div class="time-box"><span id="cd-hours">00</span><p>Hrs</p></div>
+                <div class="time-box"><span id="cd-mins">00</span><p>Min</p></div>
+                <div class="time-box"><span id="cd-secs">00</span><p>Seg</p></div>
+            </div>
+            
+            <!-- Botón para agendar -->
+            <a href="[https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial](https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial)" target="_blank" class="btn-neon anim-element delay-3">Agendar Fecha</a>
+        </section>
+
+        <!-- FAMILIA -->
+        <section class="section-block">
+            <div class="neon-card anim-element delay-1" style="border-color: var(--neon-green);">
+                <div class="subtitle glow-text-green">Mis Padres</div>
+                <div class="names-text">Aida Del Carmen Vázquez</div>
+                <div class="names-text">Julio Daniel Gómez</div>
+                
+                <div style="height: 1px; background: rgba(57, 255, 20, 0.3); margin: 25px 0;"></div>
+                
+                <div class="subtitle glow-text-green">Mis Padrinos</div>
+                <div class="names-text">Gabriela Hernández</div>
+                <div class="names-text">Jesús Rosas</div>
+            </div>
+        </section>
+
+        <!-- UBICACIONES -->
+        <section class="section-block">
+            <h1 class="title-neon glow-text-blue anim-element delay-1">Ubicaciones</h1>
+            
+            <!-- Ceremonia -->
+            <div class="neon-card anim-element delay-2">
+                <div class="subtitle">Ceremonia Religiosa</div>
+                <div class="names-text glow-text-blue">1:00 PM</div>
+                <p style="color: var(--text-muted); margin-top: 10px;">Parroquia de Cristo Rey</p>
+                
+                <div class="map-box">
+                    <iframe src="[https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx](https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="[https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic](https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic)" target="_blank" class="btn-neon blue">Abrir GPS</a>
+            </div>
+
+            <!-- Recepción -->
+            <div class="neon-card anim-element delay-3" style="margin-top: 40px;">
+                <div class="subtitle">La Fiesta</div>
+                <div class="names-text glow-text-blue">3:00 PM</div>
+                <p style="color: var(--text-muted); margin-top: 10px;">Salón Quinta Santa Rosa</p>
+                
+                <div class="map-box">
+                    <iframe src="[https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx](https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="[https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic](https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic)" target="_blank" class="btn-neon blue">Abrir GPS</a>
+            </div>
+        </section>
+
+        <!-- DRESS CODE -->
+        <section class="section-block">
+            <h1 class="title-neon glow-text-purple anim-element delay-1">Dress Code</h1>
+            <div class="dress-code-box anim-element delay-2">
+                <p style="font-size: 24px; font-weight: 800; color: var(--text-light); text-transform: uppercase;">
+                    Temática 2010’s Neon <span class="glow-text-green">PARTY ROCK</span>
+                </p>
+                <p style="margin-top: 15px; font-size: 16px; color: var(--text-muted); line-height: 1.5;">
+                    ¡Ven listo para brillar en la oscuridad! <br><br>
+                    <strong>NOTA IMPORTANTE:</strong> El color fucsia o rosa quedará reservado exclusivamente para la quinceañera.
+                </p>
+            </div>
+        </section>
+
+        <!-- MESA DE REGALOS -->
+        <section class="section-block">
+            <h1 class="title-neon glow-text-yellow anim-element delay-1">Regalos</h1>
+            <div class="anim-element delay-2" style="margin-bottom: 20px;">
+                <!-- Icono de sobre -->
+                <svg viewBox="0 0 24 24" style="width: 60px; height: 60px; fill: var(--neon-yellow); drop-shadow: 0 0 10px var(--neon-yellow);">
+                    <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </div>
+            <h2 class="subtitle anim-element delay-2 glow-text-yellow">Lluvia de Sobres</h2>
+            <p class="message-text anim-element delay-3" style="max-width: 400px; color: var(--text-muted);">
+                El mejor regalo es tu presencia. Si deseas tener un detalle adicional, contaremos con un buzón en el evento para lluvia de sobres.
+            </p>
+        </section>
+
+        <!-- SPOTIFY PLAYLIST -->
+        <section class="section-block">
+            <h1 class="title-neon glow-text-green anim-element delay-1">Playlist</h1>
+            <p class="message-text anim-element delay-2" style="font-size: 16px; margin-bottom: 30px;">
+                ¡Ayúdame a armar la playlist perfecta de los 2010s! Agrega tus canciones favoritas.
+            </p>
+            <div class="anim-element delay-3" style="width: 100%; box-shadow: 0 0 20px rgba(57, 255, 20, 0.2); border-radius: 12px;">
+                <iframe data-testid="embed-iframe" style="border-radius:12px; background: #000;" src="[https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a](https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a)" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <a href="[https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2](https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2)" target="_blank" class="btn-neon anim-element delay-3" style="margin-top: 30px;">Agregar Canciones</a>
+        </section>
+
+        <!-- GALERÍA EN VIVO -->
+        <section class="section-block">
+            <h1 class="title-neon glow-text-blue anim-element delay-1">Galería en Vivo</h1>
+            <p class="message-text anim-element delay-2" style="font-size: 16px; margin-bottom: 20px;">
+                Captura la magia de esta noche. Comparte todas las fotos y videos que tomes directamente en nuestra carpeta digital.
+            </p>
+            <a href="[https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing](https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing)" target="_blank" class="btn-neon blue anim-element delay-3">Subir mis Fotos</a>
+        </section>
+
+        <!-- BOLETO VIP Y RSVP -->
+        <section class="section-block">
+            <h1 class="title-neon glow-text-purple anim-element delay-1">Acceso VIP</h1>
+            
+            <!-- Tarjeta VIP Dinámica -->
+            <div id="pases-section" class="ticket-card anim-element delay-2" style="display: none; width: 100%; max-width: 400px;">
+                <div class="subtitle glow-text-yellow">Boleto Digital</div>
+                <div id="ticket-name" style="font-size: 22px; font-weight: 800; color: #fff; margin: 15px 0;">Invitado VIP</div>
+                <div style="font-size: 14px; color: var(--text-muted); text-transform: uppercase; margin-top: 20px;">Pases Asignados</div>
+                <div id="ticket-count" class="ticket-count">0</div>
+                <div style="font-size: 10px; color: var(--neon-yellow); margin-top: 15px; letter-spacing: 1px;">MUESTRA ESTA PANTALLA EN LA ENTRADA</div>
+            </div>
+
+            <!-- RSVP Form -->
+            <div class="neon-card anim-element delay-3" style="border-color: var(--neon-blue); margin-top: 40px; max-width: 400px;">
+                <div class="subtitle glow-text-blue" style="margin-bottom: 25px;">Confirmar Asistencia</div>
+                
+                <input type="text" id="rsvp-name" class="input-line" placeholder="Tu nombre y apellido">
+                
+                <select id="rsvp-status" class="input-line">
+                    <option value="" disabled selected>¿Nos acompañarás?</option>
+                    <option value="yes">¡Ahí estaré list@ para la fiesta!</option>
+                    <option value="no">No podré asistir</option>
+                </select>
+                
+                <select id="rsvp-guests" class="input-line" style="display: none;">
+                    <option value="" disabled selected>¿Cuántas personas asisten?</option>
+                </select>
+                
+                <button onclick="sendRSVP()" class="btn-neon blue" style="width: 100%; border-radius: 5px;">Enviar Confirmación</button>
+            </div>
+        </section>
+
+        <!-- MURO DE DESEOS -->
+        <section class="section-block" style="margin-bottom: 50px;">
+            <h1 class="title-neon glow-text-green anim-element delay-1">Mensajes</h1>
+            <div class="neon-card anim-element delay-2" style="border-color: var(--neon-green); max-width: 400px;">
+                <div class="subtitle glow-text-green" style="margin-bottom: 25px;">Muro de Deseos</div>
+                <input type="text" id="wish-name" class="input-line" placeholder="De parte de...">
+                <textarea id="wish-message" class="input-line" placeholder="Escribe tus buenos deseos para Andrea..."></textarea>
+                <button onclick="sendWish()" class="btn-neon" style="width: 100%; border-radius: 5px;">Enviar Mensaje</button>
+            </div>
+            
+            <div style="margin-top: 50px; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; color: var(--text-muted); font-weight: 800;">
+                ¡Nos vemos en la fiesta!
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- CONTROL DE AUDIO ---
+        let isMusicPlaying = false;
+        const bgMusic = document.getElementById('bg-music');
+        const playIcon = document.getElementById('music-icon-play');
+        const pauseIcon = document.getElementById('music-icon-pause');
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            } else {
+                bgMusic.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // --- APERTURA DEL SOBRE ---
+        function openEnvelope() {
+            const screen = document.getElementById('envelope-screen');
+            screen.classList.add('fade-out');
+            document.body.classList.add('content-active');
+            
+            setTimeout(() => {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }).catch(e => {
+                    console.log("Autoplay bloqueado por el navegador.");
+                    isMusicPlaying = false;
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                });
+            }, 500);
+        }
+
+        // --- OBSERVER PARA ANIMACIONES ON-SCROLL ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.anim-element').forEach(el => observer.observe(el));
+            
+            // Iniciar cuenta regresiva
+            startCountdown();
+        });
+
+        // --- CUENTA REGRESIVA ---
+        function startCountdown() {
+            // Fecha del evento: 10 de Octubre de 2026, 13:00 hrs (1:00 PM)
+            const eventDate = new Date("October 10, 2026 13:00:00").getTime();
+
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("cd-days").innerText = "00";
+                    document.getElementById("cd-hours").innerText = "00";
+                    document.getElementById("cd-mins").innerText = "00";
+                    document.getElementById("cd-secs").innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("cd-days").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("cd-hours").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("cd-mins").innerText = mins < 10 ? "0" + mins : mins;
+                document.getElementById("cd-secs").innerText = secs < 10 ? "0" + secs : secs;
+            }, 1000);
+        }
+
+        // --- LÓGICA VIP Y URL PARAMS ---
+        let pasesAsignados = 0;
+        let nombreInvitado = "Invitado VIP";
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Número de WhatsApp proporcionado
+        const wpNumber = "522711803147";
+
+        // Mantenemos la lógica de DB para que siga funcionando tu sistema (puedes actualizar los nombres en tu backend o script generador)
+        const dbInvitados = {
+            "1": { nombre: "Familia Ejemplo", pases: 4 },
+            "2": { nombre: "Amigo VIP", pases: 1 }
+            // Agrega los invitados aquí si los sigues inyectando desde Sheets/Apps Script
+        };
+
+        let paramId = urlParams.get('id');
+        let paramPases = urlParams.get('p') || urlParams.get('pases');
+        let paramNombre = urlParams.get('n'); // Por si pasas el nombre directo en la URL
+
+        if (paramId && dbInvitados[paramId]) {
+            pasesAsignados = dbInvitados[paramId].pases;
+            nombreInvitado = dbInvitados[paramId].nombre;
+        } else if (paramPases && !isNaN(paramPases)) {
+            pasesAsignados = parseInt(paramPases);
+            if(paramNombre) nombreInvitado = decodeURIComponent(paramNombre);
+        } else {
+            pasesAsignados = 5; // Default de prueba, ajusta según necesidad
+        }
+
+        const inputName = document.getElementById("rsvp-name");
+        
+        // Mostrar Boleto y setear form si hay pases asignados (por URL)
+        if ((paramId || paramPases) && pasesAsignados > 0) {
+            document.getElementById('pases-section').style.display = 'block';
+            document.getElementById('ticket-count').innerText = pasesAsignados;
+            document.getElementById('ticket-name').innerText = nombreInvitado;
+            
+            inputName.value = nombreInvitado;
+            inputName.disabled = true;
+        }
+
+        // Lógica del select de invitados
+        const rsvpStatus = document.getElementById("rsvp-status");
+        const rsvpGuests = document.getElementById("rsvp-guests");
+
+        rsvpStatus.addEventListener('change', (e) => {
+            if(e.target.value === 'yes') {
+                rsvpGuests.style.display = 'block';
+                rsvpGuests.innerHTML = '<option value="" disabled selected>¿Cuántas personas asisten?</option>';
+                for(let i = 1; i <= pasesAsignados; i++) {
+                    rsvpGuests.innerHTML += `<option value="${i}">${i} persona${i > 1 ? 's' : ''}</option>`;
+                }
+            } else {
+                rsvpGuests.style.display = 'none';
+                rsvpGuests.value = ""; 
+            }
+        });
+
+        // --- WHATSAPP RSVP ---
+        function sendRSVP() {
+            const name = document.getElementById("rsvp-name").value.trim();
+            const status = document.getElementById("rsvp-status").value;
+            const guests = document.getElementById("rsvp-guests").value;
+            
+            if (name === "" || status === "") {
+                alert("Por favor, selecciona una opción de asistencia.");
+                return;
+            }
+            if (status === "yes" && guests === "") {
+                alert("Por favor, indica cuántas personas asistirán.");
+                return;
+            }
+
+            let message = "";
+            if (status === "yes") {
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Sí, confirmo con gusto mi asistencia a los XV años de Andrea (Neon Party). Seremos ${guests} persona(s) en total. 🎉`);
+            } else {
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Lamentablemente no me será posible asistir a los XV años de Andrea. Agradezco mucho la invitación.`);
+            }
+            window.open(`[https://wa.me/$](https://wa.me/$){wpNumber}?text=${message}`, '_blank');
+        }
+
+        // --- WHATSAPP MURO DE DESEOS ---
+        function sendWish() {
+            const name = document.getElementById("wish-name").value.trim();
+            const wish = document.getElementById("wish-message").value.trim();
+            
+            if (name === "" || wish === "") {
+                alert("Por favor, ingresa tu nombre y tu mensaje.");
+                return;
+            }
+            const message = encodeURIComponent(`Hola Andrea, soy ${name}. Te envío este mensaje con mucho cariño:\n\n"${wish}"`);
+            window.open(`[https://wa.me/$](https://wa.me/$){wpNumber}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
