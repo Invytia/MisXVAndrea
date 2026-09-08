@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis XV Años - Andrea | TheSlap.com</title>
-    <!-- Fuentes estilo TheSlap y 2010s -->
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;900&family=Verdana&display=swap" rel="stylesheet">
+    <!-- Fuentes: 'Nunito' para UI moderna y limpia, 'Chewy' para títulos divertidos estilo Nickelodeon -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colores oficiales TheSlap / PearPhone */
-            --pear-pink: #e6007e; /* Color del PearPhone de la imagen */
-            --slap-pink: #ff007f;
-            --slap-yellow: #ffea00;
-            --slap-blue-light: #aae4ff;
-            --slap-red: #d11a2a;
-            --screen-bg: #0b132b;
+            /* Paleta Oficial TheSlap */
+            --slap-pink: #FF0055;
+            --slap-pink-dark: #CC0044;
+            --slap-blue-light: #B3E5FC;
+            --slap-yellow: #FFD54F;
+            --slap-red: #D32F2F;
+            --slap-bg: #1A1A24;
+            --pear-purple: #8E24AA;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body, html {
-            width: 100%;
-            background-color: #111;
-            background-image: radial-gradient(#333 1px, transparent 1px);
-            background-size: 20px 20px;
-            font-family: 'Verdana', sans-serif;
-            color: #333;
+        body {
+            background-color: #000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(142, 36, 170, 0.2), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 85, 0.2), transparent 25%);
+            font-family: 'Nunito', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,469 +33,519 @@
             padding: 10px;
         }
 
-        /* --- PEARPHONE EXTERIOR (FORMA ASIMÉTRICA) --- */
-        .pear-phone {
+        /* --- MARCO DEL DISPOSITIVO (Elegante y simétrico) --- */
+        .device-wrapper {
             width: 100%;
             max-width: 420px;
             height: 90vh;
             min-height: 700px;
             max-height: 850px;
-            background: linear-gradient(135deg, #ff1493, #c70066);
-            /* Forma asimétrica del PearPhone inspirada en la imagen 1 */
-            border-radius: 120px 180px 160px 150px / 180px 220px 130px 170px;
-            border: 3px solid #ff99cc;
+            background: linear-gradient(145deg, #2a2a35, #111);
+            border-radius: 45px;
             box-shadow: 
-                inset 10px 10px 25px rgba(255,255,255,0.4),
-                inset -10px -10px 25px rgba(0,0,0,0.3),
-                10px 20px 40px rgba(0,0,0,0.6);
-            padding: 35px 18px 85px 18px;
+                0 0 0 4px #444,
+                0 0 0 10px var(--pear-purple),
+                0 20px 50px rgba(0,0,0,0.8),
+                inset 0 4px 10px rgba(255,255,255,0.2);
+            padding: 20px 12px 70px 12px;
             position: relative;
             display: flex;
             flex-direction: column;
         }
 
-        /* Botón físico de Pera (Home Button) */
-        .pear-home-btn {
+        /* Botón Home (Pera) */
+        .home-button {
             position: absolute;
-            bottom: 20px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle at 30% 30%, #ff66cc, #cc0077);
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(to bottom, #333, #111);
             border-radius: 50%;
-            border: 2px solid #ff99cc;
-            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.3);
+            border: 2px solid #555;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            z-index: 100;
         }
-        .pear-home-btn svg { width: 22px; height: 22px; fill: white; opacity: 0.9; }
-        .pear-home-btn:active { box-shadow: inset 0 3px 6px rgba(0,0,0,0.6); transform: translateX(-50%) scale(0.95); }
+        /* Icono de Pera SVG */
+        .home-button svg {
+            width: 20px; height: 20px; fill: #aaa; transition: 0.3s;
+        }
+        .home-button:active svg { fill: #fff; transform: scale(0.9); }
 
-        /* --- PANTALLA DEL PEARPHONE --- */
-        .pear-screen {
+        /* --- PANTALLA PRINCIPAL --- */
+        .screen {
+            background-color: var(--slap-bg);
+            /* Patrón de estrellas/puntos sutil */
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
             width: 100%;
             height: 100%;
-            background: var(--screen-bg) url('https://www.transparenttextures.com/patterns/stardust.png');
-            border: 12px solid #000;
-            /* Pantalla ligeramente redondeada para encajar en el teléfono pero ser leíble */
-            border-radius: 50px 70px 50px 60px / 70px 80px 50px 70px;
+            border-radius: 30px;
             overflow-y: auto;
             overflow-x: hidden;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            border: 2px solid #000;
         }
-        
-        /* Scrollbar estilo 2000s */
-        .pear-screen::-webkit-scrollbar { width: 6px; }
-        .pear-screen::-webkit-scrollbar-track { background: #111; }
-        .pear-screen::-webkit-scrollbar-thumb { background: var(--slap-pink); border-radius: 10px; }
+        .screen::-webkit-scrollbar { width: 0px; } /* Ocultar scrollbar para estética de app */
 
-        /* --- PANTALLA DE BLOQUEO --- */
+        /* --- PANTALLA DE BLOQUEO SKEUMÓRFICA (Estilo 2010) --- */
         #lock-screen {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png');
-            z-index: 9999; display: flex; flex-direction: column;
-            justify-content: space-between; align-items: center; padding: 60px 20px;
+            background: url('https://images.unsplash.com/photo-1534796636912-3652850a15ed?q=80&w=1000&auto=format&fit=crop') center/cover;
+            z-index: 100; display: flex; flex-direction: column;
+            justify-content: space-between; align-items: center; padding: 50px 20px;
             transition: transform 0.6s cubic-bezier(0.8, 0, 0.2, 1);
             cursor: pointer;
         }
+        #lock-screen::before {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.4); z-index: -1;
+        }
         #lock-screen.unlocked { transform: translateY(-100%); }
-        .lock-time { font-family: 'Nunito', sans-serif; font-size: 65px; color: #fff; font-weight: 900; }
-        .lock-date { font-family: 'Nunito', sans-serif; font-size: 16px; color: #aaa; margin-top: -10px; }
         
-        .slide-to-unlock {
-            background: linear-gradient(to right, #222, #444, #222);
-            border: 2px solid #555; border-radius: 20px; padding: 15px 30px;
-            color: #fff; font-family: 'Nunito', sans-serif; font-weight: bold;
-            font-size: 16px; text-transform: uppercase;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
-            position: relative; overflow: hidden;
+        .lock-time { font-size: 75px; color: #fff; font-weight: 300; letter-spacing: -2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); line-height: 1; }
+        .lock-date { font-size: 16px; color: #eee; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.5); margin-top: 5px; }
+
+        /* Slider de desbloqueo antiguo */
+        .slider-container {
+            width: 90%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px; padding: 5px; position: relative;
+            backdrop-filter: blur(5px);
         }
-        .slide-to-unlock::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: gloss 2s infinite;
+        .slider-text {
+            text-align: center; color: rgba(255,255,255,0.7); font-weight: bold;
+            font-size: 14px; text-transform: uppercase; line-height: 40px;
+            background: linear-gradient(90deg, #888, #fff, #888);
+            background-size: 200% auto; color: transparent; -webkit-background-clip: text;
+            animation: shine 2.5s linear infinite;
         }
-        @keyframes gloss { 100% { left: 200%; } }
+        @keyframes shine { to { background-position: 200% center; } }
+        .slider-btn {
+            position: absolute; top: 5px; left: 5px; width: 50px; height: 40px;
+            background: linear-gradient(to bottom, #ddd, #999); border-radius: 8px;
+            box-shadow: inset 0 1px 1px #fff, 0 2px 4px rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .slider-btn::after { content: '▶'; color: #444; font-size: 16px; }
 
         /* --- HEADER THE SLAP --- */
-        .theslap-header {
-            display: flex; justify-content: center; align-items: center;
-            padding: 15px 10px; margin-top: 10px;
+        .slap-header {
+            background: linear-gradient(to bottom, #111, #222);
+            padding: 15px 20px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        .theslap-logo {
-            font-family: 'Chewy', cursive; font-size: 38px;
-            color: #fff; text-shadow: 2px 2px 0px #000, 0 0 10px rgba(255,255,255,0.5);
-            display: flex; align-items: center; gap: 8px;
+        .slap-logo {
+            font-family: 'Chewy', cursive;
+            font-size: 32px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .hand-icon {
-            background: #ff8c00; width: 35px; height: 35px; border-radius: 5px;
-            display: inline-flex; justify-content: center; align-items: center;
-            border: 2px solid #fff; box-shadow: 2px 2px 0 #000; transform: rotate(-10deg);
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            border-radius: 6px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display: flex; justify-content: center; align-items: center;
+            transform: rotate(-10deg);
         }
 
-        /* --- CAJAS DE "UPDATE" (Diseño exacto de la imagen 2) --- */
-        .slap-feed { padding: 10px; display: flex; flex-direction: column; gap: 15px; }
+        /* --- FEED DE PUBLICACIONES (Diseño exacto y premium) --- */
+        .feed { padding: 20px 15px; display: flex; flex-direction: column; gap: 20px; }
 
-        .slap-update-wrapper {
-            display: flex; align-items: stretch; width: 100%;
-            filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.5));
+        .update-card {
+            display: flex;
+            width: 100%;
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
+            animation: popIn 0.6s ease backwards;
         }
+        @keyframes popIn { 0% { opacity: 0; transform: translateY(20px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
         
-        .slap-update-tab {
-            background: var(--slap-pink);
+        .update-card:nth-child(2) { animation-delay: 0.2s; }
+        .update-card:nth-child(3) { animation-delay: 0.4s; }
+
+        /* Pestaña izquierda Rosa */
+        .update-tab {
+            background: linear-gradient(to right, var(--slap-pink-dark), var(--slap-pink));
+            width: 45px;
+            border-radius: 12px 0 0 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #990033;
+            border-right: none;
+            box-shadow: inset 2px 2px 4px rgba(255,255,255,0.3);
+        }
+        .update-tab span {
             color: var(--slap-yellow);
             font-family: 'Nunito', sans-serif;
-            font-weight: 900; font-size: 18px;
-            writing-mode: vertical-rl; transform: rotate(180deg);
-            text-align: center; padding: 15px 5px;
-            border-radius: 12px 0 0 12px;
-            border: 3px solid var(--slap-pink); border-right: none;
+            font-weight: 900;
+            font-size: 16px;
             letter-spacing: 2px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
         }
-        
-        .slap-update-content {
-            /* Mitad arriba blanca, mitad abajo azul pastel */
-            background: linear-gradient(to bottom, #ffffff 75%, var(--slap-blue-light) 75%);
-            border: 3px solid var(--slap-pink);
+
+        /* Contenido Derecho */
+        .update-body {
+            flex: 1;
+            background: #fff;
             border-radius: 0 12px 12px 12px;
-            flex-grow: 1; display: flex; flex-direction: column;
-            position: relative; overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #ccc;
         }
 
-        .slap-text {
-            padding: 15px; flex-grow: 1; color: #111;
-            font-size: 13px; line-height: 1.4;
+        .update-content {
+            padding: 15px;
+            flex: 1;
         }
-        .slap-text h2 { font-family: 'Chewy', cursive; color: var(--slap-pink); font-size: 22px; margin-bottom: 5px; letter-spacing: 1px; }
-        .slap-text h3 { font-family: 'Nunito', sans-serif; font-size: 16px; margin-bottom: 5px; color: #333; }
-        
-        .slap-feeling {
-            padding: 6px 15px;
-            font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 14px;
-            color: var(--slap-red); letter-spacing: 1px;
-            display: flex; align-items: center; gap: 5px;
+        .update-content h2 {
+            font-family: 'Chewy', cursive;
+            color: var(--slap-pink);
+            font-size: 24px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
-        .slap-feeling .mood { color: #000; font-weight: 700; }
+        .update-content h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        .update-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            font-weight: 600;
+        }
 
-        /* --- ELEMENTOS INTERNOS Y BOTONES --- */
-        .btn-slap {
+        /* Barra Inferior "Feeling" Azul */
+        .update-feeling {
+            background: linear-gradient(to bottom, #E1F5FE, var(--slap-blue-light));
+            padding: 10px 15px;
+            border-top: 1px solid #B3E5FC;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feeling-label {
+            color: var(--slap-red);
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        .feeling-mood {
+            color: #000;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        /* --- ELEMENTOS UI (Botones, Inputs, Mapas) --- */
+        .btn-glossy {
             display: block; width: 100%; text-align: center;
-            background: var(--slap-pink); color: #fff;
-            font-family: 'Nunito', sans-serif; font-weight: 900; text-transform: uppercase;
-            padding: 10px; border: 2px solid #000; border-radius: 8px;
-            text-decoration: none; margin-top: 10px;
-            box-shadow: 2px 2px 0px #000; cursor: pointer; transition: all 0.1s;
+            background: linear-gradient(to bottom, #ff4081, #c2185b);
+            color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+            padding: 12px; border: 1px solid #880e4f; border-radius: 8px;
+            text-decoration: none; margin-top: 12px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 6px rgba(0,0,0,0.2);
+            cursor: pointer; transition: all 0.1s;
         }
-        .btn-slap:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px #000; }
-        .btn-blue { background: #00bfff; }
+        .btn-glossy:active { transform: translateY(2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.2); }
+        .btn-blue { background: linear-gradient(to bottom, #4fc3f7, #0288d1); border-color: #01579b; }
 
-        .form-input {
-            width: 100%; padding: 8px; margin-bottom: 8px;
-            border: 2px solid #ccc; border-radius: 6px;
-            font-family: 'Verdana', sans-serif; font-size: 12px;
+        .retro-input {
+            width: 100%; padding: 12px; margin-bottom: 10px;
+            background: #f5f5f5; border: 1px solid #ccc;
+            border-radius: 6px; font-family: 'Nunito', sans-serif;
+            font-size: 14px; font-weight: 600; color: #333;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
-        .form-input:focus { border-color: var(--slap-pink); outline: none; }
-        textarea.form-input { resize: vertical; min-height: 60px; }
+        .retro-input:focus { outline: none; border-color: var(--slap-pink); background: #fff; }
+        textarea.retro-input { resize: vertical; min-height: 80px; }
 
-        .map-box { border: 2px solid #000; border-radius: 8px; overflow: hidden; margin-top: 10px; }
-        .map-box iframe { width: 100%; height: 180px; border: none; display: block; }
+        .map-container {
+            border: 2px solid #eee; border-radius: 8px; overflow: hidden;
+            margin-top: 10px; background: #eee;
+        }
+        .map-container iframe { width: 100%; height: 160px; border: none; display: block; filter: contrast(1.1); }
 
-        /* --- APP DOCK (Iconos estilo imagen 2) --- */
-        .app-dock {
-            display: flex; justify-content: space-evenly; align-items: center;
-            background: rgba(0,0,0,0.8); padding: 10px;
-            border-top: 1px solid #444; position: sticky; bottom: 0; z-index: 50;
+        /* Temporizador */
+        .timer { display: flex; justify-content: space-between; margin-top: 15px; }
+        .time-box {
+            background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+            border: 1px solid #ccc; border-radius: 8px;
+            width: 23%; text-align: center; padding: 8px 0;
+            box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(0,0,0,0.1);
         }
-        .app-icon {
-            display: flex; flex-direction: column; align-items: center; gap: 4px;
-            color: #fff; font-size: 10px; font-family: 'Nunito', sans-serif; cursor: pointer;
-        }
-        .app-icon-box {
-            width: 35px; height: 35px; background: #000; border: 2px solid var(--slap-pink);
-            border-radius: 8px; display: flex; justify-content: center; align-items: center;
-            font-size: 16px; box-shadow: 0 0 5px var(--slap-pink);
-        }
+        .time-box span { display: block; }
+        .t-num { font-size: 20px; font-weight: 900; color: var(--slap-pink); }
+        .t-lbl { font-size: 10px; font-weight: 800; color: #666; text-transform: uppercase; }
 
-        /* --- MÚSICA FLOTANTE --- */
-        .music-floater {
-            position: absolute; top: 15px; right: 15px; width: 40px; height: 40px;
-            background: var(--slap-yellow); border: 2px solid #000; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center; cursor: pointer;
-            box-shadow: 2px 2px 0px #000; z-index: 100;
+        /* Botón de Música Flotante */
+        .music-btn {
+            position: absolute; bottom: 20px; right: 20px;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--slap-yellow), #FFB300);
+            border: 2px solid #fff; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 100; cursor: pointer;
         }
-        .music-floater svg { width: 20px; height: 20px; fill: #000; }
-
-        /* Cuenta Regresiva */
-        .timer-grid { display: flex; justify-content: space-between; margin-top: 10px; }
-        .time-block { text-align: center; background: #eee; border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 23%; }
-        .time-num { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 900; color: var(--slap-pink); }
-        .time-txt { font-size: 9px; color: #555; font-weight: bold; text-transform: uppercase; }
+        .music-btn svg { width: 24px; height: 24px; fill: #000; }
 
     </style>
 </head>
 <body>
 
-    <!-- AUDIO OCULTO -->
+    <!-- AUDIO -->
     <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
-    <!-- PEARPHONE -->
-    <div class="pear-phone">
-        <div class="pear-screen" id="main-screen">
+    <!-- CARCASA DEL DISPOSITIVO -->
+    <div class="device-wrapper">
+        
+        <!-- PANTALLA -->
+        <div class="screen" id="app-screen">
             
-            <!-- PANTALLA DE BLOQUEO -->
-            <div id="lock-screen" onclick="unlockPhone()">
+            <!-- LOCK SCREEN -->
+            <div id="lock-screen" onclick="unlockDevice()">
                 <div style="text-align: center;">
                     <div class="lock-time" id="clock-display">12:00</div>
                     <div class="lock-date">Viernes, 10 de Octubre</div>
                 </div>
                 
-                <div class="slide-to-unlock">▶ Desliza para abrir</div>
+                <div class="slider-container">
+                    <div class="slider-btn"></div>
+                    <div class="slider-text">Desliza para abrir</div>
+                </div>
             </div>
 
-            <!-- BOTÓN MÚSICA INTERNO -->
-            <div class="music-floater" onclick="toggleMusic()">
-                <svg id="music-play" style="display:none;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg id="music-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-            </div>
-
-            <!-- THE SLAP HEADER -->
-            <div class="theslap-header">
-                <div class="theslap-logo">
-                    <div class="hand-icon">✋</div>
+            <!-- HEADER THE SLAP -->
+            <div class="slap-header">
+                <div class="slap-logo">
+                    <div class="hand-icon"><span style="color:white; font-size:20px;">✋</span></div>
                     TheSlap.com
                 </div>
             </div>
 
-            <!-- FEED DE ACTUALIZACIONES -->
-            <div class="slap-feed">
+            <!-- BOTÓN MÚSICA -->
+            <div class="music-btn" onclick="toggleMusic()">
+                <svg id="m-play" style="display:none;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="m-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </div>
 
-                <!-- UPDATE 1: BIENVENIDA -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
+            <!-- FEED PRINCIPAL -->
+            <div class="feed">
+
+                <!-- POST 1: BIENVENIDA -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content">
                             <h2>Andrea's XV</h2>
-                            <p style="font-style: italic;">"Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan. ¡No faltes y festeja conmigo esta noche de Hollywood Arts!"</p>
+                            <p style="font-style: italic;">"Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan. ¡No faltes y festeja conmigo esta noche estilo Hollywood Arts!"</p>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">EMOCIONADA ✨</span>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">EMOCIONADA ✨</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- UPDATE 2: CUENTA REGRESIVA -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
+                <!-- POST 2: CUENTA REGRESIVA -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content">
                             <h3>Falta para el Gran Show:</h3>
-                            <div class="timer-grid">
-                                <div class="time-block"><div class="time-num" id="cd-days">00</div><div class="time-txt">Días</div></div>
-                                <div class="time-block"><div class="time-num" id="cd-hours">00</div><div class="time-txt">Hrs</div></div>
-                                <div class="time-block"><div class="time-num" id="cd-mins">00</div><div class="time-txt">Min</div></div>
-                                <div class="time-block"><div class="time-num" id="cd-secs">00</div><div class="time-txt">Seg</div></div>
+                            <div class="timer">
+                                <div class="time-box"><span class="t-num" id="cd-days">00</span><span class="t-lbl">Días</span></div>
+                                <div class="time-box"><span class="t-num" id="cd-hours">00</span><span class="t-lbl">Hrs</span></div>
+                                <div class="time-box"><span class="t-num" id="cd-mins">00</span><span class="t-lbl">Min</span></div>
+                                <div class="time-box"><span class="t-num" id="cd-secs">00</span><span class="t-lbl">Seg</span></div>
                             </div>
-                            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="btn-slap btn-blue">Guardar Fecha</a>
+                            <button onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z', '_blank')" class="btn-glossy btn-blue">Guardar Fecha</button>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">ANSIOSA ⏱️</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- UPDATE 3: FAMILIA -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text" style="text-align: center;">
-                            <p style="font-size: 10px; color: #666; font-weight: bold;">PRESENTADO POR MIS PADRES</p>
-                            <p style="font-weight: bold; color: var(--slap-pink); font-size: 16px;">Aida Del Carmen Vázquez<br>Julio Daniel Gómez</p>
-                            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 10px 0;">
-                            <p style="font-size: 10px; color: #666; font-weight: bold;">Y MIS PADRINOS</p>
-                            <p style="font-weight: bold; color: #00bfff; font-size: 16px;">Gabriela Hernández<br>Jesús Rosas</p>
-                        </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">BENDECIDA ❤️</span>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">ANSIOSA ⏱️</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- UPDATE 4: LOCACIONES -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
-                            <h3>📍 Ceremonia (1:00 PM)</h3>
+                <!-- POST 3: FAMILIA -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content" style="text-align: center;">
+                            <p style="font-size: 11px; color: #888; font-weight: 800; letter-spacing: 1px;">PRESENTADO POR MIS PADRES</p>
+                            <p style="font-weight: 900; color: var(--slap-pink); font-size: 18px; margin: 5px 0 15px 0;">Aida Del Carmen Vázquez<br>Julio Daniel Gómez</p>
+                            
+                            <p style="font-size: 11px; color: #888; font-weight: 800; letter-spacing: 1px;">Y MIS PADRINOS</p>
+                            <p style="font-weight: 900; color: #0288d1; font-size: 18px; margin-top: 5px;">Gabriela Hernández<br>Jesús Rosas</p>
+                        </div>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">BENDECIDA ❤️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POST 4: LOCACIONES -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content">
+                            <h3>⛪ Ceremonia (1:00 PM)</h3>
                             <p>Parroquia de Cristo Rey</p>
-                            <div class="map-box">
+                            <div class="map-container">
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx"></iframe>
                             </div>
-                            <a href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic" target="_blank" class="btn-slap">Mapa Ceremonia</a>
+                            <button onclick="window.open('https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic', '_blank')" class="btn-glossy">Mapa Ceremonia</button>
 
-                            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 15px 0;">
+                            <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
 
-                            <h3>🎉 La Fiesta (3:00 PM)</h3>
+                            <h3>🎉 Recepción (3:00 PM)</h3>
                             <p>Salón Quinta Santa Rosa</p>
-                            <div class="map-box">
+                            <div class="map-container">
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx"></iframe>
                             </div>
-                            <a href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic" target="_blank" class="btn-slap btn-blue">Mapa Recepción</a>
+                            <button onclick="window.open('https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic', '_blank')" class="btn-glossy btn-blue">Mapa Recepción</button>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">LISTA PARA SALIR 🚗</span>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">LISTA PARA SALIR 🚗</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- UPDATE 5: DRESS CODE -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
+                <!-- POST 5: DRESS CODE -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content">
                             <h3>👗 Dress Code: Glamour</h3>
-                            <p>Ven list@ para brillar frente a las cámaras. Estilo formal.</p>
+                            <p>Ven list@ para brillar frente a las cámaras. Estilo formal de alfombra roja.</p>
                             
-                            <div style="background: #fff0f5; border: 2px dashed var(--slap-pink); padding: 10px; margin-top: 10px; border-radius: 5px; text-align: center;">
-                                <p style="color: var(--slap-pink); font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 14px;">🚫 ATENCIÓN 🚫</p>
-                                <p style="font-size: 11px; margin-top: 5px;">El color FUCSIA / ROSA es de uso exclusivo para la quinceañera. Favor de evitarlo.</p>
+                            <div style="background: #FFF0F5; border: 2px dashed #F06292; padding: 15px; margin-top: 15px; border-radius: 8px; text-align: center;">
+                                <p style="color: #D81B60; font-weight: 900; font-size: 14px; margin-bottom: 5px;">🚫 ALERTA DE VESTUARIO 🚫</p>
+                                <p style="font-size: 12px; color: #333;">El color FUCSIA/ROSA es de uso exclusivo para la quinceañera. Favor de evitarlo en tu outfit.</p>
                             </div>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">FABULOSA 💅</span>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">FABULOSA 💅</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- UPDATE 6: REGALOS Y PLAYLIST -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
-                            <h3>🎁 Lluvia de Sobres</h3>
-                            <p style="margin-bottom: 15px;">El mejor regalo es tu presencia. Si deseas tener un detalle, contaremos con buzón VIP en recepción.</p>
+                <!-- TICKET VIP -->
+                <div id="pases-section" class="update-card" style="display: none;">
+                    <div class="update-tab" style="background: var(--slap-yellow);">
+                        <span style="color: #000; text-shadow: none;">TICKET</span>
+                    </div>
+                    <div class="update-body" style="background: #FFFDE7; border-color: #FBC02D;">
+                        <div class="update-content" style="text-align: center;">
+                            <h2 style="color: #F57F17; font-size: 28px;">★ VIP ACCESS ★</h2>
+                            <p style="font-size: 11px; color: #888; text-transform: uppercase; margin-top: 10px;">Invitado Especial:</p>
+                            <p id="ticket-name" style="font-weight: 900; font-size: 20px; color: #333;">Invitado</p>
                             
-                            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 15px 0;">
-
-                            <h3>🎵 Playlist y Fotos</h3>
-                            <p>¡Agrega tus canciones y sube las fotos a nuestra carpeta!</p>
-                            <a href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2" target="_blank" class="btn-slap">Colaborar en Spotify</a>
-                            <a href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing" target="_blank" class="btn-slap btn-blue">Subir Fotos (Drive)</a>
+                            <p style="font-size: 11px; color: #888; text-transform: uppercase; margin-top: 15px;">Pases Asignados:</p>
+                            <p id="ticket-count" style="font-family: 'Chewy', cursive; font-size: 45px; color: var(--slap-pink); line-height: 1;">0</p>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">MUSICAL 🎧</span>
+                        <div class="update-feeling" style="background: #000; justify-content: center;">
+                            <span class="feeling-label" style="color: var(--slap-yellow);">STATUS:</span>
+                            <span class="feeling-mood" style="color: #fff;">AUTORIZADO ✔️</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- TICKET VIP (OCULTO POR DEFECTO) -->
-                <div id="pases-section" class="slap-update-wrapper" style="display: none;">
-                    <div class="slap-update-tab" style="background: var(--slap-yellow); color: #000; border-color: #000;">P A S E</div>
-                    <div class="slap-update-content" style="border-color: #000; background: #fff8e1;">
-                        <div class="slap-text">
-                            <h3 style="text-align: center; font-family: 'Chewy', cursive; font-size: 24px;">★ VIP ACCESS ★</h3>
-                            <p style="font-size: 10px; color: #555; text-transform: uppercase;">Invitado:</p>
-                            <p id="ticket-name" style="font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 18px;">Invitado Especial</p>
+                <!-- POST 6: RSVP Y SOBRES -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content">
+                            <h3>💌 Confirmar Asistencia</h3>
+                            <p style="margin-bottom: 15px;">Confirma tu lugar para asegurar tu pase al evento.</p>
                             
-                            <p style="font-size: 10px; color: #555; text-transform: uppercase; margin-top: 10px;">Pases:</p>
-                            <p id="ticket-count" style="font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 30px; color: var(--slap-pink);">0</p>
-                        </div>
-                        <div class="slap-feeling" style="background: #000; color: #fff;">
-                            STATUS: <span class="mood" style="color: var(--slap-yellow);"> AUTORIZADO ✔️</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- UPDATE 7: RSVP -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
-                            <h3>✉️ Confirmar Asistencia</h3>
+                            <input type="text" id="rsvp-name" class="retro-input" placeholder="Nombre completo">
                             
-                            <input type="text" id="rsvp-name" class="form-input" placeholder="Tu Nombre">
-                            
-                            <select id="rsvp-status" class="form-input">
+                            <select id="rsvp-status" class="retro-input">
                                 <option value="" disabled selected>¿Asistirás al evento?</option>
                                 <option value="yes">¡Obvio, ahí estaré!</option>
                                 <option value="no">Me la pierdo :(</option>
                             </select>
                             
-                            <select id="rsvp-guests" class="form-input" style="display: none;">
+                            <select id="rsvp-guests" class="retro-input" style="display: none;">
                                 <option value="" disabled selected>¿Cuántos asisten?</option>
                             </select>
                             
-                            <button onclick="sendRSVP()" class="btn-slap">Enviar Confirmación</button>
+                            <button onclick="sendRSVP()" class="btn-glossy">Enviar Confirmación</button>
+
+                            <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
+
+                            <h3 style="color: #388E3C;">🎁 Lluvia de Sobres</h3>
+                            <p>El mejor regalo es tu presencia. Si deseas tener un detalle, contaremos con buzón en recepción.</p>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">ESPERANDO RESPUESTA 👀</span>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">ESPERANDO RESPUESTA 👀</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- UPDATE 8: MURO -->
-                <div class="slap-update-wrapper">
-                    <div class="slap-update-tab">UPDATE</div>
-                    <div class="slap-update-content">
-                        <div class="slap-text">
-                            <h3>💬 Deja un comentario</h3>
+                <!-- POST 7: MEDIA (SPOTIFY / DRIVE) -->
+                <div class="update-card">
+                    <div class="update-tab"><span>UPDATE</span></div>
+                    <div class="update-body">
+                        <div class="update-content">
+                            <h3>📱 Media Center</h3>
+                            <p style="margin-bottom: 15px;">¡Agrega tus canciones y comparte todas las fotos de la noche!</p>
                             
-                            <input type="text" id="wish-name" class="form-input" placeholder="Tu nombre">
-                            <textarea id="wish-message" class="form-input" placeholder="Escribe un mensaje cool en mi perfil..."></textarea>
+                            <button onclick="window.open('https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2', '_blank')" class="btn-glossy" style="background: linear-gradient(to bottom, #1DB954, #128C3E); border-color: #0A5A26;">Agregar Canciones</button>
                             
-                            <button onclick="sendWish()" class="btn-slap btn-blue">Postear en TheSlap</button>
+                            <button onclick="window.open('https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing', '_blank')" class="btn-glossy btn-blue">Subir Fotos (Drive)</button>
                         </div>
-                        <div class="slap-feeling">
-                            FEELING: <span class="mood">SOCIAL 📱</span>
+                        <div class="update-feeling">
+                            <span class="feeling-label">FEELING:</span>
+                            <span class="feeling-mood">SOCIAL 📸</span>
                         </div>
                     </div>
                 </div>
 
             </div> <!-- FIN FEED -->
+        </div> <!-- FIN SCREEN -->
 
-            <!-- APP DOCK INFERIOR (Estilo PearPhone/Imagen 2) -->
-            <div class="app-dock">
-                <div class="app-icon" onclick="scrollToTop()">
-                    <div class="app-icon-box">🏠</div>
-                    Home
-                </div>
-                <div class="app-icon" onclick="openRSVP()">
-                    <div class="app-icon-box">✉️</div>
-                    Mail
-                </div>
-                <div class="app-icon" onclick="window.open('https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing', '_blank')">
-                    <div class="app-icon-box">📷</div>
-                    Photos
-                </div>
-                <div class="app-icon" onclick="openWall()">
-                    <div class="app-icon-box">👥</div>
-                    Friends
-                </div>
-            </div>
-
-        </div> <!-- FIN PANTALLA -->
-
-        <!-- BOTÓN FÍSICO INFERIOR -->
-        <div class="pear-home-btn" onclick="scrollToTop()">
+        <!-- BOTÓN HOME FÍSICO -->
+        <div class="home-button" onclick="goTop()">
             <svg viewBox="0 0 24 24">
-                <path d="M12 2C9 2 7 5 7 8C7 10.5 5 13 5 17C5 20.8 8.1 24 12 24C15.9 24 19 20.8 19 17C19 13 17 10.5 17 8C17 5 15 2 12 2ZM13 1C13 1 15 0 16 0" stroke-width="2"/>
+                <path d="M12 2C9 2 7 5 7 8C7 10.5 5 13 5 17C5 20.8 8.1 24 12 24C15.9 24 19 20.8 19 17C19 13 17 10.5 17 8C17 5 15 2 12 2Z"/>
             </svg>
         </div>
 
-    </div> <!-- FIN PEARPHONE -->
+    </div>
 
     <script>
         // --- CONTROL DE AUDIO ---
         let isMusicPlaying = false;
         const bgMusic = document.getElementById('bg-music');
-        const playIcon = document.getElementById('music-play');
-        const pauseIcon = document.getElementById('music-pause');
+        const playIcon = document.getElementById('m-play');
+        const pauseIcon = document.getElementById('m-pause');
 
         function toggleMusic() {
             if (isMusicPlaying) {
@@ -510,21 +560,20 @@
             isMusicPlaying = !isMusicPlaying;
         }
 
-        // --- RELOJ PANTALLA DE BLOQUEO ---
+        // --- RELOJ ---
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
             let minutes = now.getMinutes();
-            hours = hours % 12;
-            hours = hours ? hours : 12; 
+            hours = hours % 12 || 12; 
             minutes = minutes < 10 ? '0' + minutes : minutes;
             document.getElementById('clock-display').innerText = hours + ':' + minutes;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // --- DESBLOQUEAR ---
-        function unlockPhone() {
+        // --- DESBLOQUEAR Y REPRODUCIR ---
+        function unlockDevice() {
             const screen = document.getElementById('lock-screen');
             if (screen.classList.contains('unlocked')) return; 
 
@@ -532,51 +581,35 @@
             
             setTimeout(() => {
                 if (bgMusic) {
-                    const playPromise = bgMusic.play();
-                    if (playPromise !== undefined) {
-                        playPromise.then(_ => {
-                            isMusicPlaying = true;
-                            playIcon.style.display = 'none';
-                            pauseIcon.style.display = 'block';
-                        }).catch(e => {
-                            isMusicPlaying = false;
-                            playIcon.style.display = 'block';
-                            pauseIcon.style.display = 'none';
-                        });
-                    }
+                    bgMusic.play().then(() => {
+                        isMusicPlaying = true;
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                    }).catch(() => {
+                        isMusicPlaying = false;
+                        playIcon.style.display = 'block';
+                        pauseIcon.style.display = 'none';
+                    });
                 }
             }, 600);
         }
 
-        // --- NAVEGACIÓN DOCK ---
-        function scrollToTop() {
-            document.getElementById('main-screen').scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        function openRSVP() {
-            document.getElementById('rsvp-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            document.getElementById('rsvp-name').focus();
-        }
-        function openWall() {
-            document.getElementById('wish-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            document.getElementById('wish-name').focus();
+        function goTop() {
+            document.getElementById('app-screen').scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- CUENTA REGRESIVA ---
         const eventDate = new Date("October 10, 2026 13:00:00").getTime();
-        const timer = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance < 0) {
-                clearInterval(timer); return;
-            }
+        setInterval(() => {
+            const distance = eventDate - new Date().getTime();
+            if (distance < 0) return;
             document.getElementById("cd-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
             document.getElementById("cd-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
             document.getElementById("cd-mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
             document.getElementById("cd-secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
 
-        // --- LÓGICA VIP ---
+        // --- LÓGICA VIP (URL PARAMS) ---
         let pasesAsignados = 0;
         let nombreInvitado = "Invitado Especial";
         const urlParams = new URLSearchParams(window.location.search);
@@ -589,20 +622,18 @@
         if (paramNombre) nombreInvitado = decodeURIComponent(paramNombre);
 
         const inputName = document.getElementById("rsvp-name");
+        const rsvpStatus = document.getElementById("rsvp-status");
+        const rsvpGuests = document.getElementById("rsvp-guests");
         
         if (pasesAsignados > 0) {
             document.getElementById('pases-section').style.display = 'flex';
             document.getElementById('ticket-count').innerText = pasesAsignados;
             document.getElementById('ticket-name').innerText = nombreInvitado;
-            
             if(paramNombre) {
                 inputName.value = nombreInvitado;
                 inputName.disabled = true;
             }
         }
-
-        const rsvpStatus = document.getElementById("rsvp-status");
-        const rsvpGuests = document.getElementById("rsvp-guests");
 
         rsvpStatus.addEventListener('change', (e) => {
             if(e.target.value === 'yes' && pasesAsignados > 0) {
@@ -623,20 +654,13 @@
             const status = document.getElementById("rsvp-status").value;
             const guests = document.getElementById("rsvp-guests").value;
             
-            if (name === "" || status === "") { alert("Completa los datos de confirmación."); return; }
-            if (status === "yes" && pasesAsignados > 0 && guests === "") { alert("Indica cuántas personas asisten."); return; }
+            if (!name || !status) { alert("Completa los datos de confirmación."); return; }
+            if (status === "yes" && pasesAsignados > 0 && !guests) { alert("Indica cuántas personas asisten."); return; }
 
             let msg = status === "yes" 
                 ? `¡Hola! Soy ${name}. Confirmo mi asistencia a los XV de Andrea. Seremos ${guests || 1} persona(s). 🌟` 
                 : `¡Hola! Soy ${name}. No podré asistir a los XV de Andrea. ¡Gracias por la invitación!`;
             window.open(`https://wa.me/${wpNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function sendWish() {
-            const name = document.getElementById("wish-name").value.trim();
-            const wish = document.getElementById("wish-message").value.trim();
-            if (name === "" || wish === "") { alert("Escribe tu nombre y mensaje."); return; }
-            window.open(`https://wa.me/${wpNumber}?text=${encodeURIComponent(`Comentario en TheSlap de ${name} para Andrea:\n\n"${wish}"`)}`, '_blank');
         }
     </script>
 </body>
