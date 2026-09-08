@@ -3,665 +3,3306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis XV Años - Andrea | TheSlap.com</title>
-    <!-- Fuentes: 'Nunito' para UI moderna y limpia, 'Chewy' para títulos divertidos estilo Nickelodeon -->
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <title>Mis XV Años - Andrea | Victorious Party</title>
+
+    <!--
+        ============================================================
+        FUENTES
+        ============================================================
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@400;500;700;900&family=Silkscreen:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+
     <style>
+
+        /* ============================================================
+           VARIABLES
+           ============================================================ */
+
         :root {
-            /* Paleta Oficial TheSlap */
-            --slap-pink: #FF0055;
-            --slap-pink-dark: #CC0044;
-            --slap-blue-light: #B3E5FC;
-            --slap-yellow: #FFD54F;
-            --slap-red: #D32F2F;
-            --slap-bg: #1A1A24;
-            --pear-purple: #8E24AA;
+
+            --black: #050308;
+            --deep-purple: #12051f;
+            --purple: #6d28d9;
+            --purple-light: #a855f7;
+
+            --pink: #ff4fc3;
+            --pink-hot: #ff008c;
+
+            --cyan: #31f7ff;
+            --blue: #238cff;
+
+            --lime: #b8ff00;
+            --yellow: #fff200;
+
+            --white: #ffffff;
+            --gray: #cfc8d8;
+
+            --glass: rgba(30, 10, 45, .82);
+
+            --pixel-border: 3px;
+
+            --shadow-pink:
+                0 0 5px #ff4fc3,
+                0 0 15px #ff4fc3,
+                0 0 30px rgba(255,79,195,.6);
+
+            --shadow-cyan:
+                0 0 5px #31f7ff,
+                0 0 15px #31f7ff,
+                0 0 30px rgba(49,247,255,.5);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ============================================================
+           RESET
+           ============================================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
 
         body {
-            background-color: #000;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(142, 36, 170, 0.2), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(255, 0, 85, 0.2), transparent 25%);
-            font-family: 'Nunito', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
             min-height: 100vh;
-            padding: 10px;
-        }
 
-        /* --- MARCO DEL DISPOSITIVO (Elegante y simétrico) --- */
-        .device-wrapper {
-            width: 100%;
-            max-width: 420px;
-            height: 90vh;
-            min-height: 700px;
-            max-height: 850px;
-            background: linear-gradient(145deg, #2a2a35, #111);
-            border-radius: 45px;
-            box-shadow: 
-                0 0 0 4px #444,
-                0 0 0 10px var(--pear-purple),
-                0 20px 50px rgba(0,0,0,0.8),
-                inset 0 4px 10px rgba(255,255,255,0.2);
-            padding: 20px 12px 70px 12px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
+            background:
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(168,85,247,.25),
+                    transparent 30%
+                ),
 
-        /* Botón Home (Pera) */
-        .home-button {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 46px;
-            height: 46px;
-            background: linear-gradient(to bottom, #333, #111);
-            border-radius: 50%;
-            border: 2px solid #555;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        /* Icono de Pera SVG */
-        .home-button svg {
-            width: 20px; height: 20px; fill: #aaa; transition: 0.3s;
-        }
-        .home-button:active svg { fill: #fff; transform: scale(0.9); }
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(255,79,195,.18),
+                    transparent 30%
+                ),
 
-        /* --- PANTALLA PRINCIPAL --- */
-        .screen {
-            background-color: var(--slap-bg);
-            /* Patrón de estrellas/puntos sutil */
-            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            width: 100%;
-            height: 100%;
-            border-radius: 30px;
-            overflow-y: auto;
+                #050308;
+
+            color: white;
+
+            font-family: 'VT323', monospace;
+
             overflow-x: hidden;
-            position: relative;
-            border: 2px solid #000;
-        }
-        .screen::-webkit-scrollbar { width: 0px; } /* Ocultar scrollbar para estética de app */
-
-        /* --- PANTALLA DE BLOQUEO SKEUMÓRFICA (Estilo 2010) --- */
-        #lock-screen {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1534796636912-3652850a15ed?q=80&w=1000&auto=format&fit=crop') center/cover;
-            z-index: 100; display: flex; flex-direction: column;
-            justify-content: space-between; align-items: center; padding: 50px 20px;
-            transition: transform 0.6s cubic-bezier(0.8, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        #lock-screen::before {
-            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.4); z-index: -1;
-        }
-        #lock-screen.unlocked { transform: translateY(-100%); }
-        
-        .lock-time { font-size: 75px; color: #fff; font-weight: 300; letter-spacing: -2px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); line-height: 1; }
-        .lock-date { font-size: 16px; color: #eee; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.5); margin-top: 5px; }
-
-        /* Slider de desbloqueo antiguo */
-        .slider-container {
-            width: 90%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px; padding: 5px; position: relative;
-            backdrop-filter: blur(5px);
-        }
-        .slider-text {
-            text-align: center; color: rgba(255,255,255,0.7); font-weight: bold;
-            font-size: 14px; text-transform: uppercase; line-height: 40px;
-            background: linear-gradient(90deg, #888, #fff, #888);
-            background-size: 200% auto; color: transparent; -webkit-background-clip: text;
-            animation: shine 2.5s linear infinite;
-        }
-        @keyframes shine { to { background-position: 200% center; } }
-        .slider-btn {
-            position: absolute; top: 5px; left: 5px; width: 50px; height: 40px;
-            background: linear-gradient(to bottom, #ddd, #999); border-radius: 8px;
-            box-shadow: inset 0 1px 1px #fff, 0 2px 4px rgba(0,0,0,0.5);
-            display: flex; justify-content: center; align-items: center;
-        }
-        .slider-btn::after { content: '▶'; color: #444; font-size: 16px; }
-
-        /* --- HEADER THE SLAP --- */
-        .slap-header {
-            background: linear-gradient(to bottom, #111, #222);
-            padding: 15px 20px;
-            border-bottom: 2px solid #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .slap-logo {
-            font-family: 'Chewy', cursive;
-            font-size: 32px;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .hand-icon {
-            width: 32px; height: 32px;
-            background: linear-gradient(135deg, #FF9800, #F57C00);
-            border-radius: 6px;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            display: flex; justify-content: center; align-items: center;
-            transform: rotate(-10deg);
         }
 
-        /* --- FEED DE PUBLICACIONES (Diseño exacto y premium) --- */
-        .feed { padding: 20px 15px; display: flex; flex-direction: column; gap: 20px; }
 
-        .update-card {
-            display: flex;
-            width: 100%;
-            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
-            animation: popIn 0.6s ease backwards;
-        }
-        @keyframes popIn { 0% { opacity: 0; transform: translateY(20px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
-        
-        .update-card:nth-child(2) { animation-delay: 0.2s; }
-        .update-card:nth-child(3) { animation-delay: 0.4s; }
+        /* ============================================================
+           BACKGROUND 2000s
+           ============================================================ */
 
-        /* Pestaña izquierda Rosa */
-        .update-tab {
-            background: linear-gradient(to right, var(--slap-pink-dark), var(--slap-pink));
-            width: 45px;
-            border-radius: 12px 0 0 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #990033;
-            border-right: none;
-            box-shadow: inset 2px 2px 4px rgba(255,255,255,0.3);
-        }
-        .update-tab span {
-            color: var(--slap-yellow);
-            font-family: 'Nunito', sans-serif;
-            font-weight: 900;
-            font-size: 16px;
-            letter-spacing: 2px;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            opacity: .35;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 20px 20px;
         }
 
-        /* Contenido Derecho */
-        .update-body {
-            flex: 1;
-            background: #fff;
-            border-radius: 0 12px 12px 12px;
-            display: flex;
-            flex-direction: column;
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 100;
+
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255,255,255,.025),
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px,
+                    transparent 4px
+                );
+
+            opacity: .12;
+        }
+
+
+        /* ============================================================
+           ESTRELLAS
+           ============================================================ */
+
+        .stars {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 1;
+
             overflow: hidden;
-            border: 1px solid #ccc;
         }
 
-        .update-content {
-            padding: 15px;
-            flex: 1;
-        }
-        .update-content h2 {
-            font-family: 'Chewy', cursive;
-            color: var(--slap-pink);
-            font-size: 24px;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        .update-content h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: 800;
-        }
-        .update-content p {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.5;
-            font-weight: 600;
+
+        .star {
+
+            position: absolute;
+
+            width: 4px;
+            height: 4px;
+
+            background: white;
+
+            box-shadow:
+                0 0 6px white,
+                0 0 12px var(--pink);
+
+            animation:
+                twinkle 2s infinite alternate;
         }
 
-        /* Barra Inferior "Feeling" Azul */
-        .update-feeling {
-            background: linear-gradient(to bottom, #E1F5FE, var(--slap-blue-light));
-            padding: 10px 15px;
-            border-top: 1px solid #B3E5FC;
+
+        .star:nth-child(1) {
+            left: 8%;
+            top: 15%;
+        }
+
+        .star:nth-child(2) {
+            left: 82%;
+            top: 12%;
+            animation-delay: .5s;
+        }
+
+        .star:nth-child(3) {
+            left: 70%;
+            top: 32%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(4) {
+            left: 15%;
+            top: 50%;
+            animation-delay: 1.4s;
+        }
+
+        .star:nth-child(5) {
+            left: 90%;
+            top: 70%;
+            animation-delay: .3s;
+        }
+
+        .star:nth-child(6) {
+            left: 35%;
+            top: 85%;
+            animation-delay: .9s;
+        }
+
+
+        @keyframes twinkle {
+
+            from {
+                opacity: .2;
+                transform: scale(.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+
+        /* ============================================================
+           INTRO SCREEN
+           ============================================================ */
+
+        #envelope-screen {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
             display: flex;
+
+            justify-content: center;
+
             align-items: center;
-            gap: 8px;
+
+            padding: 20px;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    #29103d 0%,
+                    #09030e 45%,
+                    #000 100%
+                );
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
         }
-        .feeling-label {
-            color: var(--slap-red);
-            font-weight: 900;
-            font-size: 13px;
-            letter-spacing: 1px;
+
+
+        #envelope-screen.fade-out {
+
+            opacity: 0;
+
+            transform: scale(1.15);
+
+            pointer-events: none;
         }
-        .feeling-mood {
+
+
+        /* ============================================================
+           PERAPOD
+           ============================================================ */
+
+        .perapod {
+
+            position: relative;
+
+            width: min(350px, 90vw);
+
+            padding: 30px 25px;
+
+            border-radius: 35px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.18),
+                    rgba(255,255,255,.03)
+                );
+
+            border:
+
+                3px solid
+                rgba(255,255,255,.7);
+
+            box-shadow:
+
+                inset 0 0 20px rgba(255,255,255,.1),
+
+                0 0 10px var(--pink),
+
+                0 0 35px rgba(255,79,195,.45),
+
+                0 0 80px rgba(168,85,247,.35);
+
+            backdrop-filter: blur(15px);
+
+            text-align: center;
+
+            animation:
+                podFloat 4s ease-in-out infinite;
+        }
+
+
+        @keyframes podFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+
+        .pod-top {
+
+            position: absolute;
+
+            width: 90px;
+            height: 16px;
+
+            top: -10px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-radius: 20px;
+
+            background: #111;
+
+            border: 2px solid white;
+
+            box-shadow: var(--shadow-cyan);
+        }
+
+
+        .pod-light {
+
+            width: 13px;
+            height: 13px;
+
+            border-radius: 50%;
+
+            background: var(--cyan);
+
+            box-shadow:
+                0 0 8px var(--cyan),
+                0 0 20px var(--cyan);
+
+            margin: 15px auto;
+        }
+
+
+        .pod-small {
+
+            font-family: 'Press Start 2P';
+
+            font-size: 10px;
+
+            line-height: 1.8;
+
+            color: var(--cyan);
+
+            text-shadow: var(--shadow-cyan);
+        }
+
+
+        .pod-name {
+
+            font-family: 'Pacifico', cursive;
+
+            font-size: 58px;
+
+            color: white;
+
+            margin: 20px 0;
+
+            transform: rotate(-4deg);
+
+            text-shadow:
+
+                3px 3px 0 var(--pink),
+
+                0 0 8px white,
+
+                0 0 20px var(--pink),
+
+                0 0 40px var(--pink);
+        }
+
+
+        .pod-enter {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 15px 20px;
+
+            font-family: 'Press Start 2P';
+
+            font-size: 10px;
+
             color: #000;
-            font-weight: 800;
-            font-size: 13px;
-            text-transform: uppercase;
+
+            background: var(--lime);
+
+            border: 3px solid white;
+
+            box-shadow:
+
+                4px 4px 0 #000,
+
+                0 0 20px var(--lime);
+
+            cursor: pointer;
+
+            animation: blink 1.2s infinite;
         }
 
-        /* --- ELEMENTOS UI (Botones, Inputs, Mapas) --- */
-        .btn-glossy {
-            display: block; width: 100%; text-align: center;
-            background: linear-gradient(to bottom, #ff4081, #c2185b);
-            color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            padding: 12px; border: 1px solid #880e4f; border-radius: 8px;
-            text-decoration: none; margin-top: 12px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 6px rgba(0,0,0,0.2);
-            cursor: pointer; transition: all 0.1s;
-        }
-        .btn-glossy:active { transform: translateY(2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.2); }
-        .btn-blue { background: linear-gradient(to bottom, #4fc3f7, #0288d1); border-color: #01579b; }
 
-        .retro-input {
-            width: 100%; padding: 12px; margin-bottom: 10px;
-            background: #f5f5f5; border: 1px solid #ccc;
-            border-radius: 6px; font-family: 'Nunito', sans-serif;
-            font-size: 14px; font-weight: 600; color: #333;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        @keyframes blink {
+
+            50% {
+                opacity: .55;
+            }
         }
-        .retro-input:focus { outline: none; border-color: var(--slap-pink); background: #fff; }
-        textarea.retro-input { resize: vertical; min-height: 80px; }
+
+
+        /* ============================================================
+           MAIN
+           ============================================================ */
+
+        #main-invitation {
+
+            display: none;
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 100%;
+
+            opacity: 0;
+
+            animation: pageIn 1s forwards;
+        }
+
+
+        body.content-active #main-invitation {
+
+            display: block;
+        }
+
+
+        @keyframes pageIn {
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .page {
+
+            width: min(620px, 94vw);
+
+            margin: auto;
+
+            padding: 25px 0 80px;
+        }
+
+
+        /* ============================================================
+           OLD WEB HEADER
+           ============================================================ */
+
+        .browser-bar {
+
+            margin-bottom: 20px;
+
+            padding: 8px 12px;
+
+            background: #ddd;
+
+            color: #111;
+
+            border: 2px solid white;
+
+            box-shadow:
+                3px 3px 0 #000;
+
+            font-family: 'VT323';
+
+            font-size: 18px;
+
+            display: flex;
+
+            justify-content: space-between;
+        }
+
+
+        .browser-buttons {
+
+            display: flex;
+
+            gap: 5px;
+        }
+
+
+        .browser-buttons span {
+
+            width: 12px;
+            height: 12px;
+
+            background: #999;
+
+            border:
+                1px solid #555;
+        }
+
+
+        /* ============================================================
+           MARQUEE
+           ============================================================ */
+
+        .marquee {
+
+            width: 100%;
+
+            overflow: hidden;
+
+            border-top:
+                2px solid var(--cyan);
+
+            border-bottom:
+                2px solid var(--pink);
+
+            background: #09030e;
+
+            padding: 9px 0;
+
+            margin-bottom: 30px;
+        }
+
+
+        .marquee-track {
+
+            display: flex;
+
+            width: max-content;
+
+            animation:
+                marquee 14s linear infinite;
+        }
+
+
+        .marquee span {
+
+            padding: 0 25px;
+
+            font-family:
+                'Press Start 2P';
+
+            font-size: 10px;
+
+            color: var(--yellow);
+
+            text-shadow:
+                0 0 8px var(--yellow);
+        }
+
+
+        @keyframes marquee {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+
+        .hero {
+
+            text-align: center;
+
+            padding: 25px 10px 45px;
+        }
+
+
+        .hero-mini {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size: 11px;
+
+            color: var(--cyan);
+
+            letter-spacing: 2px;
+
+            text-shadow: var(--shadow-cyan);
+        }
+
+
+        .hero-title {
+
+            margin: 20px 0;
+
+            font-family:
+                'Pacifico',
+                cursive;
+
+            font-size:
+                clamp(65px, 17vw, 105px);
+
+            line-height: .9;
+
+            transform:
+                rotate(-4deg);
+
+            color: white;
+
+            text-shadow:
+
+                4px 4px 0 var(--purple),
+
+                8px 8px 0 rgba(0,0,0,.8),
+
+                0 0 10px white,
+
+                0 0 30px var(--pink),
+
+                0 0 60px var(--pink);
+        }
+
+
+        .hero-box {
+
+            padding: 20px;
+
+            background:
+                rgba(255,79,195,.08);
+
+            border:
+
+                2px dashed
+                var(--pink);
+
+            box-shadow:
+
+                inset 0 0 20px rgba(255,79,195,.1),
+
+                0 0 15px rgba(255,79,195,.15);
+        }
+
+
+        .hero-box p {
+
+            font-size: 22px;
+
+            line-height: 1.4;
+
+            color: #fff;
+        }
+
+
+        /* ============================================================
+           OLD WEB CARD
+           ============================================================ */
+
+        .web-card {
+
+            position: relative;
+
+            width: 100%;
+
+            margin: 25px 0;
+
+            padding: 28px 22px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(31,13,48,.94),
+                    rgba(10,5,17,.94)
+                );
+
+            border:
+
+                2px solid
+                var(--purple-light);
+
+            border-radius: 16px;
+
+            box-shadow:
+
+                0 0 15px rgba(168,85,247,.25),
+
+                inset 0 0 20px rgba(168,85,247,.08);
+        }
+
+
+        .web-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: -2px;
+            left: 15px;
+            right: 15px;
+
+            height: 3px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--cyan),
+                    var(--pink),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 10px var(--cyan);
+        }
+
+
+        .window-title {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+            padding-bottom: 12px;
+
+            border-bottom:
+                2px dotted
+                rgba(255,255,255,.2);
+        }
+
+
+        .window-title h2 {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size: 14px;
+
+            color: var(--cyan);
+
+            text-shadow:
+                0 0 10px var(--cyan);
+        }
+
+
+        .window-icon {
+
+            color: var(--pink);
+
+            font-family:
+                'Press Start 2P';
+
+            font-size: 12px;
+        }
+
+
+        /* ============================================================
+           COUNTDOWN
+           ============================================================ */
+
+        .timer-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 8px;
+
+            margin-top: 20px;
+        }
+
+
+        .timer-block {
+
+            padding:
+                15px 5px;
+
+            background:
+                #030105;
+
+            border:
+                2px solid
+                var(--cyan);
+
+            box-shadow:
+                inset 0 0 15px rgba(49,247,255,.12);
+
+            text-align:
+                center;
+        }
+
+
+        .timer-num {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                clamp(14px, 4vw, 24px);
+
+            color:
+                white;
+
+            text-shadow:
+                0 0 8px var(--cyan);
+        }
+
+
+        .timer-txt {
+
+            margin-top: 10px;
+
+            color:
+                var(--pink);
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                7px;
+        }
+
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+
+        .retro-button {
+
+            display:
+                inline-block;
+
+            margin-top:
+                22px;
+
+            padding:
+                14px 20px;
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                9px;
+
+            text-decoration:
+                none;
+
+            color:
+                #000;
+
+            background:
+                var(--cyan);
+
+            border:
+                3px solid white;
+
+            box-shadow:
+                4px 4px 0 #000,
+                0 0 15px var(--cyan);
+
+            transition:
+                transform .15s,
+                box-shadow .15s;
+
+            cursor:
+                pointer;
+        }
+
+
+        .retro-button:hover {
+
+            transform:
+                translate(3px,3px);
+
+            box-shadow:
+                1px 1px 0 #000,
+                0 0 25px var(--cyan);
+        }
+
+
+        .pink-button {
+
+            background:
+                var(--pink);
+
+            box-shadow:
+                4px 4px 0 #000,
+                0 0 15px var(--pink);
+        }
+
+
+        .yellow-button {
+
+            background:
+                var(--yellow);
+
+            box-shadow:
+                4px 4px 0 #000,
+                0 0 15px var(--yellow);
+        }
+
+
+        /* ============================================================
+           FAMILY
+           ============================================================ */
+
+        .family-block {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .label {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                8px;
+
+            color:
+                var(--lime);
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .family-name {
+
+            font-family:
+                'Orbitron';
+
+            font-weight:
+                700;
+
+            font-size:
+                20px;
+
+            margin-bottom:
+                6px;
+        }
+
+
+        /* ============================================================
+           LOCATIONS
+           ============================================================ */
+
+        .location {
+
+            padding:
+                20px 0;
+
+            border-bottom:
+                1px dotted
+                rgba(255,255,255,.25);
+        }
+
+
+        .location:last-child {
+            border-bottom: none;
+        }
+
+
+        .location-code {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                9px;
+
+            color:
+                var(--cyan);
+        }
+
+
+        .location-time {
+
+            margin:
+                10px 0;
+
+            font-family:
+                'Orbitron';
+
+            font-size:
+                30px;
+
+            font-weight:
+                900;
+
+            color:
+                white;
+
+            text-shadow:
+                0 0 10px var(--cyan);
+        }
+
+
+        .location-name {
+
+            font-family:
+                'Orbitron';
+
+            font-size:
+                18px;
+
+            font-weight:
+                700;
+        }
+
 
         .map-container {
-            border: 2px solid #eee; border-radius: 8px; overflow: hidden;
-            margin-top: 10px; background: #eee;
-        }
-        .map-container iframe { width: 100%; height: 160px; border: none; display: block; filter: contrast(1.1); }
 
-        /* Temporizador */
-        .timer { display: flex; justify-content: space-between; margin-top: 15px; }
-        .time-box {
-            background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
-            border: 1px solid #ccc; border-radius: 8px;
-            width: 23%; text-align: center; padding: 8px 0;
-            box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .time-box span { display: block; }
-        .t-num { font-size: 20px; font-weight: 900; color: var(--slap-pink); }
-        .t-lbl { font-size: 10px; font-weight: 800; color: #666; text-transform: uppercase; }
+            width:
+                100%;
 
-        /* Botón de Música Flotante */
-        .music-btn {
-            position: absolute; bottom: 20px; right: 20px;
-            width: 50px; height: 50px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--slap-yellow), #FFB300);
-            border: 2px solid #fff; display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 100; cursor: pointer;
+            height:
+                220px;
+
+            margin-top:
+                18px;
+
+            overflow:
+                hidden;
+
+            border:
+                2px solid
+                var(--purple-light);
+
+            border-radius:
+                10px;
         }
-        .music-btn svg { width: 24px; height: 24px; fill: #000; }
+
+
+        .map-container iframe {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            border:
+                none;
+
+            filter:
+                saturate(.7)
+                contrast(1.15);
+        }
+
+
+        /* ============================================================
+           DRESS CODE
+           ============================================================ */
+
+        .dress-code {
+
+            text-align:
+                center;
+        }
+
+
+        .dress-main {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                16px;
+
+            color:
+                var(--pink);
+
+            line-height:
+                1.7;
+
+            text-shadow:
+                var(--shadow-pink);
+        }
+
+
+        .dress-sub {
+
+            font-family:
+                'Pacifico';
+
+            font-size:
+                38px;
+
+            color:
+                var(--cyan);
+
+            transform:
+                rotate(-3deg);
+
+            margin:
+                12px 0;
+        }
+
+
+        .warning {
+
+            margin-top:
+                25px;
+
+            padding:
+                20px;
+
+            border:
+                3px dashed
+                var(--pink);
+
+            background:
+                repeating-linear-gradient(
+                    -45deg,
+                    rgba(255,0,140,.08),
+                    rgba(255,0,140,.08) 10px,
+                    rgba(255,255,255,.03) 10px,
+                    rgba(255,255,255,.03) 20px
+                );
+        }
+
+
+        .warning strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                10px;
+
+            color:
+                var(--yellow);
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                10px;
+        }
+
+
+        /* ============================================================
+           TICKET
+           ============================================================ */
+
+        .ultimate-ticket {
+
+            position:
+                relative;
+
+            margin:
+                35px 0;
+
+            padding:
+                28px;
+
+            background:
+                #f4f0f8;
+
+            color:
+                #111;
+
+            border:
+                4px solid
+                var(--pink);
+
+            box-shadow:
+                0 0 20px
+                rgba(255,79,195,.5);
+        }
+
+
+        .ticket-header-txt {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                10px;
+
+            color:
+                var(--purple);
+
+            padding-bottom:
+                12px;
+
+            border-bottom:
+                2px dashed #aaa;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .ticket-label {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                7px;
+
+            color:
+                #777;
+        }
+
+
+        .ticket-owner {
+
+            font-family:
+                'Orbitron';
+
+            font-size:
+                25px;
+
+            font-weight:
+                900;
+
+            margin:
+                8px 0 20px;
+
+            word-break:
+                break-word;
+        }
+
+
+        .ticket-row {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+        }
+
+
+        .ticket-value {
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                35px;
+
+            margin-top:
+                10px;
+
+            color:
+                var(--pink-hot);
+        }
+
+
+        .hologram-seal {
+
+            width:
+                58px;
+
+            height:
+                58px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            background:
+                conic-gradient(
+                    var(--pink),
+                    var(--cyan),
+                    var(--yellow),
+                    var(--lime),
+                    var(--pink)
+                );
+
+            animation:
+                spin 4s linear infinite;
+        }
+
+
+        .hologram-inner {
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            border-radius:
+                50%;
+
+            background:
+                white;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                6px;
+        }
+
+
+        .barcode-img {
+
+            width:
+                100%;
+
+            height:
+                45px;
+
+            margin-top:
+                25px;
+
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    #000,
+                    #000 2px,
+                    transparent 2px,
+                    transparent 5px
+                );
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        /* ============================================================
+           FORMULARIOS
+           ============================================================ */
+
+        .form-group {
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .form-control {
+
+            width:
+                100%;
+
+            padding:
+                16px;
+
+            background:
+                #050308;
+
+            color:
+                white;
+
+            border:
+                2px solid
+                var(--purple-light);
+
+            font-family:
+                'VT323';
+
+            font-size:
+                20px;
+
+            outline:
+                none;
+
+            border-radius:
+                7px;
+        }
+
+
+        .form-control:focus {
+
+            border-color:
+                var(--cyan);
+
+            box-shadow:
+                0 0 15px
+                rgba(49,247,255,.35);
+        }
+
+
+        select.form-control option {
+
+            background:
+                #100719;
+
+            color:
+                white;
+        }
+
+
+        textarea.form-control {
+
+            min-height:
+                120px;
+
+            resize:
+                vertical;
+        }
+
+
+        .full-button {
+
+            width:
+                100%;
+        }
+
+
+        /* ============================================================
+           ANIMACIONES SCROLL
+           ============================================================ */
+
+        .anim-hide {
+
+            opacity:
+                0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                all .8s ease;
+        }
+
+
+        .anim-show {
+
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* ============================================================
+           MUSIC BUTTON
+           ============================================================ */
+
+        .sticky-music-btn {
+
+            position:
+                fixed;
+
+            right:
+                20px;
+
+            bottom:
+                20px;
+
+            width:
+                60px;
+
+            height:
+                60px;
+
+            border-radius:
+                50%;
+
+            background:
+                #08030d;
+
+            border:
+                3px solid
+                var(--cyan);
+
+            box-shadow:
+                0 0 20px
+                var(--cyan);
+
+            z-index:
+                2000;
+
+            cursor:
+                pointer;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        .sticky-music-btn svg {
+
+            width:
+                25px;
+
+            height:
+                25px;
+
+            fill:
+                var(--cyan);
+        }
+
+
+        body:not(.content-active)
+        .sticky-music-btn {
+
+            opacity:
+                0;
+
+            pointer-events:
+                none;
+        }
+
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+
+        .footer {
+
+            text-align:
+                center;
+
+            padding:
+                30px 10px;
+
+            font-family:
+                'Press Start 2P';
+
+            font-size:
+                7px;
+
+            color:
+                #777;
+
+            line-height:
+                2;
+        }
+
+
+        .footer span {
+
+            color:
+                var(--pink);
+        }
+
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+
+        @media (max-width: 480px) {
+
+            .page {
+                width: 94vw;
+            }
+
+            .web-card {
+                padding: 24px 16px;
+            }
+
+            .timer-grid {
+                gap: 5px;
+            }
+
+            .timer-block {
+                padding: 13px 3px;
+            }
+
+            .hero-title {
+                font-size: 70px;
+            }
+
+            .pod-name {
+                font-size: 50px;
+            }
+
+            .window-title h2 {
+                font-size: 10px;
+            }
+
+            .family-name {
+                font-size: 17px;
+            }
+        }
 
     </style>
 </head>
+
+
 <body>
 
-    <!-- AUDIO -->
-    <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
-    <!-- CARCASA DEL DISPOSITIVO -->
-    <div class="device-wrapper">
-        
-        <!-- PANTALLA -->
-        <div class="screen" id="app-screen">
-            
-            <!-- LOCK SCREEN -->
-            <div id="lock-screen" onclick="unlockDevice()">
-                <div style="text-align: center;">
-                    <div class="lock-time" id="clock-display">12:00</div>
-                    <div class="lock-date">Viernes, 10 de Octubre</div>
-                </div>
-                
-                <div class="slider-container">
-                    <div class="slider-btn"></div>
-                    <div class="slider-text">Desliza para abrir</div>
-                </div>
+    <!-- ============================================================
+         ESTRELLAS
+         ============================================================ -->
+
+    <div class="stars">
+
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+    </div>
+
+
+    <!-- ============================================================
+         AUDIO
+         ============================================================ -->
+
+    <audio
+        id="bg-music"
+        src="assets/song.mp3"
+        loop>
+    </audio>
+
+
+    <!-- ============================================================
+         MUSIC BUTTON
+         ============================================================ -->
+
+    <button
+        id="music-btn"
+        class="sticky-music-btn"
+        onclick="toggleMusic()">
+
+        <svg
+            id="music-icon-play"
+            style="display:none"
+            viewBox="0 0 24 24">
+
+            <path d="M8 5v14l11-7z"/>
+
+        </svg>
+
+
+        <svg
+            id="music-icon-pause"
+            viewBox="0 0 24 24">
+
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+
+        </svg>
+
+    </button>
+
+
+    <!-- ============================================================
+         INTRO
+         ============================================================ -->
+
+    <div
+        id="envelope-screen"
+        onclick="openEnvelope()">
+
+
+        <div class="perapod">
+
+            <div class="pod-top"></div>
+
+            <div class="pod-light"></div>
+
+            <div class="pod-small">
+                PERSONAL POD
             </div>
 
-            <!-- HEADER THE SLAP -->
-            <div class="slap-header">
-                <div class="slap-logo">
-                    <div class="hand-icon"><span style="color:white; font-size:20px;">✋</span></div>
-                    TheSlap.com
-                </div>
+
+            <div class="pod-name">
+                Andrea
             </div>
 
-            <!-- BOTÓN MÚSICA -->
-            <div class="music-btn" onclick="toggleMusic()">
-                <svg id="m-play" style="display:none;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <svg id="m-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+
+            <div class="pod-small">
+                MIS XV AÑOS
             </div>
 
-            <!-- FEED PRINCIPAL -->
-            <div class="feed">
 
-                <!-- POST 1: BIENVENIDA -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content">
-                            <h2>Andrea's XV</h2>
-                            <p style="font-style: italic;">"Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan. ¡No faltes y festeja conmigo esta noche estilo Hollywood Arts!"</p>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">EMOCIONADA ✨</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="pod-enter">
+                ▶ TOCA PARA ENTRAR
+            </div>
 
-                <!-- POST 2: CUENTA REGRESIVA -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content">
-                            <h3>Falta para el Gran Show:</h3>
-                            <div class="timer">
-                                <div class="time-box"><span class="t-num" id="cd-days">00</span><span class="t-lbl">Días</span></div>
-                                <div class="time-box"><span class="t-num" id="cd-hours">00</span><span class="t-lbl">Hrs</span></div>
-                                <div class="time-box"><span class="t-num" id="cd-mins">00</span><span class="t-lbl">Min</span></div>
-                                <div class="time-box"><span class="t-num" id="cd-secs">00</span><span class="t-lbl">Seg</span></div>
-                            </div>
-                            <button onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z', '_blank')" class="btn-glossy btn-blue">Guardar Fecha</button>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">ANSIOSA ⏱️</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 3: FAMILIA -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content" style="text-align: center;">
-                            <p style="font-size: 11px; color: #888; font-weight: 800; letter-spacing: 1px;">PRESENTADO POR MIS PADRES</p>
-                            <p style="font-weight: 900; color: var(--slap-pink); font-size: 18px; margin: 5px 0 15px 0;">Aida Del Carmen Vázquez<br>Julio Daniel Gómez</p>
-                            
-                            <p style="font-size: 11px; color: #888; font-weight: 800; letter-spacing: 1px;">Y MIS PADRINOS</p>
-                            <p style="font-weight: 900; color: #0288d1; font-size: 18px; margin-top: 5px;">Gabriela Hernández<br>Jesús Rosas</p>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">BENDECIDA ❤️</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 4: LOCACIONES -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content">
-                            <h3>⛪ Ceremonia (1:00 PM)</h3>
-                            <p>Parroquia de Cristo Rey</p>
-                            <div class="map-container">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx"></iframe>
-                            </div>
-                            <button onclick="window.open('https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic', '_blank')" class="btn-glossy">Mapa Ceremonia</button>
-
-                            <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
-
-                            <h3>🎉 Recepción (3:00 PM)</h3>
-                            <p>Salón Quinta Santa Rosa</p>
-                            <div class="map-container">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx"></iframe>
-                            </div>
-                            <button onclick="window.open('https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic', '_blank')" class="btn-glossy btn-blue">Mapa Recepción</button>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">LISTA PARA SALIR 🚗</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 5: DRESS CODE -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content">
-                            <h3>👗 Dress Code: Glamour</h3>
-                            <p>Ven list@ para brillar frente a las cámaras. Estilo formal de alfombra roja.</p>
-                            
-                            <div style="background: #FFF0F5; border: 2px dashed #F06292; padding: 15px; margin-top: 15px; border-radius: 8px; text-align: center;">
-                                <p style="color: #D81B60; font-weight: 900; font-size: 14px; margin-bottom: 5px;">🚫 ALERTA DE VESTUARIO 🚫</p>
-                                <p style="font-size: 12px; color: #333;">El color FUCSIA/ROSA es de uso exclusivo para la quinceañera. Favor de evitarlo en tu outfit.</p>
-                            </div>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">FABULOSA 💅</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TICKET VIP -->
-                <div id="pases-section" class="update-card" style="display: none;">
-                    <div class="update-tab" style="background: var(--slap-yellow);">
-                        <span style="color: #000; text-shadow: none;">TICKET</span>
-                    </div>
-                    <div class="update-body" style="background: #FFFDE7; border-color: #FBC02D;">
-                        <div class="update-content" style="text-align: center;">
-                            <h2 style="color: #F57F17; font-size: 28px;">★ VIP ACCESS ★</h2>
-                            <p style="font-size: 11px; color: #888; text-transform: uppercase; margin-top: 10px;">Invitado Especial:</p>
-                            <p id="ticket-name" style="font-weight: 900; font-size: 20px; color: #333;">Invitado</p>
-                            
-                            <p style="font-size: 11px; color: #888; text-transform: uppercase; margin-top: 15px;">Pases Asignados:</p>
-                            <p id="ticket-count" style="font-family: 'Chewy', cursive; font-size: 45px; color: var(--slap-pink); line-height: 1;">0</p>
-                        </div>
-                        <div class="update-feeling" style="background: #000; justify-content: center;">
-                            <span class="feeling-label" style="color: var(--slap-yellow);">STATUS:</span>
-                            <span class="feeling-mood" style="color: #fff;">AUTORIZADO ✔️</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 6: RSVP Y SOBRES -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content">
-                            <h3>💌 Confirmar Asistencia</h3>
-                            <p style="margin-bottom: 15px;">Confirma tu lugar para asegurar tu pase al evento.</p>
-                            
-                            <input type="text" id="rsvp-name" class="retro-input" placeholder="Nombre completo">
-                            
-                            <select id="rsvp-status" class="retro-input">
-                                <option value="" disabled selected>¿Asistirás al evento?</option>
-                                <option value="yes">¡Obvio, ahí estaré!</option>
-                                <option value="no">Me la pierdo :(</option>
-                            </select>
-                            
-                            <select id="rsvp-guests" class="retro-input" style="display: none;">
-                                <option value="" disabled selected>¿Cuántos asisten?</option>
-                            </select>
-                            
-                            <button onclick="sendRSVP()" class="btn-glossy">Enviar Confirmación</button>
-
-                            <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
-
-                            <h3 style="color: #388E3C;">🎁 Lluvia de Sobres</h3>
-                            <p>El mejor regalo es tu presencia. Si deseas tener un detalle, contaremos con buzón en recepción.</p>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">ESPERANDO RESPUESTA 👀</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 7: MEDIA (SPOTIFY / DRIVE) -->
-                <div class="update-card">
-                    <div class="update-tab"><span>UPDATE</span></div>
-                    <div class="update-body">
-                        <div class="update-content">
-                            <h3>📱 Media Center</h3>
-                            <p style="margin-bottom: 15px;">¡Agrega tus canciones y comparte todas las fotos de la noche!</p>
-                            
-                            <button onclick="window.open('https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2', '_blank')" class="btn-glossy" style="background: linear-gradient(to bottom, #1DB954, #128C3E); border-color: #0A5A26;">Agregar Canciones</button>
-                            
-                            <button onclick="window.open('https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing', '_blank')" class="btn-glossy btn-blue">Subir Fotos (Drive)</button>
-                        </div>
-                        <div class="update-feeling">
-                            <span class="feeling-label">FEELING:</span>
-                            <span class="feeling-mood">SOCIAL 📸</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!-- FIN FEED -->
-        </div> <!-- FIN SCREEN -->
-
-        <!-- BOTÓN HOME FÍSICO -->
-        <div class="home-button" onclick="goTop()">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2C9 2 7 5 7 8C7 10.5 5 13 5 17C5 20.8 8.1 24 12 24C15.9 24 19 20.8 19 17C19 13 17 10.5 17 8C17 5 15 2 12 2Z"/>
-            </svg>
         </div>
 
     </div>
 
+
+    <!-- ============================================================
+         MAIN
+         ============================================================ -->
+
+    <main id="main-invitation">
+
+        <div class="page">
+
+
+            <!-- ====================================================
+                 BROWSER BAR
+                 ==================================================== -->
+
+            <div class="browser-bar">
+
+                <div>
+                    ★ andrea-xv2000s.html
+                </div>
+
+                <div class="browser-buttons">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ====================================================
+                 MARQUEE
+                 ==================================================== -->
+
+            <div class="marquee">
+
+                <div class="marquee-track">
+
+                    <span>★ ANDREA'S XV ★</span>
+                    <span>WELCOME TO MY WORLD ★</span>
+                    <span>PARTY TIME ★</span>
+                    <span>2000'S VIBES ★</span>
+
+                    <span>★ ANDREA'S XV ★</span>
+                    <span>WELCOME TO MY WORLD ★</span>
+                    <span>PARTY TIME ★</span>
+                    <span>2000'S VIBES ★</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ====================================================
+                 HERO
+                 ==================================================== -->
+
+            <section class="hero anim-hide">
+
+                <div class="hero-mini">
+                    MIS XV AÑOS
+                </div>
+
+
+                <h1 class="hero-title">
+                    Andrea
+                </h1>
+
+
+                <div class="hero-box">
+
+                    <p>
+                        "Agradecida con Dios por la vida,
+                        la familia y los sueños que apenas
+                        comienzan."
+                    </p>
+
+                    <br>
+
+                    <p style="color:var(--cyan);">
+                        ¡NO FALTES Y FESTEJA CONMIGO!
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 COUNTDOWN
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide">
+
+                <div class="window-title">
+
+                    <h2>
+                        COUNTDOWN.EXE
+                    </h2>
+
+                    <div class="window-icon">
+                        ★_★
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                    text-align:center;
+                    color:var(--gray);
+                    font-size:20px;
+                    ">
+
+                    EL EVENTO COMIENZA EN...
+
+                </div>
+
+
+                <div class="timer-grid">
+
+                    <div class="timer-block">
+
+                        <div
+                            id="cd-days"
+                            class="timer-num">
+                            00
+                        </div>
+
+                        <div class="timer-txt">
+                            DÍAS
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-block">
+
+                        <div
+                            id="cd-hours"
+                            class="timer-num">
+                            00
+                        </div>
+
+                        <div class="timer-txt">
+                            HRS
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-block">
+
+                        <div
+                            id="cd-mins"
+                            class="timer-num">
+                            00
+                        </div>
+
+                        <div class="timer-txt">
+                            MIN
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-block">
+
+                        <div
+                            id="cd-secs"
+                            class="timer-num">
+                            00
+                        </div>
+
+                        <div class="timer-txt">
+                            SEG
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div style="text-align:center;">
+
+                    <a
+                        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial"
+                        target="_blank"
+                        class="retro-button">
+
+                        + AGENDAR FECHA
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 FAMILY
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide">
+
+                <div class="window-title">
+
+                    <h2>
+                        FAMILY.TXT
+                    </h2>
+
+                    <div class="window-icon">
+                        ♡
+                    </div>
+
+                </div>
+
+
+                <div class="family-block">
+
+                    <div class="label">
+                        PRESENTADO POR MIS PADRES
+                    </div>
+
+                    <div class="family-name">
+                        Aida Del Carmen Vázquez
+                    </div>
+
+                    <div class="family-name">
+                        Julio Daniel Gómez
+                    </div>
+
+                </div>
+
+
+                <hr
+                    style="
+                    border:0;
+                    border-top:1px dashed rgba(255,255,255,.2);
+                    margin:25px 0;
+                    ">
+
+
+                <div class="family-block">
+
+                    <div class="label">
+                        Y MIS PADRINOS
+                    </div>
+
+                    <div class="family-name">
+                        Gabriela Hernández
+                    </div>
+
+                    <div class="family-name">
+                        Jesús Rosas
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 LOCATIONS
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide">
+
+                <div class="window-title">
+
+                    <h2>
+                        LOCATION.EXE
+                    </h2>
+
+                    <div class="window-icon">
+                        GPS
+                    </div>
+
+                </div>
+
+
+                <!-- CEREMONIA -->
+
+                <div class="location">
+
+                    <div class="location-code">
+                        01 // CEREMONIA
+                    </div>
+
+                    <div class="location-time">
+                        1:00 PM
+                    </div>
+
+                    <div class="location-name">
+                        Parroquia de Cristo Rey
+                    </div>
+
+
+                    <div class="map-container">
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+
+                    </div>
+
+
+                    <div style="text-align:center;">
+
+                        <a
+                            href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic"
+                            target="_blank"
+                            class="retro-button">
+
+                            ► RUTA GPS
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FIESTA -->
+
+                <div class="location">
+
+                    <div
+                        class="location-code"
+                        style="color:var(--yellow);">
+
+                        02 // LA FIESTA
+
+                    </div>
+
+
+                    <div
+                        class="location-time"
+                        style="text-shadow:0 0 10px var(--yellow);">
+
+                        3:00 PM
+
+                    </div>
+
+
+                    <div class="location-name">
+
+                        Salón Quinta Santa Rosa
+
+                    </div>
+
+
+                    <div class="map-container">
+
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+
+                    </div>
+
+
+                    <div style="text-align:center;">
+
+                        <a
+                            href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic"
+                            target="_blank"
+                            class="retro-button yellow-button">
+
+                            ► RUTA GPS
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 DRESS CODE
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide dress-code">
+
+                <div class="window-title">
+
+                    <h2>
+                        DRESSCODE.HTML
+                    </h2>
+
+                    <div class="window-icon">
+                        <3
+                    </div>
+
+                </div>
+
+
+                <div class="dress-main">
+                    2010'S NEON
+                </div>
+
+
+                <div class="dress-sub">
+                    Party Rock
+                </div>
+
+
+                <p
+                    style="
+                    font-size:20px;
+                    line-height:1.5;
+                    ">
+
+                    ¡Ven listo para brillar en la oscuridad!
+
+                    <br>
+
+                    Estampados locos, colores vibrantes
+                    y mucha actitud.
+
+                </p>
+
+
+                <div class="warning">
+
+                    <strong>
+                        ⚠ WARNING ⚠
+                    </strong>
+
+                    <p style="font-size:19px;">
+
+                        El color
+                        <b style="color:var(--pink);">
+                            FUCSIA / ROSA
+                        </b>
+                        es de uso exclusivo para Andrea.
+
+                        <br><br>
+
+                        Favor de evitarlo en tu outfit.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 GIFTS
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide">
+
+                <div class="window-title">
+
+                    <h2>
+                        GIFTBOX.EXE
+                    </h2>
+
+                    <div class="window-icon">
+                        $
+                    </div>
+
+                </div>
+
+
+                <div style="text-align:center;">
+
+                    <div
+                        style="
+                        font-size:70px;
+                        text-shadow:0 0 20px var(--yellow);
+                        ">
+
+                        ✉
+
+                    </div>
+
+
+                    <h2
+                        style="
+                        font-family:'Press Start 2P';
+                        font-size:13px;
+                        color:var(--yellow);
+                        line-height:1.7;
+                        ">
+
+                        LLUVIA DE SOBRES
+
+                    </h2>
+
+
+                    <p
+                        style="
+                        font-size:21px;
+                        line-height:1.5;
+                        margin-top:15px;
+                        ">
+
+                        El mejor regalo es tu presencia.
+
+                        <br><br>
+
+                        Si deseas tener un detalle adicional,
+                        contaremos con un buzón VIP en la
+                        recepción para lluvia de sobres.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 PLAYLIST
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide">
+
+                <div class="window-title">
+
+                    <h2>
+                        PLAYLIST.MP3
+                    </h2>
+
+                    <div class="window-icon">
+                        ♫
+                    </div>
+
+                </div>
+
+
+                <p
+                    style="
+                    font-size:21px;
+                    margin-bottom:20px;
+                    ">
+
+                    Agrega tus hits favoritos de los 2010s
+                    a la playlist oficial.
+
+                </p>
+
+
+                <div
+                    style="
+                    width:100%;
+                    border:3px solid var(--lime);
+                    border-radius:10px;
+                    overflow:hidden;
+                    ">
+
+                    <iframe
+                        src="https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a"
+                        width="100%"
+                        height="352"
+                        frameborder="0"
+                        loading="lazy">
+                    </iframe>
+
+                </div>
+
+
+                <div style="text-align:center;">
+
+                    <a
+                        href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2"
+                        target="_blank"
+                        class="retro-button pink-button">
+
+                        ♫ HACER COLLAB
+
+                    </a>
+
+                </div>
+
+
+                <hr
+                    style="
+                    border:0;
+                    border-top:1px dashed rgba(255,255,255,.2);
+                    margin:35px 0;
+                    ">
+
+
+                <div class="window-title">
+
+                    <h2>
+                        GALLERY.JPG
+                    </h2>
+
+                </div>
+
+
+                <p
+                    style="
+                    font-size:21px;
+                    margin-bottom:15px;
+                    ">
+
+                    Sube todas tus fotos y videos
+                    a nuestra carpeta compartida.
+
+                </p>
+
+
+                <div style="text-align:center;">
+
+                    <a
+                        href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing"
+                        target="_blank"
+                        class="retro-button">
+
+                        ↑ SUBIR FOTOS
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ====================================================
+                 VIP TICKET
+                 ==================================================== -->
+
+            <div
+                id="pases-section"
+                class="ultimate-ticket anim-hide"
+                style="display:none;">
+
+                <div class="ticket-header-txt">
+
+                    /// VIP ACCESS // ANDREA XV
+
+                </div>
+
+
+                <div class="ticket-label">
+                    TITULAR DEL PASE:
+                </div>
+
+
+                <div
+                    id="ticket-name"
+                    class="ticket-owner">
+
+                    Invitado VIP
+
+                </div>
+
+
+                <div class="ticket-row">
+
+                    <div>
+
+                        <div class="ticket-label">
+                            PASES ASIGNADOS:
+                        </div>
+
+
+                        <div
+                            id="ticket-count"
+                            class="ticket-value">
+
+                            0
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hologram-seal">
+
+                        <div class="hologram-inner">
+                            VALID
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="barcode-img"></div>
+
+
+                <div
+                    style="
+                    font-family:'Press Start 2P';
+                    font-size:7px;
+                    text-align:center;
+                    margin-top:12px;
+                    color:#777;
+                    ">
+
+                    SCAN AT PARTY // DO NOT DUPLICATE
+
+                </div>
+
+            </div>
+
+
+            <!-- ====================================================
+                 RSVP
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide">
+
+                <div class="window-title">
+
+                    <h2>
+                        RSVP.EXE
+                    </h2>
+
+                    <div class="window-icon">
+                        ♥
+                    </div>
+
+                </div>
+
+
+                <p
+                    style="
+                    font-size:21px;
+                    margin-bottom:20px;
+                    ">
+
+                    Confirma tu asistencia y asegura
+                    tu lugar en la pista.
+
+                </p>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="rsvp-name"
+                        class="form-control"
+                        placeholder="NOMBRE COMPLETO">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <select
+                        id="rsvp-status"
+                        class="form-control">
+
+                        <option
+                            value=""
+                            disabled
+                            selected>
+
+                            ¿ESTÁS LIST@ PARA EL DESCONTROL?
+
+                        </option>
+
+                        <option value="yes">
+                            ¡OBVIO! AHÍ ESTARÉ
+                        </option>
+
+                        <option value="no">
+                            ME LA PIERDO :(
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <select
+                        id="rsvp-guests"
+                        class="form-control"
+                        style="display:none;">
+
+                        <option
+                            value=""
+                            disabled
+                            selected>
+
+                            ¿CUÁNTOS ASISTEN?
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    onclick="sendRSVP()"
+                    class="retro-button full-button">
+
+                    ENVIAR CONFIRMACIÓN
+
+                </button>
+
+            </section>
+
+
+            <!-- ====================================================
+                 WISH WALL
+                 ==================================================== -->
+
+            <section
+                class="web-card anim-hide"
+                style="margin-bottom:40px;">
+
+                <div class="window-title">
+
+                    <h2
+                        style="color:var(--pink);">
+
+                        GUESTBOOK.TXT
+
+                    </h2>
+
+                    <div
+                        class="window-icon">
+
+                        ♡
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    style="
+                    font-size:21px;
+                    margin-bottom:20px;
+                    ">
+
+                    Déjale un mensaje cool a Andrea
+                    para recordar este día.
+
+                </p>
+
+
+                <div class="form-group">
+
+                    <input
+                        type="text"
+                        id="wish-name"
+                        class="form-control"
+                        placeholder="DE PARTE DE...">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <textarea
+                        id="wish-message"
+                        class="form-control"
+                        placeholder="ESCRIBE TU MENSAJE...">
+                    </textarea>
+
+                </div>
+
+
+                <button
+                    onclick="sendWish()"
+                    class="retro-button pink-button full-button">
+
+                    ♥ DEJAR MENSAJE
+
+                </button>
+
+            </section>
+
+
+            <!-- ====================================================
+                 FOOTER
+                 ==================================================== -->
+
+            <footer class="footer">
+
+                <div>
+                    © 2000-2026 ANDREA XV
+                </div>
+
+                <div>
+                    MADE WITH
+                    <span>♥</span>
+                    & PIXELS
+                </div>
+
+                <div>
+                    BEST VIEWED WITH GOOD VIBES
+                </div>
+
+            </footer>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+
     <script>
-        // --- CONTROL DE AUDIO ---
+
+
+        /* ============================================================
+           AUDIO
+           ============================================================ */
+
         let isMusicPlaying = false;
-        const bgMusic = document.getElementById('bg-music');
-        const playIcon = document.getElementById('m-play');
-        const pauseIcon = document.getElementById('m-pause');
+
+        const bgMusic =
+            document.getElementById('bg-music');
+
+        const playIcon =
+            document.getElementById('music-icon-play');
+
+        const pauseIcon =
+            document.getElementById('music-icon-pause');
+
 
         function toggleMusic() {
+
             if (isMusicPlaying) {
+
                 bgMusic.pause();
+
                 playIcon.style.display = 'block';
+
                 pauseIcon.style.display = 'none';
+
             } else {
+
                 bgMusic.play();
+
                 playIcon.style.display = 'none';
+
                 pauseIcon.style.display = 'block';
             }
-            isMusicPlaying = !isMusicPlaying;
+
+            isMusicPlaying =
+                !isMusicPlaying;
         }
 
-        // --- RELOJ ---
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            hours = hours % 12 || 12; 
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('clock-display').innerText = hours + ':' + minutes;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
 
-        // --- DESBLOQUEAR Y REPRODUCIR ---
-        function unlockDevice() {
-            const screen = document.getElementById('lock-screen');
-            if (screen.classList.contains('unlocked')) return; 
+        /* ============================================================
+           OPEN INVITATION
+           ============================================================ */
 
-            screen.classList.add('unlocked');
-            
+        function openEnvelope() {
+
+            const screen =
+                document.getElementById(
+                    'envelope-screen'
+                );
+
+
+            if (
+                screen.classList.contains(
+                    'fade-out'
+                )
+            ) {
+                return;
+            }
+
+
+            screen.classList.add(
+                'fade-out'
+            );
+
+
+            document.body.classList.add(
+                'content-active'
+            );
+
+
             setTimeout(() => {
+
                 if (bgMusic) {
-                    bgMusic.play().then(() => {
-                        isMusicPlaying = true;
-                        playIcon.style.display = 'none';
-                        pauseIcon.style.display = 'block';
-                    }).catch(() => {
-                        isMusicPlaying = false;
-                        playIcon.style.display = 'block';
-                        pauseIcon.style.display = 'none';
-                    });
+
+                    const playPromise =
+                        bgMusic.play();
+
+
+                    if (
+                        playPromise !== undefined
+                    ) {
+
+                        playPromise
+
+                            .then(() => {
+
+                                isMusicPlaying =
+                                    true;
+
+                                playIcon.style.display =
+                                    'none';
+
+                                pauseIcon.style.display =
+                                    'block';
+
+                            })
+
+                            .catch(() => {
+
+                                isMusicPlaying =
+                                    false;
+
+                                playIcon.style.display =
+                                    'block';
+
+                                pauseIcon.style.display =
+                                    'none';
+
+                            });
+                    }
                 }
+
             }, 600);
         }
 
-        function goTop() {
-            document.getElementById('app-screen').scrollTo({ top: 0, behavior: 'smooth' });
+
+        /* ============================================================
+           SCROLL ANIMATION
+           ============================================================ */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const observerOptions = {
+
+                    root: null,
+
+                    rootMargin:
+                        '0px',
+
+                    threshold:
+                        0.1
+                };
+
+
+                const observer =
+                    new IntersectionObserver(
+                        (entries, observer) => {
+
+                            entries.forEach(
+                                entry => {
+
+                                    if (
+                                        entry.isIntersecting
+                                    ) {
+
+                                        entry.target.classList.add(
+                                            'anim-show'
+                                        );
+
+                                        observer.unobserve(
+                                            entry.target
+                                        );
+                                    }
+
+                                }
+                            );
+
+                        },
+                        observerOptions
+                    );
+
+
+                document
+                    .querySelectorAll(
+                        '.anim-hide'
+                    )
+                    .forEach(
+                        el =>
+                            observer.observe(el)
+                    );
+
+
+                startCountdown();
+
+            }
+        );
+
+
+        /* ============================================================
+           COUNTDOWN
+           ============================================================ */
+
+        function startCountdown() {
+
+            const eventDate =
+                new Date(
+                    "October 10, 2026 13:00:00"
+                ).getTime();
+
+
+            const timer =
+                setInterval(() => {
+
+                    const now =
+                        new Date().getTime();
+
+
+                    const distance =
+                        eventDate - now;
+
+
+                    if (distance < 0) {
+
+                        clearInterval(timer);
+
+                        document.getElementById(
+                            "cd-days"
+                        ).innerText = "00";
+
+                        document.getElementById(
+                            "cd-hours"
+                        ).innerText = "00";
+
+                        document.getElementById(
+                            "cd-mins"
+                        ).innerText = "00";
+
+                        document.getElementById(
+                            "cd-secs"
+                        ).innerText = "00";
+
+                        return;
+                    }
+
+
+                    const days =
+                        Math.floor(
+                            distance /
+                            (1000 * 60 * 60 * 24)
+                        );
+
+
+                    const hours =
+                        Math.floor(
+                            (
+                                distance %
+                                (1000 * 60 * 60 * 24)
+                            ) /
+                            (1000 * 60 * 60)
+                        );
+
+
+                    const mins =
+                        Math.floor(
+                            (
+                                distance %
+                                (1000 * 60 * 60)
+                            ) /
+                            (1000 * 60)
+                        );
+
+
+                    const secs =
+                        Math.floor(
+                            (
+                                distance %
+                                (1000 * 60)
+                            ) /
+                            1000
+                        );
+
+
+                    document.getElementById(
+                        "cd-days"
+                    ).innerText =
+                        days < 10
+                            ? "0" + days
+                            : days;
+
+
+                    document.getElementById(
+                        "cd-hours"
+                    ).innerText =
+                        hours < 10
+                            ? "0" + hours
+                            : hours;
+
+
+                    document.getElementById(
+                        "cd-mins"
+                    ).innerText =
+                        mins < 10
+                            ? "0" + mins
+                            : mins;
+
+
+                    document.getElementById(
+                        "cd-secs"
+                    ).innerText =
+                        secs < 10
+                            ? "0" + secs
+                            : secs;
+
+                }, 1000);
         }
 
-        // --- CUENTA REGRESIVA ---
-        const eventDate = new Date("October 10, 2026 13:00:00").getTime();
-        setInterval(() => {
-            const distance = eventDate - new Date().getTime();
-            if (distance < 0) return;
-            document.getElementById("cd-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            document.getElementById("cd-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            document.getElementById("cd-mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            document.getElementById("cd-secs").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        }, 1000);
 
-        // --- LÓGICA VIP (URL PARAMS) ---
+        /* ============================================================
+           URL VIP
+           ============================================================ */
+
         let pasesAsignados = 0;
-        let nombreInvitado = "Invitado Especial";
-        const urlParams = new URLSearchParams(window.location.search);
-        const wpNumber = "522711803147"; 
 
-        let paramPases = urlParams.get('p') || urlParams.get('pases');
-        let paramNombre = urlParams.get('n') || urlParams.get('nombre');
+        let nombreInvitado =
+            "Invitado VIP";
 
-        if (paramPases && !isNaN(paramPases)) pasesAsignados = parseInt(paramPases);
-        if (paramNombre) nombreInvitado = decodeURIComponent(paramNombre);
 
-        const inputName = document.getElementById("rsvp-name");
-        const rsvpStatus = document.getElementById("rsvp-status");
-        const rsvpGuests = document.getElementById("rsvp-guests");
-        
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const wpNumber =
+            "522711803147";
+
+
+        let paramPases =
+            urlParams.get('p') ||
+            urlParams.get('pases');
+
+
+        let paramNombre =
+            urlParams.get('n') ||
+            urlParams.get('nombre');
+
+
+        if (
+            paramPases &&
+            !isNaN(paramPases)
+        ) {
+
+            pasesAsignados =
+                parseInt(paramPases);
+
+        }
+
+
+        if (paramNombre) {
+
+            nombreInvitado =
+                decodeURIComponent(
+                    paramNombre
+                );
+
+        }
+
+
+        const inputName =
+            document.getElementById(
+                "rsvp-name"
+            );
+
+
+        /* ============================================================
+           TICKET
+           ============================================================ */
+
         if (pasesAsignados > 0) {
-            document.getElementById('pases-section').style.display = 'flex';
-            document.getElementById('ticket-count').innerText = pasesAsignados;
-            document.getElementById('ticket-name').innerText = nombreInvitado;
-            if(paramNombre) {
-                inputName.value = nombreInvitado;
-                inputName.disabled = true;
+
+            document.getElementById(
+                'pases-section'
+            ).style.display =
+                'block';
+
+
+            document.getElementById(
+                'ticket-count'
+            ).innerText =
+                pasesAsignados;
+
+
+            document.getElementById(
+                'ticket-name'
+            ).innerText =
+                nombreInvitado;
+
+
+            if (paramNombre) {
+
+                inputName.value =
+                    nombreInvitado;
+
+                inputName.disabled =
+                    true;
             }
         }
 
-        rsvpStatus.addEventListener('change', (e) => {
-            if(e.target.value === 'yes' && pasesAsignados > 0) {
-                rsvpGuests.style.display = 'block';
-                rsvpGuests.innerHTML = '<option value="" disabled selected>¿Cuántos asisten?</option>';
-                for(let i = 1; i <= pasesAsignados; i++) {
-                    rsvpGuests.innerHTML += `<option value="${i}">${i} persona${i > 1 ? 's' : ''}</option>`;
+
+        /* ============================================================
+           RSVP GUESTS
+           ============================================================ */
+
+        const rsvpStatus =
+            document.getElementById(
+                "rsvp-status"
+            );
+
+
+        const rsvpGuests =
+            document.getElementById(
+                "rsvp-guests"
+            );
+
+
+        rsvpStatus.addEventListener(
+            'change',
+            e => {
+
+                if (
+                    e.target.value ===
+                    'yes'
+                ) {
+
+                    if (
+                        pasesAsignados > 0
+                    ) {
+
+                        rsvpGuests.style.display =
+                            'block';
+
+
+                        rsvpGuests.innerHTML =
+                            '<option value="" disabled selected>¿CUÁNTOS ASISTEN?</option>';
+
+
+                        for (
+                            let i = 1;
+                            i <= pasesAsignados;
+                            i++
+                        ) {
+
+                            rsvpGuests.innerHTML +=
+
+                                `<option value="${i}">
+                                    ${i}
+                                    persona${i > 1 ? 's' : ''}
+                                </option>`;
+                        }
+
+                    }
+
+                } else {
+
+                    rsvpGuests.style.display =
+                        'none';
+
+                    rsvpGuests.value =
+                        "";
                 }
-            } else {
-                rsvpGuests.style.display = 'none';
-                rsvpGuests.value = ""; 
+
             }
-        });
+        );
 
-        // --- WHATSAPP ---
+
+        /* ============================================================
+           RSVP WHATSAPP
+           ============================================================ */
+
         function sendRSVP() {
-            const name = document.getElementById("rsvp-name").value.trim();
-            const status = document.getElementById("rsvp-status").value;
-            const guests = document.getElementById("rsvp-guests").value;
-            
-            if (!name || !status) { alert("Completa los datos de confirmación."); return; }
-            if (status === "yes" && pasesAsignados > 0 && !guests) { alert("Indica cuántas personas asisten."); return; }
 
-            let msg = status === "yes" 
-                ? `¡Hola! Soy ${name}. Confirmo mi asistencia a los XV de Andrea. Seremos ${guests || 1} persona(s). 🌟` 
-                : `¡Hola! Soy ${name}. No podré asistir a los XV de Andrea. ¡Gracias por la invitación!`;
-            window.open(`https://wa.me/${wpNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+            const name =
+                document.getElementById(
+                    "rsvp-name"
+                ).value.trim();
+
+
+            const status =
+                document.getElementById(
+                    "rsvp-status"
+                ).value;
+
+
+            const guests =
+                document.getElementById(
+                    "rsvp-guests"
+                ).value;
+
+
+            if (
+                name === "" ||
+                status === ""
+            ) {
+
+                alert(
+                    "Selecciona una opción de asistencia para continuar."
+                );
+
+                return;
+            }
+
+
+            if (
+                status === "yes" &&
+                pasesAsignados > 0 &&
+                guests === ""
+            ) {
+
+                alert(
+                    "Por favor, indica cuántas personas asistirán."
+                );
+
+                return;
+            }
+
+
+            let message = "";
+
+
+            if (status === "yes") {
+
+                let extraTxt =
+                    guests
+                        ? ` Seremos ${guests} persona(s) en total.`
+                        : "";
+
+
+                message =
+                    encodeURIComponent(
+
+                        `¡Hola! Soy ${name}. Confirmo mi asistencia a los XV de Andrea (Victorious Party).${extraTxt} 💜✨`
+
+                    );
+
+            } else {
+
+                message =
+                    encodeURIComponent(
+
+                        `¡Hola! Soy ${name}. Lamentablemente no podré asistir a los XV de Andrea. Agradezco mucho la invitación.`
+
+                    );
+            }
+
+
+            window.open(
+                `https://wa.me/${wpNumber}?text=${message}`,
+                '_blank'
+            );
         }
+
+
+        /* ============================================================
+           WISH
+           ============================================================ */
+
+        function sendWish() {
+
+            const name =
+                document.getElementById(
+                    "wish-name"
+                ).value.trim();
+
+
+            const wish =
+                document.getElementById(
+                    "wish-message"
+                ).value.trim();
+
+
+            if (
+                name === "" ||
+                wish === ""
+            ) {
+
+                alert(
+                    "Por favor, ingresa tu nombre y tu mensaje."
+                );
+
+                return;
+            }
+
+
+            const message =
+                encodeURIComponent(
+
+                    `Hola Andrea, soy ${name}. Te envío este mensaje con mucho cariño:\n\n"${wish}"`
+
+                );
+
+
+            window.open(
+                `https://wa.me/${wpNumber}?text=${message}`,
+                '_blank'
+            );
+        }
+
+
     </script>
+
+
 </body>
 </html>
