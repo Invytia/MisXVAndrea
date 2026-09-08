@@ -11,3298 +11,1213 @@
         FUENTES
         ============================================================
     -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@400;500;700;900&family=Silkscreen:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-
+    <!-- Mantenemos las tuyas y agregamos un par para darle el toque Pop/Teen -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@400;700;900&family=Pacifico&family=Fredoka+One&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
 
     <style>
 
         /* ============================================================
-           VARIABLES
+           VARIABLES THESLAP VIBE
            ============================================================ */
-
         :root {
-
-            --black: #050308;
-            --deep-purple: #12051f;
-            --purple: #6d28d9;
-            --purple-light: #a855f7;
-
-            --pink: #ff4fc3;
-            --pink-hot: #ff008c;
-
-            --cyan: #31f7ff;
-            --blue: #238cff;
-
-            --lime: #b8ff00;
+            --hot-pink: #ff007f;
+            --light-pink: #ff66b2;
+            --neon-blue: #00e5ff;
             --yellow: #fff200;
-
+            --black: #111111;
             --white: #ffffff;
-            --gray: #cfc8d8;
-
-            --glass: rgba(30, 10, 45, .82);
-
-            --pixel-border: 3px;
-
-            --shadow-pink:
-                0 0 5px #ff4fc3,
-                0 0 15px #ff4fc3,
-                0 0 30px rgba(255,79,195,.6);
-
-            --shadow-cyan:
-                0 0 5px #31f7ff,
-                0 0 15px #31f7ff,
-                0 0 30px rgba(49,247,255,.5);
+            --gray: #f0f0f0;
+            
+            --shadow-pink: 0 0 15px rgba(255, 0, 127, 0.6);
+            --shadow-blue: 0 0 15px rgba(0, 229, 255, 0.6);
+            
+            --zebra-print: repeating-linear-gradient(
+                -45deg,
+                #000,
+                #000 10px,
+                #fff 10px,
+                #fff 20px
+            );
         }
-
 
         /* ============================================================
            RESET
            ============================================================ */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-
             min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(168,85,247,.25),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 80% 80%,
-                    rgba(255,79,195,.18),
-                    transparent 30%
-                ),
-
-                #050308;
-
-            color: white;
-
-            font-family: 'VT323', monospace;
-
+            background-color: var(--hot-pink);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255,255,255,0.2), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0,229,255,0.3), transparent 25%);
+            background-attachment: fixed;
+            color: var(--black);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-
-        /* ============================================================
-           BACKGROUND 2000s
-           ============================================================ */
-
+        /* Patrón de estrellas de fondo estilo TheSlap */
         body::before {
-
             content: "";
-
             position: fixed;
-
             inset: 0;
-
             pointer-events: none;
-
             z-index: 0;
-
-            opacity: .35;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px
-                );
-
-            background-size: 20px 20px;
+            opacity: 0.4;
+            background-image: radial-gradient(var(--white) 2px, transparent 2px);
+            background-size: 40px 40px;
         }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            z-index: 100;
-
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(255,255,255,.025),
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px,
-                    transparent 4px
-                );
-
-            opacity: .12;
-        }
-
 
         /* ============================================================
-           ESTRELLAS
+           SPARKLES ANIMATION
            ============================================================ */
-
         .stars {
-
             position: fixed;
-
             inset: 0;
-
             pointer-events: none;
-
             z-index: 1;
-
             overflow: hidden;
         }
 
-
         .star {
-
             position: absolute;
-
-            width: 4px;
-            height: 4px;
-
-            background: white;
-
-            box-shadow:
-                0 0 6px white,
-                0 0 12px var(--pink);
-
-            animation:
-                twinkle 2s infinite alternate;
+            width: 25px;
+            height: 25px;
+            background: var(--yellow);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: pulse-star 2s infinite alternate, spin 6s linear infinite;
         }
 
+        .star:nth-child(1) { left: 5%; top: 10%; background: var(--neon-blue); }
+        .star:nth-child(2) { left: 85%; top: 15%; background: var(--white); animation-delay: 0.5s; }
+        .star:nth-child(3) { left: 75%; top: 40%; background: var(--yellow); animation-delay: 1s; width: 40px; height: 40px; }
+        .star:nth-child(4) { left: 10%; top: 60%; background: var(--neon-blue); animation-delay: 1.5s; }
+        .star:nth-child(5) { left: 90%; top: 80%; background: var(--white); animation-delay: 0.3s; }
+        .star:nth-child(6) { left: 20%; top: 85%; background: var(--yellow); animation-delay: 0.8s; width: 30px; height: 30px; }
 
-        .star:nth-child(1) {
-            left: 8%;
-            top: 15%;
+        @keyframes pulse-star {
+            from { transform: scale(0.8) rotate(0deg); opacity: 0.7; }
+            to { transform: scale(1.2) rotate(20deg); opacity: 1; }
         }
 
-        .star:nth-child(2) {
-            left: 82%;
-            top: 12%;
-            animation-delay: .5s;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-
-        .star:nth-child(3) {
-            left: 70%;
-            top: 32%;
-            animation-delay: 1s;
-        }
-
-        .star:nth-child(4) {
-            left: 15%;
-            top: 50%;
-            animation-delay: 1.4s;
-        }
-
-        .star:nth-child(5) {
-            left: 90%;
-            top: 70%;
-            animation-delay: .3s;
-        }
-
-        .star:nth-child(6) {
-            left: 35%;
-            top: 85%;
-            animation-delay: .9s;
-        }
-
-
-        @keyframes twinkle {
-
-            from {
-                opacity: .2;
-                transform: scale(.7);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1.5);
-            }
-        }
-
 
         /* ============================================================
-           INTRO SCREEN
+           INTRO SCREEN (FULL IMAGE)
            ============================================================ */
-
         #envelope-screen {
-
             position: fixed;
-
             inset: 0;
-
             z-index: 9999;
-
             display: flex;
-
             justify-content: center;
-
-            align-items: center;
-
-            padding: 20px;
-
-            background:
-
-                radial-gradient(
-                    circle at center,
-                    #29103d 0%,
-                    #09030e 45%,
-                    #000 100%
-                );
-
-            transition:
-                opacity .8s ease,
-                transform .8s ease;
+            align-items: flex-end;
+            padding: 40px;
+            /* SE REEMPLAZA EL PERAPOD POR LA IMAGEN A PANTALLA COMPLETA */
+            background: url('assets/entrada.jpg') center/cover no-repeat;
+            background-color: var(--black);
+            cursor: pointer;
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-
-        #envelope-screen.fade-out {
-
-            opacity: 0;
-
-            transform: scale(1.15);
-
+        #envelope-screen::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 40%);
             pointer-events: none;
         }
 
-
-        /* ============================================================
-           PERAPOD
-           ============================================================ */
-
-        .perapod {
-
+        .tap-to-enter {
             position: relative;
-
-            width: min(350px, 90vw);
-
-            padding: 30px 25px;
-
-            border-radius: 35px;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.18),
-                    rgba(255,255,255,.03)
-                );
-
-            border:
-
-                3px solid
-                rgba(255,255,255,.7);
-
-            box-shadow:
-
-                inset 0 0 20px rgba(255,255,255,.1),
-
-                0 0 10px var(--pink),
-
-                0 0 35px rgba(255,79,195,.45),
-
-                0 0 80px rgba(168,85,247,.35);
-
-            backdrop-filter: blur(15px);
-
-            text-align: center;
-
-            animation:
-                podFloat 4s ease-in-out infinite;
+            z-index: 10;
+            font-family: 'Fredoka One', cursive;
+            font-size: 24px;
+            color: var(--white);
+            text-shadow: 0 0 10px var(--hot-pink), 0 0 20px var(--hot-pink);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 3px solid var(--neon-blue);
+            animation: bounce 1.5s infinite;
         }
 
-
-        @keyframes podFloat {
-
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-
-        .pod-top {
-
-            position: absolute;
-
-            width: 90px;
-            height: 16px;
-
-            top: -10px;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            border-radius: 20px;
-
-            background: #111;
-
-            border: 2px solid white;
-
-            box-shadow: var(--shadow-cyan);
-        }
-
-
-        .pod-light {
-
-            width: 13px;
-            height: 13px;
-
-            border-radius: 50%;
-
-            background: var(--cyan);
-
-            box-shadow:
-                0 0 8px var(--cyan),
-                0 0 20px var(--cyan);
-
-            margin: 15px auto;
-        }
-
-
-        .pod-small {
-
-            font-family: 'Press Start 2P';
-
-            font-size: 10px;
-
-            line-height: 1.8;
-
-            color: var(--cyan);
-
-            text-shadow: var(--shadow-cyan);
-        }
-
-
-        .pod-name {
-
-            font-family: 'Pacifico', cursive;
-
-            font-size: 58px;
-
-            color: white;
-
-            margin: 20px 0;
-
-            transform: rotate(-4deg);
-
-            text-shadow:
-
-                3px 3px 0 var(--pink),
-
-                0 0 8px white,
-
-                0 0 20px var(--pink),
-
-                0 0 40px var(--pink);
-        }
-
-
-        .pod-enter {
-
-            display: inline-block;
-
-            margin-top: 15px;
-
-            padding: 15px 20px;
-
-            font-family: 'Press Start 2P';
-
-            font-size: 10px;
-
-            color: #000;
-
-            background: var(--lime);
-
-            border: 3px solid white;
-
-            box-shadow:
-
-                4px 4px 0 #000,
-
-                0 0 20px var(--lime);
-
-            cursor: pointer;
-
-            animation: blink 1.2s infinite;
-        }
-
-
-        @keyframes blink {
-
-            50% {
-                opacity: .55;
-            }
-        }
-
-
-        /* ============================================================
-           MAIN
-           ============================================================ */
-
-        #main-invitation {
-
-            display: none;
-
-            position: relative;
-
-            z-index: 5;
-
-            width: 100%;
-
+        #envelope-screen.fade-out {
             opacity: 0;
-
-            animation: pageIn 1s forwards;
+            transform: scale(1.1) translateY(-50px);
+            pointer-events: none;
         }
 
+        /* ============================================================
+           MAIN INVITATION
+           ============================================================ */
+        #main-invitation {
+            display: none;
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            opacity: 0;
+            animation: slideUpFade 1s forwards;
+        }
 
         body.content-active #main-invitation {
-
             display: block;
         }
 
-
-        @keyframes pageIn {
-
-            to {
-                opacity: 1;
-            }
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
 
         .page {
-
-            width: min(620px, 94vw);
-
+            width: min(650px, 94vw);
             margin: auto;
-
-            padding: 25px 0 80px;
+            padding: 30px 0 100px;
         }
-
 
         /* ============================================================
-           OLD WEB HEADER
+           MARQUEE THESLAP
            ============================================================ */
-
-        .browser-bar {
-
-            margin-bottom: 20px;
-
-            padding: 8px 12px;
-
-            background: #ddd;
-
-            color: #111;
-
-            border: 2px solid white;
-
-            box-shadow:
-                3px 3px 0 #000;
-
-            font-family: 'VT323';
-
-            font-size: 18px;
-
-            display: flex;
-
-            justify-content: space-between;
-        }
-
-
-        .browser-buttons {
-
-            display: flex;
-
-            gap: 5px;
-        }
-
-
-        .browser-buttons span {
-
-            width: 12px;
-            height: 12px;
-
-            background: #999;
-
-            border:
-                1px solid #555;
-        }
-
-
-        /* ============================================================
-           MARQUEE
-           ============================================================ */
-
         .marquee {
-
             width: 100%;
-
             overflow: hidden;
-
-            border-top:
-                2px solid var(--cyan);
-
-            border-bottom:
-                2px solid var(--pink);
-
-            background: #09030e;
-
-            padding: 9px 0;
-
+            background: var(--zebra-print);
+            padding: 10px 0;
             margin-bottom: 30px;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-pink);
+            border-radius: 10px;
         }
-
 
         .marquee-track {
-
             display: flex;
-
             width: max-content;
-
-            animation:
-                marquee 14s linear infinite;
+            animation: marquee 15s linear infinite;
         }
-
 
         .marquee span {
-
             padding: 0 25px;
-
-            font-family:
-                'Press Start 2P';
-
-            font-size: 10px;
-
-            color: var(--yellow);
-
-            text-shadow:
-                0 0 8px var(--yellow);
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            color: var(--hot-pink);
+            text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+            letter-spacing: 2px;
         }
-
 
         @keyframes marquee {
-
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
-
 
         /* ============================================================
            HERO
            ============================================================ */
-
         .hero {
-
             text-align: center;
-
-            padding: 25px 10px 45px;
+            padding: 20px 10px 40px;
         }
-
-
-        .hero-mini {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size: 11px;
-
-            color: var(--cyan);
-
-            letter-spacing: 2px;
-
-            text-shadow: var(--shadow-cyan);
-        }
-
 
         .hero-title {
-
-            margin: 20px 0;
-
-            font-family:
-                'Pacifico',
-                cursive;
-
-            font-size:
-                clamp(65px, 17vw, 105px);
-
-            line-height: .9;
-
-            transform:
-                rotate(-4deg);
-
-            color: white;
-
-            text-shadow:
-
-                4px 4px 0 var(--purple),
-
-                8px 8px 0 rgba(0,0,0,.8),
-
-                0 0 10px white,
-
-                0 0 30px var(--pink),
-
-                0 0 60px var(--pink);
+            margin: 10px 0 25px;
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(70px, 18vw, 110px);
+            line-height: 1;
+            transform: rotate(-5deg);
+            color: var(--white);
+            text-shadow: 
+                4px 4px 0 var(--black),
+                8px 8px 0 var(--neon-blue),
+                0 0 20px var(--hot-pink);
+            animation: float 3s ease-in-out infinite;
         }
 
+        @keyframes float {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(-3deg) translateY(-10px); }
+        }
 
         .hero-box {
-
-            padding: 20px;
-
-            background:
-                rgba(255,79,195,.08);
-
-            border:
-
-                2px dashed
-                var(--pink);
-
-            box-shadow:
-
-                inset 0 0 20px rgba(255,79,195,.1),
-
-                0 0 15px rgba(255,79,195,.15);
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            border: 5px solid var(--neon-blue);
+            box-shadow: 8px 8px 0 var(--hot-pink);
+            position: relative;
         }
 
+        .hero-box::before {
+            content: "Update";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--hot-pink);
+            color: white;
+            font-family: 'Fredoka One';
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 3px solid white;
+            font-size: 14px;
+        }
 
         .hero-box p {
-
-            font-size: 22px;
-
-            line-height: 1.4;
-
-            color: #fff;
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--black);
+            font-weight: 600;
         }
-
 
         /* ============================================================
-           OLD WEB CARD
+           THESLAP CARDS (REEMPLAZA WEB-CARD)
            ============================================================ */
-
         .web-card {
-
+            background: var(--white);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 35px 0;
+            border: 5px solid var(--hot-pink);
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.2), inset 0 0 20px rgba(255, 0, 127, 0.1);
             position: relative;
-
-            width: 100%;
-
-            margin: 25px 0;
-
-            padding: 28px 22px;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    rgba(31,13,48,.94),
-                    rgba(10,5,17,.94)
-                );
-
-            border:
-
-                2px solid
-                var(--purple-light);
-
-            border-radius: 16px;
-
-            box-shadow:
-
-                0 0 15px rgba(168,85,247,.25),
-
-                inset 0 0 20px rgba(168,85,247,.08);
+            transition: transform 0.3s ease;
         }
 
-
-        .web-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: -2px;
-            left: 15px;
-            right: 15px;
-
-            height: 3px;
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--cyan),
-                    var(--pink),
-                    transparent
-                );
-
-            box-shadow:
-                0 0 10px var(--cyan);
+        .web-card:hover {
+            transform: scale(1.02);
         }
-
 
         .window-title {
-
             display: flex;
-
-            justify-content:
-                space-between;
-
             align-items: center;
-
+            border-bottom: 3px dashed var(--light-pink);
+            padding-bottom: 15px;
             margin-bottom: 25px;
-
-            padding-bottom: 12px;
-
-            border-bottom:
-                2px dotted
-                rgba(255,255,255,.2);
         }
-
 
         .window-title h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 22px;
+            color: var(--black);
+            flex-grow: 1;
+        }
 
-            font-family:
-                'Press Start 2P';
+        .window-title h2 span {
+            color: var(--neon-blue);
+        }
 
+        .slap-user {
+            width: 50px;
+            height: 50px;
+            background: var(--hot-pink);
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 3px solid var(--neon-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Pacifico';
+            color: white;
+            font-size: 24px;
+        }
+
+        .feeling-status {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--hot-pink);
+            background: var(--gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
             font-size: 14px;
-
-            color: var(--cyan);
-
-            text-shadow:
-                0 0 10px var(--cyan);
         }
-
-
-        .window-icon {
-
-            color: var(--pink);
-
-            font-family:
-                'Press Start 2P';
-
-            font-size: 12px;
-        }
-
 
         /* ============================================================
-           COUNTDOWN
+           COUNTDOWN BUBBLES
            ============================================================ */
-
         .timer-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(4,1fr);
-
-            gap: 8px;
-
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
             margin-top: 20px;
         }
 
-
         .timer-block {
-
-            padding:
-                15px 5px;
-
-            background:
-                #030105;
-
-            border:
-                2px solid
-                var(--cyan);
-
-            box-shadow:
-                inset 0 0 15px rgba(49,247,255,.12);
-
-            text-align:
-                center;
+            background: var(--hot-pink);
+            padding: 15px 5px;
+            border-radius: 15px;
+            border: 3px solid var(--white);
+            box-shadow: 4px 4px 0 var(--black);
+            text-align: center;
         }
-
 
         .timer-num {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                clamp(14px, 4vw, 24px);
-
-            color:
-                white;
-
-            text-shadow:
-                0 0 8px var(--cyan);
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(20px, 5vw, 32px);
+            color: var(--white);
+            text-shadow: 2px 2px 0 var(--black);
         }
-
 
         .timer-txt {
-
-            margin-top: 10px;
-
-            color:
-                var(--pink);
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                7px;
+            margin-top: 5px;
+            color: var(--yellow);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 10px;
+            letter-spacing: 1px;
         }
-
 
         /* ============================================================
-           BUTTONS
+           BUTTONS VIBE 2010s
            ============================================================ */
-
         .retro-button {
-
-            display:
-                inline-block;
-
-            margin-top:
-                22px;
-
-            padding:
-                14px 20px;
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                9px;
-
-            text-decoration:
-                none;
-
-            color:
-                #000;
-
-            background:
-                var(--cyan);
-
-            border:
-                3px solid white;
-
-            box-shadow:
-                4px 4px 0 #000,
-                0 0 15px var(--cyan);
-
-            transition:
-                transform .15s,
-                box-shadow .15s;
-
-            cursor:
-                pointer;
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 30px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 16px;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--neon-blue);
+            border: 4px solid var(--black);
+            border-radius: 30px;
+            box-shadow: 5px 5px 0 var(--black);
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-transform: uppercase;
         }
-
 
         .retro-button:hover {
-
-            transform:
-                translate(3px,3px);
-
-            box-shadow:
-                1px 1px 0 #000,
-                0 0 25px var(--cyan);
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0 var(--black);
+            background: var(--yellow);
         }
-
 
         .pink-button {
-
-            background:
-                var(--pink);
-
-            box-shadow:
-                4px 4px 0 #000,
-                0 0 15px var(--pink);
+            background: var(--hot-pink);
+            color: white;
         }
 
-
-        .yellow-button {
-
-            background:
-                var(--yellow);
-
-            box-shadow:
-                4px 4px 0 #000,
-                0 0 15px var(--yellow);
+        .pink-button:hover {
+            background: var(--light-pink);
         }
-
 
         /* ============================================================
-           FAMILY
+           FAMILY & LOCATIONS
            ============================================================ */
-
-        .family-block {
-
-            text-align:
-                center;
-
-            margin-bottom:
-                25px;
+        .family-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 24px;
+            color: var(--hot-pink);
+            margin-bottom: 5px;
         }
-
 
         .label {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                8px;
-
-            color:
-                var(--lime);
-
-            line-height:
-                1.8;
-
-            margin-bottom:
-                10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 12px;
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
-
-
-        .family-name {
-
-            font-family:
-                'Orbitron';
-
-            font-weight:
-                700;
-
-            font-size:
-                20px;
-
-            margin-bottom:
-                6px;
-        }
-
-
-        /* ============================================================
-           LOCATIONS
-           ============================================================ */
 
         .location {
-
-            padding:
-                20px 0;
-
-            border-bottom:
-                1px dotted
-                rgba(255,255,255,.25);
+            padding: 25px 0;
+            border-bottom: 2px dashed var(--gray);
         }
 
-
-        .location:last-child {
-            border-bottom: none;
-        }
-
-
-        .location-code {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                9px;
-
-            color:
-                var(--cyan);
-        }
-
+        .location:last-child { border-bottom: none; }
 
         .location-time {
-
-            margin:
-                10px 0;
-
-            font-family:
-                'Orbitron';
-
-            font-size:
-                30px;
-
-            font-weight:
-                900;
-
-            color:
-                white;
-
-            text-shadow:
-                0 0 10px var(--cyan);
+            margin: 10px 0;
+            font-family: 'Fredoka One', cursive;
+            font-size: 35px;
+            color: var(--black);
+            text-shadow: 2px 2px 0 var(--neon-blue);
         }
-
 
         .location-name {
-
-            font-family:
-                'Orbitron';
-
-            font-size:
-                18px;
-
-            font-weight:
-                700;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
         }
-
 
         .map-container {
-
-            width:
-                100%;
-
-            height:
-                220px;
-
-            margin-top:
-                18px;
-
-            overflow:
-                hidden;
-
-            border:
-                2px solid
-                var(--purple-light);
-
-            border-radius:
-                10px;
+            width: 100%;
+            height: 220px;
+            margin-top: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid var(--black);
+            box-shadow: 6px 6px 0 var(--light-pink);
         }
 
-
-        .map-container iframe {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            border:
-                none;
-
-            filter:
-                saturate(.7)
-                contrast(1.15);
-        }
-
+        .map-container iframe { width: 100%; height: 100%; border: none; }
 
         /* ============================================================
            DRESS CODE
            ============================================================ */
-
-        .dress-code {
-
-            text-align:
-                center;
-        }
-
-
         .dress-main {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                16px;
-
-            color:
-                var(--pink);
-
-            line-height:
-                1.7;
-
-            text-shadow:
-                var(--shadow-pink);
+            font-family: 'Fredoka One', cursive;
+            font-size: 24px;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 black;
         }
-
 
         .dress-sub {
-
-            font-family:
-                'Pacifico';
-
-            font-size:
-                38px;
-
-            color:
-                var(--cyan);
-
-            transform:
-                rotate(-3deg);
-
-            margin:
-                12px 0;
+            font-family: 'Pacifico', cursive;
+            font-size: 45px;
+            color: var(--hot-pink);
+            transform: rotate(-3deg);
+            margin: 10px 0;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
         }
-
 
         .warning {
-
-            margin-top:
-                25px;
-
-            padding:
-                20px;
-
-            border:
-                3px dashed
-                var(--pink);
-
-            background:
-                repeating-linear-gradient(
-                    -45deg,
-                    rgba(255,0,140,.08),
-                    rgba(255,0,140,.08) 10px,
-                    rgba(255,255,255,.03) 10px,
-                    rgba(255,255,255,.03) 20px
-                );
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            border: 4px solid var(--black);
+            background: var(--zebra-print);
+            color: white;
+            text-align: center;
         }
 
+        .warning-inner {
+            background: rgba(0,0,0,0.85);
+            padding: 15px;
+            border-radius: 10px;
+        }
 
         .warning strong {
-
-            display:
-                block;
-
-            margin-bottom:
-                10px;
-
-            color:
-                var(--yellow);
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                10px;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--yellow);
+            font-family: 'Fredoka One';
+            font-size: 18px;
         }
-
 
         /* ============================================================
-           TICKET
+           TICKET (CONCERT STYLE)
            ============================================================ */
-
         .ultimate-ticket {
-
-            position:
-                relative;
-
-            margin:
-                35px 0;
-
-            padding:
-                28px;
-
-            background:
-                #f4f0f8;
-
-            color:
-                #111;
-
-            border:
-                4px solid
-                var(--pink);
-
-            box-shadow:
-                0 0 20px
-                rgba(255,79,195,.5);
+            position: relative;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--hot-pink), #9d00ff);
+            color: white;
+            border-radius: 20px;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(0,0,0,0.5);
+            overflow: hidden;
         }
 
+        .ultimate-ticket::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--zebra-print);
+            opacity: 0.15;
+            pointer-events: none;
+        }
 
         .ticket-header-txt {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                10px;
-
-            color:
-                var(--purple);
-
-            padding-bottom:
-                12px;
-
-            border-bottom:
-                2px dashed #aaa;
-
-            margin-bottom:
-                20px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 14px;
+            color: var(--yellow);
+            padding-bottom: 15px;
+            border-bottom: 3px dashed rgba(255,255,255,0.4);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
         }
-
-
-        .ticket-label {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                7px;
-
-            color:
-                #777;
-        }
-
 
         .ticket-owner {
-
-            font-family:
-                'Orbitron';
-
-            font-size:
-                25px;
-
-            font-weight:
-                900;
-
-            margin:
-                8px 0 20px;
-
-            word-break:
-                break-word;
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            margin: 5px 0 20px;
+            text-shadow: 2px 2px 0 var(--black);
+            position: relative;
+            z-index: 2;
         }
-
-
-        .ticket-row {
-
-            display:
-                flex;
-
-            justify-content:
-                space-between;
-
-            align-items:
-                center;
-        }
-
 
         .ticket-value {
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                35px;
-
-            margin-top:
-                10px;
-
-            color:
-                var(--pink-hot);
+            font-family: 'Fredoka One', cursive;
+            font-size: 45px;
+            color: var(--neon-blue);
+            text-shadow: 3px 3px 0 var(--black);
+            position: relative;
+            z-index: 2;
         }
-
-
-        .hologram-seal {
-
-            width:
-                58px;
-
-            height:
-                58px;
-
-            border-radius:
-                50%;
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            background:
-                conic-gradient(
-                    var(--pink),
-                    var(--cyan),
-                    var(--yellow),
-                    var(--lime),
-                    var(--pink)
-                );
-
-            animation:
-                spin 4s linear infinite;
-        }
-
-
-        .hologram-inner {
-
-            width:
-                45px;
-
-            height:
-                45px;
-
-            border-radius:
-                50%;
-
-            background:
-                white;
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                6px;
-        }
-
-
-        .barcode-img {
-
-            width:
-                100%;
-
-            height:
-                45px;
-
-            margin-top:
-                25px;
-
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    #000,
-                    #000 2px,
-                    transparent 2px,
-                    transparent 5px
-                );
-        }
-
-
-        @keyframes spin {
-
-            to {
-                transform:
-                    rotate(360deg);
-            }
-        }
-
 
         /* ============================================================
-           FORMULARIOS
+           FORMS
            ============================================================ */
-
-        .form-group {
-
-            margin-bottom:
-                15px;
-        }
-
+        .form-group { margin-bottom: 20px; }
 
         .form-control {
-
-            width:
-                100%;
-
-            padding:
-                16px;
-
-            background:
-                #050308;
-
-            color:
-                white;
-
-            border:
-                2px solid
-                var(--purple-light);
-
-            font-family:
-                'VT323';
-
-            font-size:
-                20px;
-
-            outline:
-                none;
-
-            border-radius:
-                7px;
+            width: 100%;
+            padding: 18px;
+            background: var(--gray);
+            color: var(--black);
+            border: 3px solid var(--black);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            outline: none;
+            border-radius: 15px;
+            transition: all 0.3s;
         }
-
 
         .form-control:focus {
-
-            border-color:
-                var(--cyan);
-
-            box-shadow:
-                0 0 15px
-                rgba(49,247,255,.35);
+            border-color: var(--hot-pink);
+            background: var(--white);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
         }
-
-
-        select.form-control option {
-
-            background:
-                #100719;
-
-            color:
-                white;
-        }
-
 
         textarea.form-control {
-
-            min-height:
-                120px;
-
-            resize:
-                vertical;
+            min-height: 120px;
+            resize: vertical;
         }
 
-
-        .full-button {
-
-            width:
-                100%;
-        }
-
+        .full-button { width: 100%; }
 
         /* ============================================================
            ANIMACIONES SCROLL
            ============================================================ */
-
         .anim-hide {
-
-            opacity:
-                0;
-
-            transform:
-                translateY(30px);
-
-            transition:
-                all .8s ease;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
 
         .anim-show {
-
-            opacity:
-                1;
-
-            transform:
-                translateY(0);
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
-
 
         /* ============================================================
            MUSIC BUTTON
            ============================================================ */
-
         .sticky-music-btn {
-
-            position:
-                fixed;
-
-            right:
-                20px;
-
-            bottom:
-                20px;
-
-            width:
-                60px;
-
-            height:
-                60px;
-
-            border-radius:
-                50%;
-
-            background:
-                #08030d;
-
-            border:
-                3px solid
-                var(--cyan);
-
-            box-shadow:
-                0 0 20px
-                var(--cyan);
-
-            z-index:
-                2000;
-
-            cursor:
-                pointer;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: var(--hot-pink);
+            border: 4px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 2000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
         }
 
-
-        .sticky-music-btn svg {
-
-            width:
-                25px;
-
-            height:
-                25px;
-
-            fill:
-                var(--cyan);
+        .sticky-music-btn:hover {
+            transform: scale(1.1);
+            background: var(--neon-blue);
         }
 
-
-        body:not(.content-active)
-        .sticky-music-btn {
-
-            opacity:
-                0;
-
-            pointer-events:
-                none;
-        }
-
+        .sticky-music-btn svg { width: 30px; height: 30px; fill: var(--white); }
+        body:not(.content-active) .sticky-music-btn { opacity: 0; pointer-events: none; }
 
         /* ============================================================
            FOOTER
            ============================================================ */
-
         .footer {
-
-            text-align:
-                center;
-
-            padding:
-                30px 10px;
-
-            font-family:
-                'Press Start 2P';
-
-            font-size:
-                7px;
-
-            color:
-                #777;
-
-            line-height:
-                2;
+            text-align: center;
+            padding: 30px 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 12px;
+            color: var(--black);
+            line-height: 2;
         }
 
-
-        .footer span {
-
-            color:
-                var(--pink);
-        }
-
+        .footer span { color: var(--white); font-size: 18px; }
 
         /* ============================================================
            RESPONSIVE
            ============================================================ */
-
         @media (max-width: 480px) {
-
-            .page {
-                width: 94vw;
-            }
-
-            .web-card {
-                padding: 24px 16px;
-            }
-
-            .timer-grid {
-                gap: 5px;
-            }
-
-            .timer-block {
-                padding: 13px 3px;
-            }
-
-            .hero-title {
-                font-size: 70px;
-            }
-
-            .pod-name {
-                font-size: 50px;
-            }
-
-            .window-title h2 {
-                font-size: 10px;
-            }
-
-            .family-name {
-                font-size: 17px;
-            }
+            .hero-title { font-size: 75px; }
+            .web-card { padding: 20px; border-radius: 20px; }
+            .window-title h2 { font-size: 18px; }
+            .timer-block { padding: 10px 2px; }
+            .dress-sub { font-size: 38px; }
+            .feeling-status { font-size: 12px; }
         }
-
     </style>
 </head>
 
-
 <body>
 
-
     <!-- ============================================================
-         ESTRELLAS
+         SPARKLES / ESTRELLAS DE FONDO
          ============================================================ -->
-
     <div class="stars">
-
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
-
     </div>
-
 
     <!-- ============================================================
          AUDIO
          ============================================================ -->
-
-    <audio
-        id="bg-music"
-        src="assets/song.mp3"
-        loop>
-    </audio>
-
+    <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
     <!-- ============================================================
          MUSIC BUTTON
          ============================================================ -->
-
-    <button
-        id="music-btn"
-        class="sticky-music-btn"
-        onclick="toggleMusic()">
-
-        <svg
-            id="music-icon-play"
-            style="display:none"
-            viewBox="0 0 24 24">
-
+    <button id="music-btn" class="sticky-music-btn" onclick="toggleMusic()">
+        <svg id="music-icon-play" style="display:none" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
-
         </svg>
-
-
-        <svg
-            id="music-icon-pause"
-            viewBox="0 0 24 24">
-
+        <svg id="music-icon-pause" viewBox="0 0 24 24">
             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-
         </svg>
-
     </button>
 
-
     <!-- ============================================================
-         INTRO
+         INTRO SCREEN PANTALLA COMPLETA 
          ============================================================ -->
-
-    <div
-        id="envelope-screen"
-        onclick="openEnvelope()">
-
-
-        <div class="perapod">
-
-            <div class="pod-top"></div>
-
-            <div class="pod-light"></div>
-
-            <div class="pod-small">
-                PERSONAL POD
-            </div>
-
-
-            <div class="pod-name">
-                Andrea
-            </div>
-
-
-            <div class="pod-small">
-                MIS XV AÑOS
-            </div>
-
-
-            <div class="pod-enter">
-                ▶ TOCA PARA ENTRAR
-            </div>
-
+    <div id="envelope-screen" onclick="openEnvelope()">
+        <div class="tap-to-enter">
+            ✨ TOCA PARA ENTRAR ✨
         </div>
-
     </div>
 
-
     <!-- ============================================================
-         MAIN
+         MAIN INVITATION
          ============================================================ -->
-
     <main id="main-invitation">
-
         <div class="page">
-
-
-            <!-- ====================================================
-                 BROWSER BAR
-                 ==================================================== -->
-
-            <div class="browser-bar">
-
-                <div>
-                    ★ andrea-xv2000s.html
-                </div>
-
-                <div class="browser-buttons">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </div>
-
-            </div>
-
 
             <!-- ====================================================
                  MARQUEE
                  ==================================================== -->
-
             <div class="marquee">
-
                 <div class="marquee-track">
-
                     <span>★ ANDREA'S XV ★</span>
                     <span>WELCOME TO MY WORLD ★</span>
                     <span>PARTY TIME ★</span>
                     <span>2000'S VIBES ★</span>
-
                     <span>★ ANDREA'S XV ★</span>
                     <span>WELCOME TO MY WORLD ★</span>
                     <span>PARTY TIME ★</span>
                     <span>2000'S VIBES ★</span>
-
                 </div>
-
             </div>
 
-
             <!-- ====================================================
-                 HERO
+                 HERO THESLAP STYLE
                  ==================================================== -->
-
             <section class="hero anim-hide">
-
-                <div class="hero-mini">
-                    MIS XV AÑOS
+                <div class="feeling-status">
+                    FEELING: Party rockk! 🪩
                 </div>
 
-
-                <h1 class="hero-title">
-                    Andrea
-                </h1>
-
+                <h1 class="hero-title">Andrea</h1>
 
                 <div class="hero-box">
-
-                    <p>
-                        "Agradecida con Dios por la vida,
-                        la familia y los sueños que apenas
-                        comienzan."
-                    </p>
-
+                    <p>"Agradecida con Dios por la vida, la familia y los sueños que apenas comienzan."</p>
                     <br>
-
-                    <p style="color:var(--cyan);">
+                    <p style="color:var(--hot-pink); font-family: 'Fredoka One';">
                         ¡NO FALTES Y FESTEJA CONMIGO!
                     </p>
-
                 </div>
-
             </section>
-
 
             <!-- ====================================================
                  COUNTDOWN
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide">
-
+            <section class="web-card anim-hide">
                 <div class="window-title">
-
-                    <h2>
-                        COUNTDOWN.EXE
-                    </h2>
-
-                    <div class="window-icon">
-                        ★_★
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Countdown</span></h2>
                 </div>
 
-
-                <div
-                    style="
-                    text-align:center;
-                    color:var(--gray);
-                    font-size:20px;
-                    ">
-
-                    EL EVENTO COMIENZA EN...
-
+                <div style="text-align:center; color:var(--black); font-weight:700; font-size:18px;">
+                    ¡EL EVENTO COMIENZA EN...! 😱
                 </div>
-
 
                 <div class="timer-grid">
-
                     <div class="timer-block">
-
-                        <div
-                            id="cd-days"
-                            class="timer-num">
-                            00
-                        </div>
-
-                        <div class="timer-txt">
-                            DÍAS
-                        </div>
-
+                        <div id="cd-days" class="timer-num">00</div>
+                        <div class="timer-txt">DÍAS</div>
                     </div>
-
-
                     <div class="timer-block">
-
-                        <div
-                            id="cd-hours"
-                            class="timer-num">
-                            00
-                        </div>
-
-                        <div class="timer-txt">
-                            HRS
-                        </div>
-
+                        <div id="cd-hours" class="timer-num">00</div>
+                        <div class="timer-txt">HRS</div>
                     </div>
-
-
                     <div class="timer-block">
-
-                        <div
-                            id="cd-mins"
-                            class="timer-num">
-                            00
-                        </div>
-
-                        <div class="timer-txt">
-                            MIN
-                        </div>
-
+                        <div id="cd-mins" class="timer-num">00</div>
+                        <div class="timer-txt">MIN</div>
                     </div>
-
-
                     <div class="timer-block">
-
-                        <div
-                            id="cd-secs"
-                            class="timer-num">
-                            00
-                        </div>
-
-                        <div class="timer-txt">
-                            SEG
-                        </div>
-
+                        <div id="cd-secs" class="timer-num">00</div>
+                        <div class="timer-txt">SEG</div>
                     </div>
-
                 </div>
-
 
                 <div style="text-align:center;">
-
-                    <a
-                        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial"
-                        target="_blank"
-                        class="retro-button">
-
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Andrea&dates=20261010T190000Z/20261011T030000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="retro-button">
                         + AGENDAR FECHA
-
                     </a>
-
                 </div>
-
             </section>
-
 
             <!-- ====================================================
                  FAMILY
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide">
-
+            <section class="web-card anim-hide" style="text-align: center;">
                 <div class="window-title">
-
-                    <h2>
-                        FAMILY.TXT
-                    </h2>
-
-                    <div class="window-icon">
-                        ♡
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Family</span></h2>
                 </div>
-
 
                 <div class="family-block">
-
-                    <div class="label">
-                        PRESENTADO POR MIS PADRES
-                    </div>
-
-                    <div class="family-name">
-                        Aida Del Carmen Vázquez
-                    </div>
-
-                    <div class="family-name">
-                        Julio Daniel Gómez
-                    </div>
-
+                    <div class="label">PRESENTADO POR MIS PADRES</div>
+                    <div class="family-name">Aida Del Carmen Vázquez</div>
+                    <div class="family-name">Julio Daniel Gómez</div>
                 </div>
 
-
-                <hr
-                    style="
-                    border:0;
-                    border-top:1px dashed rgba(255,255,255,.2);
-                    margin:25px 0;
-                    ">
-
+                <hr style="border:0; border-top:3px dashed var(--gray); margin:25px 0;">
 
                 <div class="family-block">
-
-                    <div class="label">
-                        Y MIS PADRINOS
-                    </div>
-
-                    <div class="family-name">
-                        Gabriela Hernández
-                    </div>
-
-                    <div class="family-name">
-                        Jesús Rosas
-                    </div>
-
+                    <div class="label">Y MIS PADRINOS</div>
+                    <div class="family-name">Gabriela Hernández</div>
+                    <div class="family-name">Jesús Rosas</div>
                 </div>
-
             </section>
-
 
             <!-- ====================================================
                  LOCATIONS
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide">
-
+            <section class="web-card anim-hide">
                 <div class="window-title">
-
-                    <h2>
-                        LOCATION.EXE
-                    </h2>
-
-                    <div class="window-icon">
-                        GPS
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Locations</span> 📍</h2>
                 </div>
-
 
                 <!-- CEREMONIA -->
-
                 <div class="location">
-
-                    <div class="location-code">
-                        01 // CEREMONIA
-                    </div>
-
-                    <div class="location-time">
-                        1:00 PM
-                    </div>
-
-                    <div class="location-name">
-                        Parroquia de Cristo Rey
-                    </div>
-
+                    <div class="label">01 // CEREMONIA</div>
+                    <div class="location-time">1:00 PM</div>
+                    <div class="location-name">Parroquia de Cristo Rey</div>
 
                     <div class="map-container">
-
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx"
-                            allowfullscreen
-                            loading="lazy">
-                        </iframe>
-
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.801461308488!2d-96.973992!3d19.1516596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dc7f672bec7b%3A0xcbbb36ee4bf3942a!2s%F0%9F%95%8DPARROQUIA%20DE%20CRISTO%20REY%20HUATUSCO%20VER..!5e1!3m2!1ses-419!2smx!4v1788580962096!5m2!1ses-419!2smx" allowfullscreen loading="lazy"></iframe>
                     </div>
-
 
                     <div style="text-align:center;">
-
-                        <a
-                            href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic"
-                            target="_blank"
-                            class="retro-button">
-
+                        <a href="https://maps.app.goo.gl/EcKhPLiz4p4LPFNr6?g_st=ic" target="_blank" class="retro-button">
                             ► RUTA GPS
-
                         </a>
-
                     </div>
-
                 </div>
-
 
                 <!-- FIESTA -->
-
                 <div class="location">
-
-                    <div
-                        class="location-code"
-                        style="color:var(--yellow);">
-
-                        02 // LA FIESTA
-
-                    </div>
-
-
-                    <div
-                        class="location-time"
-                        style="text-shadow:0 0 10px var(--yellow);">
-
-                        3:00 PM
-
-                    </div>
-
-
-                    <div class="location-name">
-
-                        Salón Quinta Santa Rosa
-
-                    </div>
-
+                    <div class="label" style="color:var(--hot-pink);">02 // LA FIESTA</div>
+                    <div class="location-time" style="color:var(--neon-blue); text-shadow:2px 2px 0 black;">3:00 PM</div>
+                    <div class="location-name">Salón Quinta Santa Rosa</div>
 
                     <div class="map-container">
-
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx"
-                            allowfullscreen
-                            loading="lazy">
-                        </iframe>
-
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4097.72669981033!2d-96.96407819999999!3d19.154669300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4dba499ceb8e5%3A0x4d2613f4bc26fd0!2s5ta%20Santa%20Rosa!5e1!3m2!1ses-419!2smx!4v1788581001980!5m2!1ses-419!2smx" allowfullscreen loading="lazy"></iframe>
                     </div>
-
 
                     <div style="text-align:center;">
-
-                        <a
-                            href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic"
-                            target="_blank"
-                            class="retro-button yellow-button">
-
+                        <a href="https://maps.app.goo.gl/2FPxoFWCRzy7aTAf9?g_st=ic" target="_blank" class="retro-button pink-button">
                             ► RUTA GPS
-
                         </a>
-
                     </div>
-
                 </div>
-
             </section>
-
 
             <!-- ====================================================
                  DRESS CODE
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide dress-code">
-
+            <section class="web-card anim-hide" style="text-align: center;">
                 <div class="window-title">
-
-                    <h2>
-                        DRESSCODE.HTML
-                    </h2>
-
-                    <div class="window-icon">
-                        <3
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Dresscode</span> 👗</h2>
                 </div>
 
+                <div class="dress-main">2010'S NEON</div>
+                <div class="dress-sub">Party Rock</div>
 
-                <div class="dress-main">
-                    2010'S NEON
-                </div>
-
-
-                <div class="dress-sub">
-                    Party Rock
-                </div>
-
-
-                <p
-                    style="
-                    font-size:20px;
-                    line-height:1.5;
-                    ">
-
-                    ¡Ven listo para brillar en la oscuridad!
-
-                    <br>
-
-                    Estampados locos, colores vibrantes
-                    y mucha actitud.
-
+                <p style="font-size:18px; line-height:1.5; font-weight:600;">
+                    ¡Ven listo para brillar en la oscuridad!<br>
+                    Estampados locos, colores vibrantes y mucha actitud.
                 </p>
 
-
                 <div class="warning">
-
-                    <strong>
-                        ⚠ WARNING ⚠
-                    </strong>
-
-                    <p style="font-size:19px;">
-
-                        El color
-                        <b style="color:var(--pink);">
-                            FUCSIA / ROSA
-                        </b>
-                        es de uso exclusivo para Andrea.
-
-                        <br><br>
-
-                        Favor de evitarlo en tu outfit.
-
-                    </p>
-
+                    <div class="warning-inner">
+                        <strong>⚠ WARNING ⚠</strong>
+                        <p style="font-size:16px; color:white;">
+                            El color <b style="color:var(--hot-pink); text-shadow:0 0 5px var(--hot-pink);">FUCSIA / ROSA</b> es de uso exclusivo para Andrea.<br><br>
+                            Favor de evitarlo en tu outfit.
+                        </p>
+                    </div>
                 </div>
-
             </section>
-
 
             <!-- ====================================================
                  GIFTS
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide">
-
+            <section class="web-card anim-hide" style="text-align: center;">
                 <div class="window-title">
-
-                    <h2>
-                        GIFTBOX.EXE
-                    </h2>
-
-                    <div class="window-icon">
-                        $
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Gifts</span> 🎁</h2>
                 </div>
 
+                <div style="font-size:80px; text-shadow:0 0 20px var(--yellow); line-height:1;">✉</div>
+                
+                <h2 style="font-family:'Fredoka One'; font-size:24px; color:var(--hot-pink); margin:15px 0;">
+                    LLUVIA DE SOBRES
+                </h2>
 
-                <div style="text-align:center;">
-
-                    <div
-                        style="
-                        font-size:70px;
-                        text-shadow:0 0 20px var(--yellow);
-                        ">
-
-                        ✉
-
-                    </div>
-
-
-                    <h2
-                        style="
-                        font-family:'Press Start 2P';
-                        font-size:13px;
-                        color:var(--yellow);
-                        line-height:1.7;
-                        ">
-
-                        LLUVIA DE SOBRES
-
-                    </h2>
-
-
-                    <p
-                        style="
-                        font-size:21px;
-                        line-height:1.5;
-                        margin-top:15px;
-                        ">
-
-                        El mejor regalo es tu presencia.
-
-                        <br><br>
-
-                        Si deseas tener un detalle adicional,
-                        contaremos con un buzón VIP en la
-                        recepción para lluvia de sobres.
-
-                    </p>
-
-                </div>
-
+                <p style="font-size:18px; line-height:1.5; font-weight:600;">
+                    El mejor regalo es tu presencia.<br><br>
+                    Si deseas tener un detalle adicional, contaremos con un buzón VIP en la recepción para lluvia de sobres.
+                </p>
             </section>
-
 
             <!-- ====================================================
-                 PLAYLIST
+                 PLAYLIST & GALLERY
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide">
-
+            <section class="web-card anim-hide">
                 <div class="window-title">
-
-                    <h2>
-                        PLAYLIST.MP3
-                    </h2>
-
-                    <div class="window-icon">
-                        ♫
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Playlist</span> 🎧</h2>
                 </div>
 
-
-                <p
-                    style="
-                    font-size:21px;
-                    margin-bottom:20px;
-                    ">
-
-                    Agrega tus hits favoritos de los 2010s
-                    a la playlist oficial.
-
+                <p style="font-size:18px; font-weight:600; text-align:center; margin-bottom:20px;">
+                    Agrega tus hits favoritos de los 2010s a la playlist oficial.
                 </p>
 
-
-                <div
-                    style="
-                    width:100%;
-                    border:3px solid var(--lime);
-                    border-radius:10px;
-                    overflow:hidden;
-                    ">
-
-                    <iframe
-                        src="https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a"
-                        width="100%"
-                        height="352"
-                        frameborder="0"
-                        loading="lazy">
-                    </iframe>
-
+                <div style="border:5px solid var(--black); border-radius:15px; overflow:hidden;">
+                    <iframe src="https://open.spotify.com/embed/playlist/0sQtWn1HBJYC0kDo0XvPdd?utm_source=generator&si=40eea6095721419a" width="100%" height="352" frameborder="0" loading="lazy"></iframe>
                 </div>
 
-
                 <div style="text-align:center;">
-
-                    <a
-                        href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2"
-                        target="_blank"
-                        class="retro-button pink-button">
-
+                    <a href="https://open.spotify.com/playlist/0sQtWn1HBJYC0kDo0XvPdd?si=936a08cdc3d74971&pt=f5f37442a0e70bad8d5913e9dbadf5d2" target="_blank" class="retro-button">
                         ♫ HACER COLLAB
-
                     </a>
-
                 </div>
 
-
-                <hr
-                    style="
-                    border:0;
-                    border-top:1px dashed rgba(255,255,255,.2);
-                    margin:35px 0;
-                    ">
-
+                <hr style="border:0; border-top:3px dashed var(--gray); margin:35px 0;">
 
                 <div class="window-title">
-
-                    <h2>
-                        GALLERY.JPG
-                    </h2>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Gallery</span> 📸</h2>
                 </div>
 
-
-                <p
-                    style="
-                    font-size:21px;
-                    margin-bottom:15px;
-                    ">
-
-                    Sube todas tus fotos y videos
-                    a nuestra carpeta compartida.
-
+                <p style="font-size:18px; font-weight:600; text-align:center; margin-bottom:15px;">
+                    Sube todas tus fotos y videos a nuestra carpeta compartida.
                 </p>
 
-
                 <div style="text-align:center;">
-
-                    <a
-                        href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing"
-                        target="_blank"
-                        class="retro-button">
-
+                    <a href="https://drive.google.com/drive/folders/1FdWTcZKOIAhTJ-MJi1wfpDvYKpaj9-LG?usp=sharing" target="_blank" class="retro-button pink-button">
                         ↑ SUBIR FOTOS
-
                     </a>
-
                 </div>
-
             </section>
-
 
             <!-- ====================================================
                  VIP TICKET
                  ==================================================== -->
+            <div id="pases-section" class="ultimate-ticket anim-hide" style="display:none;">
+                <div class="ticket-header-txt">/// VIP ACCESS // ANDREA XV</div>
+                <div class="label" style="color:white;">TITULAR DEL PASE:</div>
+                <div id="ticket-name" class="ticket-owner">Invitado VIP</div>
 
-            <div
-                id="pases-section"
-                class="ultimate-ticket anim-hide"
-                style="display:none;">
-
-                <div class="ticket-header-txt">
-
-                    /// VIP ACCESS // ANDREA XV
-
-                </div>
-
-
-                <div class="ticket-label">
-                    TITULAR DEL PASE:
-                </div>
-
-
-                <div
-                    id="ticket-name"
-                    class="ticket-owner">
-
-                    Invitado VIP
-
-                </div>
-
-
-                <div class="ticket-row">
-
+                <div style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-
-                        <div class="ticket-label">
-                            PASES ASIGNADOS:
-                        </div>
-
-
-                        <div
-                            id="ticket-count"
-                            class="ticket-value">
-
-                            0
-
-                        </div>
-
+                        <div class="label" style="color:white;">PASES ASIGNADOS:</div>
+                        <div id="ticket-count" class="ticket-value">0</div>
                     </div>
-
-
-                    <div class="hologram-seal">
-
-                        <div class="hologram-inner">
-                            VALID
-                        </div>
-
-                    </div>
-
                 </div>
 
+                <div style="background: repeating-linear-gradient(90deg, #000, #000 3px, transparent 3px, transparent 6px); height: 50px; margin-top:25px; border-radius:5px;"></div>
 
-                <div class="barcode-img"></div>
-
-
-                <div
-                    style="
-                    font-family:'Press Start 2P';
-                    font-size:7px;
-                    text-align:center;
-                    margin-top:12px;
-                    color:#777;
-                    ">
-
+                <div style="font-family:'Montserrat'; font-weight:800; font-size:10px; text-align:center; margin-top:15px; opacity:0.8;">
                     SCAN AT PARTY // DO NOT DUPLICATE
-
                 </div>
-
             </div>
-
 
             <!-- ====================================================
                  RSVP
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide">
-
+            <section class="web-card anim-hide">
                 <div class="window-title">
-
-                    <h2>
-                        RSVP.EXE
-                    </h2>
-
-                    <div class="window-icon">
-                        ♥
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>RSVP</span> 💌</h2>
                 </div>
 
-
-                <p
-                    style="
-                    font-size:21px;
-                    margin-bottom:20px;
-                    ">
-
-                    Confirma tu asistencia y asegura
-                    tu lugar en la pista.
-
+                <p style="font-size:18px; font-weight:600; text-align:center; margin-bottom:20px;">
+                    Confirma tu asistencia y asegura tu lugar en la pista.
                 </p>
 
-
                 <div class="form-group">
-
-                    <input
-                        type="text"
-                        id="rsvp-name"
-                        class="form-control"
-                        placeholder="NOMBRE COMPLETO">
-
+                    <input type="text" id="rsvp-name" class="form-control" placeholder="NOMBRE COMPLETO">
                 </div>
 
-
                 <div class="form-group">
-
-                    <select
-                        id="rsvp-status"
-                        class="form-control">
-
-                        <option
-                            value=""
-                            disabled
-                            selected>
-
-                            ¿ESTÁS LIST@ PARA EL DESCONTROL?
-
-                        </option>
-
-                        <option value="yes">
-                            ¡OBVIO! AHÍ ESTARÉ
-                        </option>
-
-                        <option value="no">
-                            ME LA PIERDO :(
-                        </option>
-
+                    <select id="rsvp-status" class="form-control">
+                        <option value="" disabled selected>¿ESTÁS LIST@ PARA EL DESCONTROL?</option>
+                        <option value="yes">¡OBVIO! AHÍ ESTARÉ</option>
+                        <option value="no">ME LA PIERDO :(</option>
                     </select>
-
                 </div>
-
 
                 <div class="form-group">
-
-                    <select
-                        id="rsvp-guests"
-                        class="form-control"
-                        style="display:none;">
-
-                        <option
-                            value=""
-                            disabled
-                            selected>
-
-                            ¿CUÁNTOS ASISTEN?
-
-                        </option>
-
+                    <select id="rsvp-guests" class="form-control" style="display:none;">
+                        <option value="" disabled selected>¿CUÁNTOS ASISTEN?</option>
                     </select>
-
                 </div>
 
-
-                <button
-                    onclick="sendRSVP()"
-                    class="retro-button full-button">
-
+                <button onclick="sendRSVP()" class="retro-button full-button">
                     ENVIAR CONFIRMACIÓN
-
                 </button>
-
             </section>
-
 
             <!-- ====================================================
                  WISH WALL
                  ==================================================== -->
-
-            <section
-                class="web-card anim-hide"
-                style="margin-bottom:40px;">
-
+            <section class="web-card anim-hide" style="margin-bottom:40px;">
                 <div class="window-title">
-
-                    <h2
-                        style="color:var(--pink);">
-
-                        GUESTBOOK.TXT
-
-                    </h2>
-
-                    <div
-                        class="window-icon">
-
-                        ♡
-
-                    </div>
-
+                    <div class="slap-user">A</div>
+                    <h2>andrea: <span>Guestbook</span> ✍️</h2>
                 </div>
 
-
-                <p
-                    style="
-                    font-size:21px;
-                    margin-bottom:20px;
-                    ">
-
-                    Déjale un mensaje cool a Andrea
-                    para recordar este día.
-
+                <p style="font-size:18px; font-weight:600; text-align:center; margin-bottom:20px;">
+                    Déjale un mensaje cool a Andrea para recordar este día.
                 </p>
 
-
                 <div class="form-group">
-
-                    <input
-                        type="text"
-                        id="wish-name"
-                        class="form-control"
-                        placeholder="DE PARTE DE...">
-
+                    <input type="text" id="wish-name" class="form-control" placeholder="DE PARTE DE...">
                 </div>
 
-
                 <div class="form-group">
-
-                    <textarea
-                        id="wish-message"
-                        class="form-control"
-                        placeholder="ESCRIBE TU MENSAJE...">
-                    </textarea>
-
+                    <textarea id="wish-message" class="form-control" placeholder="ESCRIBE TU MENSAJE..."></textarea>
                 </div>
 
-
-                <button
-                    onclick="sendWish()"
-                    class="retro-button pink-button full-button">
-
+                <button onclick="sendWish()" class="retro-button pink-button full-button">
                     ♥ DEJAR MENSAJE
-
                 </button>
-
             </section>
-
 
             <!-- ====================================================
                  FOOTER
                  ==================================================== -->
-
             <footer class="footer">
-
-                <div>
-                    © 2000-2026 ANDREA XV
-                </div>
-
-                <div>
-                    MADE WITH
-                    <span>♥</span>
-                    & PIXELS
-                </div>
-
-                <div>
-                    BEST VIEWED WITH GOOD VIBES
-                </div>
-
+                <div>© 2000-2026 ANDREA XV</div>
+                <div>MADE WITH <span>♥</span> & PIXELS</div>
+                <div>BEST VIEWED WITH GOOD VIBES</div>
             </footer>
 
-
         </div>
-
     </main>
 
-
     <!-- ============================================================
-         JAVASCRIPT
+         JAVASCRIPT (LÓGICA INTACTA)
          ============================================================ -->
-
     <script>
-
-
-        /* ============================================================
-           AUDIO
-           ============================================================ */
-
+        /* AUDIO */
         let isMusicPlaying = false;
-
-        const bgMusic =
-            document.getElementById('bg-music');
-
-        const playIcon =
-            document.getElementById('music-icon-play');
-
-        const pauseIcon =
-            document.getElementById('music-icon-pause');
-
+        const bgMusic = document.getElementById('bg-music');
+        const playIcon = document.getElementById('music-icon-play');
+        const pauseIcon = document.getElementById('music-icon-pause');
 
         function toggleMusic() {
-
             if (isMusicPlaying) {
-
                 bgMusic.pause();
-
                 playIcon.style.display = 'block';
-
                 pauseIcon.style.display = 'none';
-
             } else {
-
                 bgMusic.play();
-
                 playIcon.style.display = 'none';
-
                 pauseIcon.style.display = 'block';
             }
-
-            isMusicPlaying =
-                !isMusicPlaying;
+            isMusicPlaying = !isMusicPlaying;
         }
 
-
-        /* ============================================================
-           OPEN INVITATION
-           ============================================================ */
-
+        /* OPEN INVITATION */
         function openEnvelope() {
-
-            const screen =
-                document.getElementById(
-                    'envelope-screen'
-                );
-
-
-            if (
-                screen.classList.contains(
-                    'fade-out'
-                )
-            ) {
-                return;
-            }
-
-
-            screen.classList.add(
-                'fade-out'
-            );
-
-
-            document.body.classList.add(
-                'content-active'
-            );
-
+            const screen = document.getElementById('envelope-screen');
+            if (screen.classList.contains('fade-out')) return;
+            
+            screen.classList.add('fade-out');
+            document.body.classList.add('content-active');
 
             setTimeout(() => {
-
                 if (bgMusic) {
-
-                    const playPromise =
-                        bgMusic.play();
-
-
-                    if (
-                        playPromise !== undefined
-                    ) {
-
-                        playPromise
-
-                            .then(() => {
-
-                                isMusicPlaying =
-                                    true;
-
-                                playIcon.style.display =
-                                    'none';
-
-                                pauseIcon.style.display =
-                                    'block';
-
-                            })
-
-                            .catch(() => {
-
-                                isMusicPlaying =
-                                    false;
-
-                                playIcon.style.display =
-                                    'block';
-
-                                pauseIcon.style.display =
-                                    'none';
-
-                            });
+                    const playPromise = bgMusic.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            isMusicPlaying = true;
+                            playIcon.style.display = 'none';
+                            pauseIcon.style.display = 'block';
+                        }).catch(() => {
+                            isMusicPlaying = false;
+                            playIcon.style.display = 'block';
+                            pauseIcon.style.display = 'none';
+                        });
                     }
                 }
-
             }, 600);
         }
 
+        /* SCROLL ANIMATION */
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('anim-show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-        /* ============================================================
-           SCROLL ANIMATION
-           ============================================================ */
+            document.querySelectorAll('.anim-hide').forEach(el => observer.observe(el));
+            startCountdown();
+        });
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            () => {
-
-                const observerOptions = {
-
-                    root: null,
-
-                    rootMargin:
-                        '0px',
-
-                    threshold:
-                        0.1
-                };
-
-
-                const observer =
-                    new IntersectionObserver(
-                        (entries, observer) => {
-
-                            entries.forEach(
-                                entry => {
-
-                                    if (
-                                        entry.isIntersecting
-                                    ) {
-
-                                        entry.target.classList.add(
-                                            'anim-show'
-                                        );
-
-                                        observer.unobserve(
-                                            entry.target
-                                        );
-                                    }
-
-                                }
-                            );
-
-                        },
-                        observerOptions
-                    );
-
-
-                document
-                    .querySelectorAll(
-                        '.anim-hide'
-                    )
-                    .forEach(
-                        el =>
-                            observer.observe(el)
-                    );
-
-
-                startCountdown();
-
-            }
-        );
-
-
-        /* ============================================================
-           COUNTDOWN
-           ============================================================ */
-
+        /* COUNTDOWN */
         function startCountdown() {
-
-            const eventDate =
-                new Date(
-                    "October 10, 2026 13:00:00"
-                ).getTime();
-
-
-            const timer =
-                setInterval(() => {
-
-                    const now =
-                        new Date().getTime();
-
-
-                    const distance =
-                        eventDate - now;
-
-
-                    if (distance < 0) {
-
-                        clearInterval(timer);
-
-                        document.getElementById(
-                            "cd-days"
-                        ).innerText = "00";
-
-                        document.getElementById(
-                            "cd-hours"
-                        ).innerText = "00";
-
-                        document.getElementById(
-                            "cd-mins"
-                        ).innerText = "00";
-
-                        document.getElementById(
-                            "cd-secs"
-                        ).innerText = "00";
-
-                        return;
-                    }
-
-
-                    const days =
-                        Math.floor(
-                            distance /
-                            (1000 * 60 * 60 * 24)
-                        );
-
-
-                    const hours =
-                        Math.floor(
-                            (
-                                distance %
-                                (1000 * 60 * 60 * 24)
-                            ) /
-                            (1000 * 60 * 60)
-                        );
-
-
-                    const mins =
-                        Math.floor(
-                            (
-                                distance %
-                                (1000 * 60 * 60)
-                            ) /
-                            (1000 * 60)
-                        );
-
-
-                    const secs =
-                        Math.floor(
-                            (
-                                distance %
-                                (1000 * 60)
-                            ) /
-                            1000
-                        );
-
-
-                    document.getElementById(
-                        "cd-days"
-                    ).innerText =
-                        days < 10
-                            ? "0" + days
-                            : days;
-
-
-                    document.getElementById(
-                        "cd-hours"
-                    ).innerText =
-                        hours < 10
-                            ? "0" + hours
-                            : hours;
-
-
-                    document.getElementById(
-                        "cd-mins"
-                    ).innerText =
-                        mins < 10
-                            ? "0" + mins
-                            : mins;
-
-
-                    document.getElementById(
-                        "cd-secs"
-                    ).innerText =
-                        secs < 10
-                            ? "0" + secs
-                            : secs;
-
-                }, 1000);
-        }
-
-
-        /* ============================================================
-           URL VIP
-           ============================================================ */
-
-        let pasesAsignados = 0;
-
-        let nombreInvitado =
-            "Invitado VIP";
-
-
-        const urlParams =
-            new URLSearchParams(
-                window.location.search
-            );
-
-
-        const wpNumber =
-            "522711803147";
-
-
-        let paramPases =
-            urlParams.get('p') ||
-            urlParams.get('pases');
-
-
-        let paramNombre =
-            urlParams.get('n') ||
-            urlParams.get('nombre');
-
-
-        if (
-            paramPases &&
-            !isNaN(paramPases)
-        ) {
-
-            pasesAsignados =
-                parseInt(paramPases);
-
-        }
-
-
-        if (paramNombre) {
-
-            nombreInvitado =
-                decodeURIComponent(
-                    paramNombre
-                );
-
-        }
-
-
-        const inputName =
-            document.getElementById(
-                "rsvp-name"
-            );
-
-
-        /* ============================================================
-           TICKET
-           ============================================================ */
-
-        if (pasesAsignados > 0) {
-
-            document.getElementById(
-                'pases-section'
-            ).style.display =
-                'block';
-
-
-            document.getElementById(
-                'ticket-count'
-            ).innerText =
-                pasesAsignados;
-
-
-            document.getElementById(
-                'ticket-name'
-            ).innerText =
-                nombreInvitado;
-
-
-            if (paramNombre) {
-
-                inputName.value =
-                    nombreInvitado;
-
-                inputName.disabled =
-                    true;
-            }
-        }
-
-
-        /* ============================================================
-           RSVP GUESTS
-           ============================================================ */
-
-        const rsvpStatus =
-            document.getElementById(
-                "rsvp-status"
-            );
-
-
-        const rsvpGuests =
-            document.getElementById(
-                "rsvp-guests"
-            );
-
-
-        rsvpStatus.addEventListener(
-            'change',
-            e => {
-
-                if (
-                    e.target.value ===
-                    'yes'
-                ) {
-
-                    if (
-                        pasesAsignados > 0
-                    ) {
-
-                        rsvpGuests.style.display =
-                            'block';
-
-
-                        rsvpGuests.innerHTML =
-                            '<option value="" disabled selected>¿CUÁNTOS ASISTEN?</option>';
-
-
-                        for (
-                            let i = 1;
-                            i <= pasesAsignados;
-                            i++
-                        ) {
-
-                            rsvpGuests.innerHTML +=
-
-                                `<option value="${i}">
-                                    ${i}
-                                    persona${i > 1 ? 's' : ''}
-                                </option>`;
-                        }
-
-                    }
-
-                } else {
-
-                    rsvpGuests.style.display =
-                        'none';
-
-                    rsvpGuests.value =
-                        "";
+            const eventDate = new Date("October 10, 2026 13:00:00").getTime();
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("cd-days").innerText = "00";
+                    document.getElementById("cd-hours").innerText = "00";
+                    document.getElementById("cd-mins").innerText = "00";
+                    document.getElementById("cd-secs").innerText = "00";
+                    return;
                 }
 
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("cd-days").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("cd-hours").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("cd-mins").innerText = mins < 10 ? "0" + mins : mins;
+                document.getElementById("cd-secs").innerText = secs < 10 ? "0" + secs : secs;
+            }, 1000);
+        }
+
+        /* URL VIP */
+        let pasesAsignados = 0;
+        let nombreInvitado = "Invitado VIP";
+        const urlParams = new URLSearchParams(window.location.search);
+        const wpNumber = "522711803147";
+
+        let paramPases = urlParams.get('p') || urlParams.get('pases');
+        let paramNombre = urlParams.get('n') || urlParams.get('nombre');
+
+        if (paramPases && !isNaN(paramPases)) { pasesAsignados = parseInt(paramPases); }
+        if (paramNombre) { nombreInvitado = decodeURIComponent(paramNombre); }
+
+        const inputName = document.getElementById("rsvp-name");
+
+        /* TICKET */
+        if (pasesAsignados > 0) {
+            document.getElementById('pases-section').style.display = 'block';
+            document.getElementById('ticket-count').innerText = pasesAsignados;
+            document.getElementById('ticket-name').innerText = nombreInvitado;
+
+            if (paramNombre) {
+                inputName.value = nombreInvitado;
+                inputName.disabled = true;
             }
-        );
+        }
 
+        /* RSVP GUESTS */
+        const rsvpStatus = document.getElementById("rsvp-status");
+        const rsvpGuests = document.getElementById("rsvp-guests");
 
-        /* ============================================================
-           RSVP WHATSAPP
-           ============================================================ */
+        rsvpStatus.addEventListener('change', e => {
+            if (e.target.value === 'yes') {
+                if (pasesAsignados > 0) {
+                    rsvpGuests.style.display = 'block';
+                    rsvpGuests.innerHTML = '<option value="" disabled selected>¿CUÁNTOS ASISTEN?</option>';
+                    for (let i = 1; i <= pasesAsignados; i++) {
+                        rsvpGuests.innerHTML += `<option value="${i}">${i} persona${i > 1 ? 's' : ''}</option>`;
+                    }
+                }
+            } else {
+                rsvpGuests.style.display = 'none';
+                rsvpGuests.value = "";
+            }
+        });
 
+        /* RSVP WHATSAPP */
         function sendRSVP() {
+            const name = document.getElementById("rsvp-name").value.trim();
+            const status = document.getElementById("rsvp-status").value;
+            const guests = document.getElementById("rsvp-guests").value;
 
-            const name =
-                document.getElementById(
-                    "rsvp-name"
-                ).value.trim();
-
-
-            const status =
-                document.getElementById(
-                    "rsvp-status"
-                ).value;
-
-
-            const guests =
-                document.getElementById(
-                    "rsvp-guests"
-                ).value;
-
-
-            if (
-                name === "" ||
-                status === ""
-            ) {
-
-                alert(
-                    "Selecciona una opción de asistencia para continuar."
-                );
-
+            if (name === "" || status === "") {
+                alert("Selecciona una opción de asistencia para continuar.");
                 return;
             }
 
-
-            if (
-                status === "yes" &&
-                pasesAsignados > 0 &&
-                guests === ""
-            ) {
-
-                alert(
-                    "Por favor, indica cuántas personas asistirán."
-                );
-
+            if (status === "yes" && pasesAsignados > 0 && guests === "") {
+                alert("Por favor, indica cuántas personas asistirán.");
                 return;
             }
-
 
             let message = "";
-
-
             if (status === "yes") {
-
-                let extraTxt =
-                    guests
-                        ? ` Seremos ${guests} persona(s) en total.`
-                        : "";
-
-
-                message =
-                    encodeURIComponent(
-
-                        `¡Hola! Soy ${name}. Confirmo mi asistencia a los XV de Andrea (Victorious Party).${extraTxt} 💜✨`
-
-                    );
-
+                let extraTxt = guests ? ` Seremos ${guests} persona(s) en total.` : "";
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Confirmo mi asistencia a los XV de Andrea (Victorious Party).${extraTxt} 💜✨`);
             } else {
-
-                message =
-                    encodeURIComponent(
-
-                        `¡Hola! Soy ${name}. Lamentablemente no podré asistir a los XV de Andrea. Agradezco mucho la invitación.`
-
-                    );
+                message = encodeURIComponent(`¡Hola! Soy ${name}. Lamentablemente no podré asistir a los XV de Andrea. Agradezco mucho la invitación.`);
             }
 
-
-            window.open(
-                `https://wa.me/${wpNumber}?text=${message}`,
-                '_blank'
-            );
+            window.open(`https://wa.me/${wpNumber}?text=${message}`, '_blank');
         }
 
-
-        /* ============================================================
-           WISH
-           ============================================================ */
-
+        /* WISH */
         function sendWish() {
+            const name = document.getElementById("wish-name").value.trim();
+            const wish = document.getElementById("wish-message").value.trim();
 
-            const name =
-                document.getElementById(
-                    "wish-name"
-                ).value.trim();
-
-
-            const wish =
-                document.getElementById(
-                    "wish-message"
-                ).value.trim();
-
-
-            if (
-                name === "" ||
-                wish === ""
-            ) {
-
-                alert(
-                    "Por favor, ingresa tu nombre y tu mensaje."
-                );
-
+            if (name === "" || wish === "") {
+                alert("Por favor, ingresa tu nombre y tu mensaje.");
                 return;
             }
 
-
-            const message =
-                encodeURIComponent(
-
-                    `Hola Andrea, soy ${name}. Te envío este mensaje con mucho cariño:\n\n"${wish}"`
-
-                );
-
-
-            window.open(
-                `https://wa.me/${wpNumber}?text=${message}`,
-                '_blank'
-            );
+            const message = encodeURIComponent(`Hola Andrea, soy ${name}. Te envío este mensaje con mucho cariño:\n\n"${wish}"`);
+            window.open(`https://wa.me/${wpNumber}?text=${message}`, '_blank');
         }
-
-
     </script>
-
-
 </body>
 </html>
