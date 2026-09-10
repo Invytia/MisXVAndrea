@@ -13,8 +13,7 @@
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Mantenemos las tuyas y agregamos un par para darle el toque Pop/Teen -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@400;700;900&family=Pacifico&family=Fredoka+One&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@400;700;900&family=Pacifico&family=Fredoka+One&family=Montserrat:wght@500;600;800&display=swap" rel="stylesheet">
 
     <style>
 
@@ -24,14 +23,14 @@
         :root {
             --hot-pink: #ff007f;
             --light-pink: #ff66b2;
-            --neon-blue: #00e5ff;
+            --neon-blue: #00a8ff; /* Color ajustado para mejor visibilidad */
             --yellow: #fff200;
             --black: #111111;
             --white: #ffffff;
             --gray: #f0f0f0;
             
             --shadow-pink: 0 0 15px rgba(255, 0, 127, 0.6);
-            --shadow-blue: 0 0 15px rgba(0, 229, 255, 0.6);
+            --shadow-blue: 0 0 15px rgba(0, 168, 255, 0.6);
             
             --zebra-print: repeating-linear-gradient(
                 -45deg,
@@ -53,7 +52,7 @@
             background-color: var(--hot-pink);
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(255,255,255,0.2), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0,229,255,0.3), transparent 25%);
+                radial-gradient(circle at 85% 30%, rgba(0,168,255,0.3), transparent 25%);
             background-attachment: fixed;
             color: var(--black);
             font-family: 'Montserrat', sans-serif;
@@ -119,7 +118,6 @@
             justify-content: center;
             align-items: flex-end;
             padding: 40px;
-            /* SE REEMPLAZA EL PERAPOD POR LA IMAGEN A PANTALLA COMPLETA */
             background: url('assets/entrada.jpg') center/cover no-repeat;
             background-color: var(--black);
             cursor: pointer;
@@ -278,7 +276,7 @@
         }
 
         /* ============================================================
-           THESLAP CARDS (REEMPLAZA WEB-CARD)
+           THESLAP CARDS
            ============================================================ */
         .web-card {
             background: var(--white);
@@ -417,8 +415,9 @@
            FAMILY & LOCATIONS
            ============================================================ */
         .family-name {
-            font-family: 'Fredoka One', cursive;
-            font-size: 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; /* Letra más delgada */
+            font-size: 22px;
             color: var(--hot-pink);
             margin-bottom: 5px;
         }
@@ -796,8 +795,8 @@
                 </div>
 
                 <div class="family-block">
-                    <div class="label">PRESENTADO POR MIS PADRES</div>
-                    <div class="family-name">Aida Del Carmen Vázquez</div>
+                    <div class="label">MIS PADRES</div>
+                    <div class="family-name">Aida Vázquez</div>
                     <div class="family-name">Julio Daniel Gómez</div>
                 </div>
 
